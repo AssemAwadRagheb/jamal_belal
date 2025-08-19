@@ -1,1107 +1,691 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamal Belal | Music Producer & Composer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>JAMAL BELAL // Hard Techno Producer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
          :root {
-            --primary: #ff0055;
-            /* Neon Red/Pink */
+            --primary: #6a0dad;
+            /* أرجواني داكن */
+            --secondary: #00ffff;
+            /* سماوي */
+            --accent: #ff00ff;
+            /* وردي */
             --dark: #0a0a1a;
-            /* Very Dark Blue/Black */
-            --light: #e0e0e0;
-            /* Light Gray */
-            --accent: #00ffff;
-            /* Electric Cyan */
-            --secondary-dark: #150a2e;
-            /* Dark Purple/Blue for sections */
-            --text-light: #f0f0f0;
-            --text-muted: #888888;
-            --glow-primary: rgba(255, 0, 85, 0.7);
-            --glow-accent: rgba(0, 255, 255, 0.7);
+            /* أزرق داكن جدًا */
+            --light: #f0f0f0;
+            --space: #000022;
         }
         
         body {
-            font-family: 'Roboto Mono', monospace;
             background-color: var(--dark);
-            color: var(--text-light);
+            color: var(--light);
+            font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
         
-        .navbar {
-            background-color: rgba(10, 10, 26, 0.95);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 0, 85, 0.3);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-        }
-        
-        .navbar-brand {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            color: var(--primary) !important;
-            text-shadow: 0 0 10px var(--glow-primary);
-            font-size: 1.8rem;
-        }
-        
-        .nav-link {
-            color: var(--text-light) !important;
-            margin: 0 15px;
-            position: relative;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--accent) !important;
-            transform: translateY(-3px);
-            text-shadow: 0 0 8px var(--glow-accent);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 4px;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        section {
-            padding: 120px 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        section:nth-of-type(even) {
-            background-color: var(--secondary-dark);
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, rgba(10, 10, 26, 0.9) 0%, rgba(21, 10, 46, 0.9) 100%), url('https://images.unsplash.com/photo-1519085360753-af0f389a7d2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            text-align: center;
-            color: white;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 0, 85, 0.15) 0%, transparent 70%);
-            animation: pulse 4s infinite alternate;
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 30px;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 0 40px var(--glow-primary);
-        }
-        
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-shadow: 0 0 20px var(--primary), 0 0 35px var(--accent);
-            animation: text-glow 2s infinite alternate;
-        }
-        
-        .hero p {
-            font-size: 2rem;
-            margin-bottom: 50px;
-            color: var(--text-light);
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 20px var(--glow-primary);
-            text-transform: uppercase;
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(45deg, var(--accent), var(--primary));
-            transform: translateY(-7px) scale(1.03);
-            box-shadow: 0 15px 30px var(--glow-accent);
-            filter: brightness(1.2);
-        }
-        
-        .btn-outline-light {
-            border: 2px solid var(--primary);
-            color: var(--primary) !important;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-        }
-        
-        .btn-outline-light:hover {
-            background-color: var(--primary);
-            color: var(--dark) !important;
-            transform: translateY(-7px) scale(1.03);
-            box-shadow: 0 15px 30px var(--glow-primary);
-        }
-        
-        .about-img {
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 3px solid var(--primary);
-        }
-        
-        .about-img:hover {
-            transform: scale(1.07) rotate(3deg);
-            box-shadow: 0 30px 50px var(--glow-primary);
-        }
-        
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 70px;
-            position: relative;
-            display: inline-block;
-            color: var(--primary);
-            text-shadow: 0 0 15px var(--glow-primary);
-            text-transform: uppercase;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 6px;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 3px;
-        }
-        
+        h1,
+        h2,
         h3 {
-            color: var(--accent);
             font-family: 'Orbitron', sans-serif;
-            margin-bottom: 25px;
-            text-shadow: 0 0 8px var(--glow-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
         
-        p,
-        ul {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        strong {
-            color: var(--primary);
-        }
-        
-        .skill-item {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 45px;
-            border-radius: 25px;
-            margin-bottom: 35px;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-20px) scale(1.03);
-            background-color: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 25px 50px var(--glow-primary);
-            border-color: var(--primary);
-        }
-        
-        .skill-icon {
-            font-size: 4.5rem;
-            color: var(--primary);
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px var(--glow-primary);
-        }
-        
-        .progress {
-            height: 18px;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6);
-        }
-        
-        .progress-bar {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 12px;
-            transition: width 1.2s ease-out;
-            font-weight: 700;
-            color: var(--dark);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        
-        .portfolio-item {
+        .glitch {
             position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(0, 255, 255, 0.2);
+            text-shadow: 0.05em 0 0 var(--accent), -0.05em -0.025em 0 var(--secondary);
+            animation: glitch 500ms infinite;
         }
         
-        .portfolio-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
-            filter: brightness(0.7);
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 var(--accent), -0.05em -0.025em 0 var(--secondary);
+            }
+            14% {
+                text-shadow: 0.05em 0 0 var(--accent), -0.05em -0.025em 0 var(--secondary);
+            }
+            15% {
+                text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.025em 0 var(--secondary);
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.025em 0 var(--secondary);
+            }
+            50% {
+                text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 var(--secondary);
+            }
+            99% {
+                text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 var(--secondary);
+            }
+            100% {
+                text-shadow: -0.025em 0 0 var(--accent), -0.025em -0.025em 0 var(--secondary);
+            }
         }
+        /* خلفية النجوم */
         
-        .portfolio-overlay {
-            position: absolute;
+        .stars-background {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255, 0, 85, 0.8) 0%, rgba(0, 255, 255, 0.8) 100%);
+            z-index: -2;
+            background: linear-gradient(to bottom, var(--space), var(--dark));
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        .album-cover {
+            transition: transform 0.3s ease, filter 0.3s ease;
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            filter: grayscale(100%) contrast(120%);
+            cursor: pointer;
+        }
+        
+        .album-cover:hover {
+            transform: scale(1.1);
+            filter: none;
+            z-index: 10;
+        }
+        
+        .audio-visualizer {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            display: flex;
+            align-items: flex-end;
+            padding: 10px 0;
+        }
+        
+        .visual-bar {
+            flex: 1;
+            height: 20px;
+            margin: 0 2px;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            transform-origin: bottom;
+            transform: scaleY(0.1);
+            transition: transform 0.1s ease-out;
+        }
+        
+        .track-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-left: 3px solid transparent;
+        }
+        
+        .track-item:hover {
+            background: rgba(106, 13, 173, 0.1);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .track-item.playing {
+            background: rgba(106, 13, 173, 0.2);
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .pulse-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(106, 13, 173, 0.3);
+            animation: pulse 3s infinite;
+            z-index: -1;
+            opacity: 0;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes scroll-icon {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(8px);
+            }
+        }
+        
+        .animate-scroll-icon {
+            animation: scroll-icon 1.5s infinite ease-in-out;
+        }
+        /* Responsive design */
+        
+        @media (max-width: 768px) {
+            .album-cover {
+                clip-path: none;
+                width: 100%;
+            }
+            h1 {
+                font-size: 3.5rem;
+            }
+            h1 span:last-child {
+                font-size: 2rem;
+            }
+        }
+        /* Custom styles for Hero Section */
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--space) 100%);
+            /* خلفية متدرجة جديدة */
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: all 0.5s ease;
-            padding: 30px;
+            min-height: 100vh;
+            padding: 4rem 2rem;
             text-align: center;
         }
         
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
+        .hero-content {
+            z-index: 10;
+            position: relative;
+            /* لضمان ظهور المحتوى فوق الدوائر */
+            background: rgba(0, 0, 0, 0.3);
+            /* خلفية شفافة للمحتوى */
+            backdrop-filter: blur(5px);
+            /* تأثير ضبابي */
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(106, 13, 173, 0.5);
+            /* حدود بنفسجية */
+            box-shadow: 0 0 30px rgba(106, 13, 173, 0.4);
+            /* ظل بنفسجي */
+            max-width: 900px;
+            width: 100%;
         }
         
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.2) rotate(4deg);
-            filter: brightness(1);
+        .hero-section .pulse-circle {
+            background: rgba(0, 255, 255, 0.2);
+            /* لون سماوي للدوائر */
+            animation: pulse 4s infinite ease-out;
+            /* سرعة أبطأ وتأثير أكثر سلاسة */
         }
         
-        .portfolio-overlay h3 {
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-            font-size: 1.8rem;
+        .hero-section .pulse-circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
         }
         
-        .portfolio-overlay p {
-            color: var(--text-light);
-            font-size: 1.2rem;
+        .hero-section .pulse-circle:nth-child(2) {
+            width: 600px;
+            height: 600px;
+            right: 5%;
+            bottom: 10%;
+            animation-delay: 1.5s;
         }
         
-        .contact-info {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            border-radius: 25px;
-            margin-bottom: 35px;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        .hero-section .pulse-circle:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            left: 30%;
+            bottom: 5%;
+            animation-delay: 0.7s;
         }
         
-        .contact-info:hover {
-            transform: translateY(-12px) scale(1.02);
-            background-color: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 25px 50px var(--glow-accent);
-            border-color: var(--accent);
+        .hero-section h1 {
+            font-size: 5rem;
+            /* حجم أكبر للعنوان الرئيسي */
+            line-height: 1.1;
+            margin-bottom: 1rem;
         }
         
-        .contact-icon {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            text-shadow: 0 0 15px var(--glow-primary);
+        .hero-section h1 span:last-child {
+            font-size: 2.5rem;
+            /* حجم أكبر للعنوان الفرعي */
+            opacity: 0.9;
+            display: block;
+            margin-top: 0.5rem;
         }
         
-        .contact-info h3 {
-            color: var(--accent);
-            margin-bottom: 15px;
+        .hero-section p {
+            font-size: 1.5rem;
+            /* حجم أكبر للفقرة */
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
         }
         
-        .contact-info p {
-            color: var(--text-light);
-            font-size: 1.2rem;
-        }
-        
-        form .form-control {
-            background-color: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 0, 85, 0.4);
-            color: var(--text-light);
-            padding: 18px 25px;
-            border-radius: 12px;
-            transition: all 0.4s ease;
+        .hero-section button {
+            padding: 1rem 2.5rem;
             font-size: 1.1rem;
-        }
-        
-        form .form-control:focus {
-            background-color: rgba(0, 0, 0, 0.8);
-            border-color: var(--primary);
-            box-shadow: 0 0 15px var(--glow-primary);
-            color: var(--text-light);
-        }
-        
-        form .form-control::placeholder {
-            color: var(--text-muted);
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 60px;
-        }
-        
-        .social-icon {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 18px;
-            color: var(--primary);
-            font-size: 2.2rem;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .social-icon:hover {
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: white;
-            transform: translateY(-10px) scale(1.15);
-            box-shadow: 0 18px 35px var(--glow-accent);
-            border-color: var(--accent);
-        }
-        
-        .footer {
-            background-color: var(--secondary-dark);
-            padding: 45px 0;
-            text-align: center;
-            border-top: 1px solid rgba(0, 255, 255, 0.2);
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-        
-        .footer p {
-            margin-bottom: 0;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 45px;
-            right: 45px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s ease;
-            z-index: 999;
-            box-shadow: 0 8px 20px var(--glow-primary);
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .back-to-top:hover {
-            background: linear-gradient(45deg, var(--accent), var(--primary));
-            transform: translateY(-7px) scale(1.08);
-            box-shadow: 0 15px 30px var(--glow-accent);
-        }
-        /* Animation classes */
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Keyframe Animations */
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(0.8);
-                opacity: 0.1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.3;
-            }
-            100% {
-                transform: scale(0.8);
-                opacity: 0.1;
-            }
-        }
-        
-        @keyframes text-glow {
-            0% {
-                text-shadow: 0 0 15px var(--primary), 0 0 25px var(--accent);
-            }
-            100% {
-                text-shadow: 0 0 20px var(--primary), 0 0 35px var(--accent), 0 0 50px rgba(0, 255, 255, 0.6);
-            }
-        }
-        /* Responsive adjustments */
-        
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 4rem;
-            }
-            .hero p {
-                font-size: 1.6rem;
-            }
-            .section-title {
-                font-size: 3.5rem;
-            }
-            .navbar-brand {
-                font-size: 1.6rem;
-            }
-            .nav-link {
-                margin: 0 10px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            section {
-                padding: 90px 0;
-            }
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            .hero p {
-                font-size: 1.4rem;
-            }
-            .section-title {
-                font-size: 3rem;
-            }
-            .skill-icon {
-                font-size: 4rem;
-            }
-            .social-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 2rem;
-                margin: 0 12px;
-            }
-            .back-to-top {
-                width: 55px;
-                height: 55px;
-                font-size: 1.8rem;
-                bottom: 25px;
-                right: 25px;
-            }
-        }
-        /* Music player styles */
-        
-        .music-player {
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 25px;
-            padding: 35px;
-            margin-bottom: 60px;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 30px var(--glow-accent);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         
-        .music-player::before {
+        .hero-section button::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.15) 0%, transparent 70%);
-            animation: rotate-glow 20s linear infinite;
-            z-index: 0;
-        }
-        
-        .track-info {
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .track-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--primary);
-            text-shadow: 0 0 12px var(--glow-primary);
-        }
-        
-        .track-artist {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            margin: 30px 0;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 6px;
-            width: 0%;
-            transition: width 0.1s linear;
-        }
-        
-        .time-info {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-top: -20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .player-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 35px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .control-btn {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 18px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 20px var(--glow-primary);
-        }
-        
-        .control-btn:hover {
-            background: linear-gradient(45deg, var(--accent), var(--primary));
-            transform: scale(1.18);
-            box-shadow: 0 12px 25px var(--glow-accent);
-        }
-        
-        .control-btn i {
-            font-size: 2rem;
-        }
-        
-        @keyframes rotate-glow {
-            0% {
-                transform: rotate(0deg);
-                opacity: 0.15;
-            }
-            100% {
-                transform: rotate(360deg);
-                opacity: 0.15;
-            }
-        }
-        /* Timeline styles */
-        
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 60px;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
             top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -4px;
-            border-radius: 4px;
-            box-shadow: 0 0 20px var(--glow-primary);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.4s ease;
+            z-index: -1;
         }
         
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
+        .hero-section button:hover::before {
+            left: 100%;
         }
         
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            right: -16px;
+        .hero-section button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(106, 13, 173, 0.6);
+        }
+        
+        .hero-section #play-sample {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .hero-section #play-sample:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .hero-section .bg-purple-600 {
+            background-color: var(--primary);
+        }
+        
+        .hero-section .bg-purple-600:hover {
             background-color: var(--accent);
-            border: 6px solid var(--primary);
-            top: 25px;
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: 0 0 20px var(--glow-accent);
+            color: var(--dark);
         }
         
-        .left {
-            left: 0;
+        .scroll-indicator {
+            margin-top: 5rem;
+            /* مسافة أكبر من الأسفل */
+            opacity: 0.8;
         }
         
-        .right {
-            left: 50%;
+        .scroll-indicator .w-6 {
+            width: 2rem;
+            height: 4rem;
+            border-width: 3px;
+            border-color: var(--secondary);
         }
         
-        .left::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 32px;
-            width: 0;
-            z-index: 1;
-            right: 30px;
-            border: medium solid rgba(0, 0, 0, 0.7);
-            border-width: 15px 0 15px 15px;
-            border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+        .scroll-indicator .w-3 {
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: var(--secondary);
+        }
+        /* General Section Styling for ScrollTrigger */
+        
+        section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
-        .right::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 32px;
-            width: 0;
-            z-index: 1;
-            left: 30px;
-            border: medium solid rgba(0, 0, 0, 0.7);
-            border-width: 15px 15px 15px 0;
-            border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+        section.is-in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
+        /* Album Card Hover Effect */
         
-        .right::after {
-            left: -16px;
-        }
-        
-        .timeline-content {
-            padding: 30px 40px;
-            background-color: rgba(0, 0, 0, 0.5);
+        .album-card {
             position: relative;
-            border-radius: 20px;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(106, 13, 173, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
         
-        .timeline-content:hover {
-            transform: translateY(-15px) scale(1.02);
-            background-color: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 20px 40px var(--glow-primary);
+        .album-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.6);
             border-color: var(--primary);
         }
         
-        .timeline-content h3 {
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px var(--glow-primary);
-            font-size: 1.6rem;
+        .album-card .album-cover {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            /* إزالة الـ clip-path الأصلي */
+            border-radius: 8px;
+            /* حواف مستديرة */
+            filter: grayscale(80%) contrast(110%);
+            /* تأثير أقل قسوة */
         }
         
-        .timeline-content p {
-            color: var(--text-light);
-            font-size: 1.1rem;
+        .album-card:hover .album-cover {
+            filter: none;
+            /* إزالة الفلتر عند التحويم */
+        }
+        /* Social Icons Hover */
+        
+        .social-icon-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
         
-        @media screen and (max-width: 768px) {
-            .timeline::after {
-                left: 35px;
-            }
-            .timeline-item {
-                width: 100%;
-                padding-left: 80px;
-                padding-right: 30px;
-            }
-            .timeline-item::before {
-                left: 65px;
-                border: medium solid rgba(0, 0, 0, 0.7);
-                border-width: 15px 15px 15px 0;
-                border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
-            }
-            .left::after,
-            .right::after {
-                left: 18px;
-            }
-            .right {
-                left: 0%;
-            }
+        .social-icon-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .social-icon-btn:hover::before {
+            transform: scale(1);
+        }
+        
+        .social-icon-btn:hover svg {
+            color: var(--dark);
+            /* تغيير لون الأيقونة عند التحويم */
         }
     </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target=".navbar">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">JAMAL BELAL</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#timeline">Timeline</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body>
+    <div class="stars-background" id="stars"></div>
+
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center fade-in">
-                    <h1>JAMAL BELAL</h1>
-                    <p class="lead">Pioneering Electronic Music Producer | Visionary Composer | Immersive Sound Designer</p>
-                    <div class="d-flex justify-content-center gap-4 mt-5">
-                        <a href="#portfolio" class="btn btn-primary btn-lg">Explore My Sonic Universe</a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg">Connect & Collaborate</a>
+    <section class="hero-section" id="hero">
+        <div class="absolute inset-0">
+            <div class="pulse-circle"></div>
+            <div class="pulse-circle"></div>
+            <div class="pulse-circle"></div>
+        </div>
+
+        <div class="hero-content container mx-auto">
+            <h1 class="glitch font-black">
+                <span class="block">JAMAL BELAL</span>
+                <span class="block opacity-80">HARD TECHNICAL WORKER</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto leading-relaxed">
+                Pushing sonic boundaries with industrial-strength techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
+            </p>
+
+            <div class="flex justify-center gap-6">
+                <button id="play-sample" class="bg-transparent border-2 font-bold">
+                    PLAY DEMO
+                </button>
+                <button class="bg-purple-600 text-white font-bold">
+                    BOOKINGS
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-indicator animate-bounce flex justify-center">
+            <div class="w-6 h-16 border-4 rounded-full">
+                <div class="w-3 h-3 rounded-full mx-auto my-1 animate-scroll-icon"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Player -->
+    <section class="min-h-screen py-20 px-8 relative overflow-hidden" id="music">
+        <h2 class="glitch text-4xl md:text-6xl font-bold mb-20 text-center">SYSTEM ARCHIVE</h2>
+
+        <div class="container mx-auto grid md:grid-cols-2 gap-12">
+            <!-- Player -->
+            <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20">
+                <div class="flex items-center gap-6 mb-8">
+                    <img id="now-playing-cover" src="https://via.placeholder.com/300" alt="Current album cover artwork for Jamal Belal" class="w-32 h-32 object-cover rounded-md" />
+
+                    <div>
+                        <h3 id="now-playing-title" class="text-2xl font-bold">NO TRACK SELECTED</h3>
+                        <p id="now-playing-artist" class="opacity-80">JAMAL BELAL</p>
+                        <div class="flex gap-2 mt-2">
+                            <span id="now-playing-time" class="text-sm">0:00</span>
+                            <span class="text-sm">/</span>
+                            <span id="now-playing-duration" class="text-sm">0:00</span>
+                        </div>
                     </div>
+                </div>
+
+                <div class="audio-visualizer mb-6" id="visualizer">
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                    <div class="visual-bar"></div>
+                </div>
+
+                <div class="relative mb-8">
+                    <input type="range" id="progress-bar" class="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer" min="0" value="0">
+                    <div class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full" style="width: 0%" id="progress-fill"></div>
+                </div>
+
+                <div class="flex justify-center gap-8">
+                    <button id="prev-track" class="text-3xl hover:text-purple-400 transition-colors">⏮</button>
+                    <button id="play-pause" class="text-5xl hover:text-purple-400 transition-colors">▶</button>
+                    <button id="next-track" class="text-3xl hover:text-purple-400 transition-colors">⏭</button>
+                </div>
+            </div>
+
+            <!-- Tracklist -->
+            <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20 h-full">
+                <h3 class="text-2xl font-bold mb-6">DISCOGRAPHY</h3>
+
+                <div class="space-y-2">
+                    <div class="track-item" data-src="audio/riot.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Riot" data-title="Riot" data-artist="Jamal Belal">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold">Riot</h4>
+                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                            </div>
+                            <span class="text-sm">3:42</span>
+                        </div>
+                    </div>
+
+                    <div class="track-item" data-src="audio/havoc.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Havoc" data-title="Havoc" data-artist="Jamal Belal">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold">Havoc</h4>
+                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                            </div>
+                            <span class="text-sm">5:18</span>
+                        </div>
+                    </div>
+
+                    <div class="track-item" data-src="audio/rage.mp3" data-cover="https://via.placeholder.com/300/ff00ff/000000?text=Rage" data-title="Rage" data-artist="Jamal Belal">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold">Rage</h4>
+                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                            </div>
+                            <span class="text-sm">4:36</span>
+                        </div>
+                    </div>
+
+                    <div class="track-item" data-src="audio/flute-step.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Flute+Step" data-title="Flute Step" data-artist="Jamal Belal">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold">Flute Step</h4>
+                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                            </div>
+                            <span class="text-sm">6:24</span>
+                        </div>
+                    </div>
+
+                    <div class="track-item" data-src="audio/revolution.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Revolution" data-title="Revolution" data-artist="Jamal Belal">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold">Revolution</h4>
+                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                            </div>
+                            <span class="text-sm">3:55</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Albums Section -->
+    <section class="min-h-screen py-20 px-8" id="albums">
+        <div class="container mx-auto">
+            <h2 class="glitch text-4xl md:text-6xl font-bold mb-20 text-center">TERMINAL ALBUMS</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="album-card">
+                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Black+Dragon+Fury" alt="Album cover for Black Dragon Fury" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">BLACK DRAGON FURY</h3>
+                    <p class="text-sm opacity-70 mb-2">2020 | Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        STREAM
+                    </button>
+                </div>
+
+                <div class="album-card">
+                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Mysterious+Rock" alt="Album cover for Mysterious Rock EP" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">MYSTERIOUS ROCK EP</h3>
+                    <p class="text-sm opacity-70 mb-2">2020 | Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        STREAM
+                    </button>
+                </div>
+
+                <div class="album-card">
+                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Joker+Music" alt="Album cover for Joker Music" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">JOKER MUSIC</h3>
+                    <p class="text-sm opacity-70 mb-2">2019 | Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        STREAM
+                    </button>
+                </div>
+
+                <div class="album-card">
+                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Beautiful+Moments" alt="Album cover for Beautiful Moments" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">BEAUTIFUL MOMENTS</h3>
+                    <p class="text-sm opacity-70 mb-2">2018 | Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        STREAM
+                    </button>
+                </div>
+
+                <div class="album-card">
+                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Dark+Black" alt="Album cover for Dark Black" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">DARK BLACK</h3>
+                    <p class="text-sm opacity-70 mb-2">2017 | Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        STREAM
+                    </button>
+                </div>
+
+                <div class="album-card">
+                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Dark+Mafia" alt="Album cover for Dark Mafia" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">DARK MAFIA</h3>
+                    <p class="text-sm opacity-70 mb-2">2016 | Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        STREAM
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-dark">
-        <div class="container">
-            <h2 class="section-title text-center fade-in">About Me</h2>
-            <div class="row align-items-center mt-5">
-                <div class="col-lg-6 fade-in">
-                    <div class="about-img">
-                        <!-- REPLACE THIS IMAGE WITH JAMAL BELAL'S REAL PHOTO -->
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0f389a7d2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Jamal Belal" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-lg-6 fade-in">
-                    <h3 class="mt-4 mt-lg-0">Who Am I?</h3>
-                    <p>I'm Jamal Belal, a Syrian-Turkish music producer and composer based in Istanbul, Turkey. With over a decade of experience in music production, I specialize in crafting powerful, immersive electronic music across various genres, pushing
-                        the boundaries of sound design and composition.</p>
+    <section class="min-h-screen py-20 px-8" id="about">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="glitch text-4xl md:text-6xl font-bold mb-12 text-center">SYSTEM PROFILE</h2>
 
-                    <h3 class="mt-5">Personal Info</h3>
-                    <ul class="list-unstyled info-list">
-                        <li><strong>Full Name:</strong> Jamal Basem Belal</li>
-                        <li><strong>Date of Birth:</strong> July 27, 1995</li>
-                        <li><strong>Origin:</strong> Syrian - Turkish (Damascus / Adana)</li>
-                        <li><strong>Current Residence:</strong> Istanbul, Turkey</li>
-                        <li><strong>Languages:</strong> Arabic (Fluent), English (Good), Turkish (Intermediate)</li>
-                    </ul>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://yt3.ggpht.com/ytc/AAUvwnh7Mpdys2hefs99798STQGVjvFgJZiHxK9VWq0vMA=s900-c-k-c0x00ffffff-no-rj" alt="Jamal Belal" class="w-full h-auto rounded-lg border-4 border-purple-900">
+                </div>
 
-                    <div class="mt-5">
-                        <a href="#" class="btn btn-primary btn-lg">Download My Resume</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">JAMAL BELAL</h3>
+                    <p class="mb-4 leading-relaxed">
+                        Jamal Belal is a Syrian-Turkish music producer and composer specializing in hard techno, dubstep, and electronic music. With a background in music production since the age of 15, he has developed a unique sound that combines industrial energy with precision-tooled
+                        percussion.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        Born on July 27, 1995, with origins from Damascus and Adana, Jamal currently resides in Istanbul, Turkey. He holds a music production certificate from Royal Schools of Music and has produced over 12 albums and 1500 royalty-free tracks.
+                    </p>
+                    <p class="leading-relaxed">
+                        His music has been featured in various media, including the Arabic series "Black Day", and he continues to push boundaries in the hard techno scene with his relentless productions.
+                    </p>
 
-    <!-- Skills Section -->
-    <section id="skills" class="bg-dark">
-        <div class="container">
-            <h2 class="section-title text-center fade-in">My Expertise</h2>
-            <div class="row mt-5">
-                <div class="col-md-4 fade-in">
-                    <div class="skill-item text-center">
-                        <div class="skill-icon">
-                            <i class="fas fa-music"></i>
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
+                            <p class="text-sm opacity-70 mb-1">RESIDENCY</p>
+                            <p class="font-bold">ISTANBUL, TURKEY</p>
                         </div>
-                        <h3>Music Composition</h3>
-                        <p>Crafting original, innovative melodies and complex harmonies that resonate deeply and elevate the emotional impact of every track.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 fade-in">
-                    <div class="skill-item text-center">
-                        <div class="skill-icon">
-                            <i class="fas fa-sliders-h"></i>
+                        <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
+                            <p class="text-sm opacity-70 mb-1">LABELS</p>
+                            <p class="font-bold">SELF-RELEASED</p>
                         </div>
-                        <h3>Advanced Sound Design</h3>
-                        <p>Sculpting unique, cutting-edge sounds and textures, defining the sonic character of electronic music productions with precision.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 fade-in">
-                    <div class="skill-item text-center">
-                        <div class="skill-icon">
-                            <i class="fas fa-headphones"></i>
+                        <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
+                            <p class="text-sm opacity-70 mb-1">GENRES</p>
+                            <p class="font-bold">HARD INDUSTRIAL TECHNO</p>
                         </div>
-                        <h3>Professional Audio Mixing & Mastering</h3>
-                        <p>Expertly balancing and processing all audio elements to achieve a polished, powerful, and industry-standard professional sound.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-md-6 fade-in">
-                    <h3 class="mb-4">Preferred Music Genres</h3>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Dubstep</div>
-                    </div>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Trance</div>
-                    </div>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">Trap Bass</div>
-                    </div>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Techno</div>
-                    </div>
-                </div>
-                <div class="col-md-6 fade-in">
-                    <h3 class="mb-4">Software Proficiency</h3>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">FL Studio</div>
-                    </div>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">Ableton Live</div>
-                    </div>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Logic Pro</div>
-                    </div>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">Pro Tools</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="bg-dark">
-        <div class="container">
-            <h2 class="section-title text-center fade-in">My Sonic Creations</h2>
-
-            <!-- Music Player -->
-            <div class="row justify-content-center fade-in">
-                <div class="col-lg-8 music-player">
-                    <div class="track-info">
-                        <div class="track-title">Now Playing: Untitled Track</div>
-                        <div class="track-artist">Jamal Belal</div>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <div class="time-info">
-                        <span class="current-time">0:00</span>
-                        <span class="duration">0:00</span>
-                        <!-- Will be updated by JS -->
-                    </div>
-                    <div class="player-controls">
-                        <div class="control-btn" id="prev-btn">
-                            <i class="fas fa-step-backward"></i>
+                        <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
+                            <p class="text-sm opacity-70 mb-1">LANGUAGES</p>
+                            <p class="font-bold">AR, EN, TR</p>
                         </div>
-                        <div class="control-btn" id="play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="control-btn" id="next-btn">
-                            <i class="fas fa-step-forward"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-md-4 fade-in">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hard Techno Night" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h3>Industrial Pulse</h3>
-                            <p>2023 Single - Raw Techno</p>
-                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 fade-in">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cyberpunk Soundscape" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h3>Cybernetic Dreams</h3>
-                            <p>2024 EP - Dark Synthwave</p>
-                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 fade-in">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1518623489648-b1717925b72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Abstract Light Show" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h3>Quantum Flux</h3>
-                            <p>2025 Album - Experimental Bass</p>
-                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-md-4 fade-in">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1517457375827-8047421b712e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Crowd Energy" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h3>Rave Revolution</h3>
-                            <p>2023 Single - Driving Trance</p>
-                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 fade-in">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0f389a7d2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dark Alley" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h3>Urban Decay</h3>
-                            <p>Album - Industrial Dubstep</p>
-                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 fade-in">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1517457375827-8047421b712e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Neon City" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <h3>Metropolis Echoes</h3>
-                            <p>Album - Cinematic Electronic</p>
-                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-5 fade-in">
-                <a href="#" class="btn btn-primary btn-lg">View All Works</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section id="timeline" class="bg-dark">
-        <div class="container">
-            <h2 class="section-title text-center fade-in">My Journey Through Sound</h2>
-
-            <div class="timeline mt-5">
-                <div class="timeline-item left fade-in">
-                    <div class="timeline-content">
-                        <h3>2010 - The Genesis</h3>
-                        <p>Began my musical journey at age 15, composing and producing electronic music using FruityLoops (FL Studio), laying the foundation for my sonic explorations.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right fade-in">
-                    <div class="timeline-content">
-                        <h3>2015 - Formal Training & Certification</h3>
-                        <p>Achieved a prestigious music production certificate from Royal Schools of Music, complementing my studies at the esteemed Damascus Music Institute.</p>
-                    </div>
-                </div>
-                <div class="timeline-item left fade-in">
-                    <div class="timeline-content">
-                        <h3>2018 - Istanbul & Professional Launch</h3>
-                        <p>Relocated to Istanbul, Turkey, marking a pivotal moment in my career as I established my professional music production studio and brand.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right fade-in">
-                    <div class="timeline-content">
-                        <h3>2020 - "Black Dragon Fury" Album Release</h3>
-                        <p>Unleashed the critically acclaimed album "Black Dragon Fury," a 9-track masterpiece blending electronic and dubstep styles, gaining significant traction.</p>
-                    </div>
-                </div>
-                <div class="timeline-item left fade-in">
-                    <div class="timeline-content">
-                        <h3>2024-2025 - Global Recognition & Hit Singles</h3>
-                        <p>Released multiple chart-topping singles including "Riot," "Flute Step," and "Rage," solidifying my presence and gaining international recognition in the electronic music scene.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right fade-in">
-                    <div class="timeline-content">
-                        <h3>Present - Prolific Creator & Industry Contributor</h3>
-                        <p>To date, I have proudly produced over 12 full-length albums and contributed 1500+ royalty-free music tracks, widely utilized in diverse media projects across the globe.</p>
                     </div>
                 </div>
             </div>
@@ -1109,225 +693,431 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-dark">
-        <div class="container">
-            <h2 class="section-title text-center fade-in">Connect With Me</h2>
-            <div class="row justify-content-center mt-5">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-md-6 fade-in">
-                            <div class="contact-info text-center">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <h3>Email Me</h3>
-                                <p>contact@jamalbelal.com</p>
-                            </div>
+    <section class="py-20 px-8 bg-black bg-opacity-70" id="contact">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="glitch text-4xl md:text-6xl font-bold mb-12 text-center">SYSTEM LINK</h2>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">BOOKINGS & MANAGEMENT</h3>
+                    <p class="mb-8 leading-relaxed">
+                        For bookings, press, or other inquiries, contact our management team.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm opacity-70 mb-1">TURKEY (PRIMARY)</p>
+                            <p class="font-bold">booking@jamalbelal.com</p>
+                            <p class="font-bold">+90 123 456 7890</p>
                         </div>
-                        <div class="col-md-6 fade-in">
-                            <div class="contact-info text-center">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <h3>My Location</h3>
-                                <p>Istanbul, Turkey</p>
-                            </div>
+                        <div>
+                            <p class="text-sm opacity-70 mb-1">EUROPE</p>
+                            <p class="font-bold">eu@jamalbelal.com</p>
+                        </div>
+                        <div>
+                            <p class="text-sm opacity-70 mb-1">MIDDLE EAST</p>
+                            <p class="font-bold">me@jamalbelal.com</p>
                         </div>
                     </div>
+                </div>
 
-                    <form class="mt-5 fade-in">
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <input type="text" class="form-control" placeholder="Subject">
-                        </div>
-                        <div class="mb-4">
-                            <textarea class="form-control" rows="6" placeholder="Your Message" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-                        </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">NETWORK PRESENCE</h3>
+
+                    <div class="grid grid-cols-4 gap-4 mb-8">
+                        <a href="https://www.instagram.com/jamalbelal.music/" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/jamalbelal8" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/c/JamalBelal" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a href="https://open.spotify.com/artist/jamalbelal" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-spotify">
+                                <path d="M9 18V5l12-2v13"></path>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <circle cx="18" cy="16" r="3"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.shazam.com/artist/jamal-belal" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-music">
+                                <path d="M9 18V5l12-2v13"></path>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <circle cx="18" cy="16" r="3"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://music.apple.com/artist/jamal-belal" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-music">
+                                <path d="M12 3a9 9 0 0 0 9 9c0 4.966-4.033 9-9 9s-9-4.034-9-9 4.033-9 9-9z"></path>
+                                <path d="M12 8v8l4 2"></path>
+                            </svg>
+                        </a>
+                        <a href="https://soundcloud.com/jamalbelal" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-soundcloud">
+                                <path d="M18 11h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1"></path>
+                                <path d="M6 10v4a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z"></path>
+                                <path d="M8 10v4"></path>
+                                <path d="M11 10v4a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2z"></path>
+                                <path d="M14 10v4"></path>
+                            </svg>
+                        </a>
+                        <a href="https://jamalbelal.com" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4">NEWSLETTER</h3>
+                    <p class="mb-4">Subscribe for tour dates, releases, and exclusive content.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="YOUR EMAIL" class="flex-1 bg-black bg-opacity-50 border border-purple-900 px-4 py-2 text-white focus:outline-none focus:border-purple-500">
+                        <button type="submit" class="px-6 py-2 bg-purple-600 hover:bg-purple-500 transition-all font-bold">
+                            SEND
+                        </button>
                     </form>
-
-                    <div class="social-icons fade-in">
-                        <a href="https://instagram.com/jamalbelal.music" target="_blank" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://twitter.com/jamalbelal8" target="_blank" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://youtube.com/JamalBelalChannel" target="_blank" class="social-icon">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://spotify.com/JamalBelal" target="_blank" class="social-icon">
-                            <i class="fab fa-spotify"></i>
-                        </a>
-                        <a href="https://soundcloud.com/JamalBelal" target="_blank" class="social-icon">
-                            <i class="fab fa-soundcloud"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p>&copy; 2025 Jamal Belal. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p>Crafted with <i class="fas fa-heart text-danger"></i> for the love of sound</p>
-                </div>
-            </div>
-        </div>
+    <footer class="py-8 px-8 text-center">
+        <p class="text-sm opacity-70">© 2023 JAMAL BELAL PRODUCTIONS. ALL SYSTEMS OPERATIONAL.</p>
     </footer>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Scroll to top button
-        const backToTopButton = document.querySelector('.back-to-top');
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
 
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('active');
-            } else {
-                backToTopButton.classList.remove('active');
+        // إنشاء النجوم
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 200;
+
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+
+                starsContainer.appendChild(star);
             }
-        });
+        }
 
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        // Audio player functionality
+        const audioPlayer = new Audio();
+        let currentTrack = -1;
+        const tracks = document.querySelectorAll('.track-item');
+        const playPauseBtn = document.getElementById('play-pause');
+        const prevBtn = document.getElementById('prev-track');
+        const nextBtn = document.getElementById('next-track');
+        const progressBar = document.getElementById('progress-bar');
+        const progressFill = document.getElementById('progress-fill');
+        const nowPlayingTitle = document.getElementById('now-playing-title');
+        const nowPlayingArtist = document.getElementById('now-playing-artist');
+        const nowPlayingCover = document.getElementById('now-playing-cover');
+        const nowPlayingTime = document.getElementById('now-playing-time');
+        const nowPlayingDuration = document.getElementById('now-playing-duration');
+        const visualizerBars = document.querySelectorAll('.visual-bar');
+        const playDemoBtn = document.getElementById('play-sample');
+
+        // Initialize Web Audio API for visualizer
+        let audioContext, analyser, dataArray, sourceNode;
+
+        function initAudioContext() {
+            if (audioContext) return; // Prevent re-initialization
+
+            audioContext = new(window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 32; // Smaller FFT size for more responsive visualizer
+
+            sourceNode = audioContext.createMediaElementSource(audioPlayer);
+            sourceNode.connect(analyser);
+            analyser.connect(audioContext.destination);
+
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+            updateVisualizer(); // Start visualizer updates
+        }
+
+        function updateVisualizer() {
+            if (!analyser || audioPlayer.paused) {
+                // Reset bars if paused or no analyser
+                visualizerBars.forEach(bar => bar.style.transform = `scaleY(0.1)`);
+                requestAnimationFrame(updateVisualizer); // Keep requesting to reset if paused
+                return;
+            }
+
+            analyser.getByteFrequencyData(dataArray);
+
+            visualizerBars.forEach((bar, i) => {
+                const value = dataArray[i] / 255;
+                // Apply a power curve for more dynamic visualizer
+                const height = Math.max(0.1, Math.pow(value, 2) * 2); // value^2 * 2
+                bar.style.transform = `scaleY(${height})`;
+            });
+
+            requestAnimationFrame(updateVisualizer);
+        }
+
+        // Track handling
+        function loadTrack(index) {
+            const track = tracks[index];
+            if (!track) return;
+
+            // Update UI for currently playing track
+            tracks.forEach(t => t.classList.remove('playing'));
+            track.classList.add('playing');
+
+            // Set audio source
+            const src = track.getAttribute('data-src');
+            const cover = track.getAttribute('data-cover');
+            const title = track.getAttribute('data-title');
+            const artist = track.getAttribute('data-artist');
+
+            nowPlayingTitle.textContent = title;
+            nowPlayingArtist.textContent = artist;
+            nowPlayingCover.src = cover;
+
+            audioPlayer.src = src;
+            audioPlayer.load(); // Load the new track
+
+            currentTrack = index;
+        }
+
+        function playCurrentTrack() {
+            if (currentTrack === -1) {
+                loadTrack(0); // Load the first track if none selected
+            }
+
+            // Initialize audio context on first user interaction
+            if (!audioContext || audioContext.state === 'suspended') {
+                initAudioContext();
+                audioContext.resume().then(() => {
+                    console.log('AudioContext resumed successfully');
+                    togglePlayPause();
+                });
+            } else {
+                togglePlayPause();
+            }
+        }
+
+        function togglePlayPause() {
+            if (audioPlayer.paused) {
+                audioPlayer.play().then(() => {
+                    playPauseBtn.textContent = '⏸';
+                    updateVisualizer(); // Ensure visualizer is running
+                }).catch(e => console.error("Error playing audio:", e));
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.textContent = '▶';
+            }
+        }
+
+
+        function prevTrack() {
+            if (currentTrack <= 0) {
+                loadTrack(tracks.length - 1);
+            } else {
+                loadTrack(currentTrack - 1);
+            }
+            playCurrentTrack();
+        }
+
+        function nextTrack() {
+            if (currentTrack >= tracks.length - 1) {
+                loadTrack(0);
+            } else {
+                loadTrack(currentTrack + 1);
+            }
+            playCurrentTrack();
+        }
+
+        function updateProgress() {
+            if (!isNaN(audioPlayer.duration) && audioPlayer.duration > 0) {
+                const currentTime = audioPlayer.currentTime;
+                const duration = audioPlayer.duration;
+                const progressPercent = (currentTime / duration) * 100;
+
+                progressBar.value = progressPercent;
+                progressFill.style.width = `${progressPercent}%`;
+
+                // Update time display
+                nowPlayingTime.textContent = formatTime(currentTime);
+                nowPlayingDuration.textContent = formatTime(duration);
+            } else {
+                // If duration is not available yet, keep progress at 0
+                progressBar.value = 0;
+                progressFill.style.width = `0%`;
+                nowPlayingTime.textContent = '0:00';
+                nowPlayingDuration.textContent = '0:00';
+            }
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function seek(e) {
+            if (!isNaN(audioPlayer.duration) && audioPlayer.duration > 0) {
+                const seekTime = (e.target.value / 100) * audioPlayer.duration;
+                audioPlayer.currentTime = seekTime;
+            }
+        }
+
+        // Event listeners
+        playPauseBtn.addEventListener('click', playCurrentTrack);
+        prevBtn.addEventListener('click', prevTrack);
+        nextBtn.addEventListener('click', nextTrack);
+        progressBar.addEventListener('input', seek);
+        audioPlayer.addEventListener('timeupdate', updateProgress);
+        audioPlayer.addEventListener('ended', nextTrack);
+        audioPlayer.addEventListener('loadedmetadata', updateProgress); // Update duration when metadata loads
+
+        // Track list click handlers
+        tracks.forEach((track, index) => {
+            track.addEventListener('click', () => {
+                loadTrack(index);
+                playCurrentTrack();
             });
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+        // Play demo button
+        playDemoBtn.addEventListener('click', () => {
+            loadTrack(0);
+            playCurrentTrack();
 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            // Animate button on click
+            gsap.to(playDemoBtn, {
+                scale: 1.2,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 1
+            });
+        });
+
+        // GSAP animations for page elements
+        gsap.from(".glitch", {
+            duration: 1.5,
+            opacity: 0,
+            y: -20,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+
+        gsap.to(".pulse-circle", {
+            duration: 3,
+            scale: 1.5,
+            opacity: 0,
+            repeat: -1,
+            ease: "none"
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth - 0.5;
+            const y = e.clientY / window.innerHeight - 0.5;
+
+            gsap.to(".hero-section .pulse-circle", {
+                x: x * 50,
+                y: y * 50,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        });
+
+        // Album hover animations
+        document.querySelectorAll('.album-card').forEach(card => {
+            const cover = card.querySelector('.album-cover');
+            gsap.set(cover, {
+                filter: "grayscale(80%) contrast(110%)"
+            }); // Initial filter
+
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -5,
+                    scale: 1.02,
+                    boxShadow: "0 10px 25px rgba(106, 13, 173, 0.6)",
+                    borderColor: "var(--primary)",
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+                gsap.to(cover, {
+                    filter: "none",
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    scale: 1,
+                    boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
+                    borderColor: "rgba(106, 13, 173, 0.3)",
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+                gsap.to(cover, {
+                    filter: "grayscale(80%) contrast(110%)",
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
             });
         });
 
-        // Navbar background change on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.backgroundColor = 'rgba(10, 10, 26, 0.98)'; /* Slightly more opaque on scroll */
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.7)';
-            } else {
-                navbar.style.backgroundColor = 'rgba(10, 10, 26, 0.95)';
-                navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.5)';
-            }
+        // ScrollTrigger for sections
+        gsap.utils.toArray("section").forEach(section => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top 75%", // When the top of the section hits 75% of the viewport
+                end: "bottom top",
+                onEnter: () => section.classList.add("is-in-view"),
+                onLeaveBack: () => section.classList.remove("is-in-view"),
+                // markers: true // Uncomment for debugging
+            });
         });
 
-        // Animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-
-        const fadeInOnScroll = function() {
-            for (let i = 0; i < fadeElements.length; i++) {
-                const elem = fadeElements[i];
-                const distInView = elem.getBoundingClientRect().top - window.innerHeight + 180; /* Adjust trigger point */
-
-                if (distInView < 0) {
-                    elem.classList.add('visible');
-                } else {
-                    // Optional: remove 'visible' class when element scrolls out of view
-                    // elem.classList.remove('visible'); 
-                }
-            }
-        };
-
-        window.addEventListener('scroll', fadeInOnScroll);
-        window.addEventListener('load', fadeInOnScroll); // Trigger on load for elements already in view
-
-        // Music player functionality
-        const playBtn = document.getElementById('play-btn');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const progressBar = document.querySelector('.progress-bar');
-        const progressContainer = document.querySelector('.progress-container');
-        const currentTimeEl = document.querySelector('.current-time');
-        const durationEl = document.querySelector('.duration');
-
-        let isPlaying = false;
-        let currentProgress = 0;
-        let animationFrameId;
-        const totalSeconds = 225; // Example duration: 3:45 in seconds
-
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = Math.floor(seconds % 60);
-            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-        }
-
-        function updateProgressBar() {
-            if (isPlaying) {
-                currentProgress += (100 / (totalSeconds * 1000 / 50)); // Increment based on 50ms update for total duration
-                if (currentProgress >= 100) {
-                    currentProgress = 0;
-                    isPlaying = false;
-                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    cancelAnimationFrame(animationFrameId);
-                    currentTimeEl.textContent = formatTime(0); // Reset current time
-                }
-                progressBar.style.width = currentProgress + '%';
-
-                const currentSeconds = Math.floor(totalSeconds * currentProgress / 100);
-                currentTimeEl.textContent = formatTime(currentSeconds);
-
-                animationFrameId = requestAnimationFrame(updateProgressBar);
-            }
-        }
-
-        playBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                this.innerHTML = '<i class="fas fa-play"></i>';
-                isPlaying = false;
-                cancelAnimationFrame(animationFrameId);
-            } else {
-                this.innerHTML = '<i class="fas fa-pause"></i>';
-                isPlaying = true;
-                animationFrameId = requestAnimationFrame(updateProgressBar);
-            }
+        // Social icons hover animation
+        document.querySelectorAll('.social-icon-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                gsap.to(btn.querySelector('svg'), {
+                    color: 'var(--dark)',
+                    duration: 0.3
+                });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn.querySelector('svg'), {
+                    color: 'currentColor',
+                    duration: 0.3
+                });
+            });
         });
 
-        progressContainer.addEventListener('click', function(e) {
-            const clickX = e.offsetX;
-            const width = this.clientWidth;
-            currentProgress = (clickX / width) * 100;
-            progressBar.style.width = currentProgress + '%';
 
-            const currentSeconds = Math.floor(totalSeconds * currentProgress / 100);
-            currentTimeEl.textContent = formatTime(currentSeconds);
-
-            if (!isPlaying) {
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                isPlaying = true;
-                animationFrameId = requestAnimationFrame(updateProgressBar);
-            }
-        });
-
-        // Set initial duration display
-        durationEl.textContent = formatTime(totalSeconds);
+        // Initialize stars when page loads
+        window.addEventListener('load', createStars);
     </script>
 </body>
 
