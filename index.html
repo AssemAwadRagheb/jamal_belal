@@ -40,7 +40,8 @@
             letter-spacing: 0.1em;
         }
         
-        .glitch {
+        /* Removed .glitch animation for titles */
+        /* .glitch {
             position: relative;
             text-shadow: 0.05em 0 0 var(--accent), -0.05em -0.025em 0 var(--secondary);
             animation: glitch 500ms infinite;
@@ -68,7 +69,7 @@
             100% {
                 text-shadow: -0.025em 0 0 var(--accent), -0.025em -0.025em 0 var(--secondary);
             }
-        }
+        } */
         /* خلفية النجوم */
         
         .stars-background {
@@ -101,7 +102,8 @@
         
         .album-cover {
             transition: transform 0.3s ease, filter 0.3s ease;
-            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            /* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
+            /* Removed original clip-path */
             filter: grayscale(100%) contrast(120%);
             cursor: pointer;
         }
@@ -197,12 +199,89 @@
             h1 span:last-child {
                 font-size: 2rem;
             }
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+            .hero-section h1 span:last-child {
+                font-size: 1.8rem;
+            }
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+            .hero-content {
+                padding: 2rem;
+            }
+            .hero-section .pulse-circle:nth-child(1) {
+                width: 250px;
+                height: 250px;
+            }
+            .hero-section .pulse-circle:nth-child(2) {
+                width: 400px;
+                height: 400px;
+            }
+            .hero-section .pulse-circle:nth-child(3) {
+                width: 200px;
+                height: 200px;
+            }
+            .hero-section button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            .scroll-indicator {
+                margin-top: 3rem;
+            }
+            .scroll-indicator .w-6 {
+                width: 1.5rem;
+                height: 3rem;
+            }
+            .scroll-indicator .w-3 {
+                width: 0.6rem;
+                height: 0.6rem;
+            }
+            .music-player-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .album-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .about-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section h1 span:last-child {
+                font-size: 1.5rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .hero-content {
+                padding: 1.5rem;
+            }
+            .hero-section button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .flex-col-mobile {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .social-icon-btn {
+                width: 10vw;
+                height: 10vw;
+            }
         }
         /* Custom styles for Hero Section */
         
         .hero-section {
             background: linear-gradient(135deg, var(--dark) 0%, var(--space) 100%);
-            /* خلفية متدرجة جديدة */
             position: relative;
             overflow: hidden;
             display: flex;
@@ -217,26 +296,19 @@
         .hero-content {
             z-index: 10;
             position: relative;
-            /* لضمان ظهور المحتوى فوق الدوائر */
             background: rgba(0, 0, 0, 0.3);
-            /* خلفية شفافة للمحتوى */
             backdrop-filter: blur(5px);
-            /* تأثير ضبابي */
             padding: 3rem;
             border-radius: 15px;
             border: 1px solid rgba(106, 13, 173, 0.5);
-            /* حدود بنفسجية */
             box-shadow: 0 0 30px rgba(106, 13, 173, 0.4);
-            /* ظل بنفسجي */
             max-width: 900px;
             width: 100%;
         }
         
         .hero-section .pulse-circle {
             background: rgba(0, 255, 255, 0.2);
-            /* لون سماوي للدوائر */
             animation: pulse 4s infinite ease-out;
-            /* سرعة أبطأ وتأثير أكثر سلاسة */
         }
         
         .hero-section .pulse-circle:nth-child(1) {
@@ -265,14 +337,12 @@
         
         .hero-section h1 {
             font-size: 5rem;
-            /* حجم أكبر للعنوان الرئيسي */
             line-height: 1.1;
             margin-bottom: 1rem;
         }
         
         .hero-section h1 span:last-child {
             font-size: 2.5rem;
-            /* حجم أكبر للعنوان الفرعي */
             opacity: 0.9;
             display: block;
             margin-top: 0.5rem;
@@ -280,7 +350,6 @@
         
         .hero-section p {
             font-size: 1.5rem;
-            /* حجم أكبر للفقرة */
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -342,7 +411,6 @@
         
         .scroll-indicator {
             margin-top: 5rem;
-            /* مسافة أكبر من الأسفل */
             opacity: 0.8;
         }
         
@@ -383,23 +451,19 @@
         }
         
         .album-card:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-5px) scale(1.02) rotateY(5deg);
             box-shadow: 0 10px 25px rgba(106, 13, 173, 0.6);
             border-color: var(--primary);
         }
         
         .album-card .album-cover {
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-            /* إزالة الـ clip-path الأصلي */
             border-radius: 8px;
-            /* حواف مستديرة */
             filter: grayscale(80%) contrast(110%);
-            /* تأثير أقل قسوة */
         }
         
         .album-card:hover .album-cover {
             filter: none;
-            /* إزالة الفلتر عند التحويم */
         }
         /* Social Icons Hover */
         
@@ -429,7 +493,10 @@
         
         .social-icon-btn:hover svg {
             color: var(--dark);
-            /* تغيير لون الأيقونة عند التحويم */
+        }
+        
+        .social-icon-btn:active {
+            transform: scale(0.9);
         }
     </style>
 </head>
@@ -447,16 +514,16 @@
         </div>
 
         <div class="hero-content container mx-auto">
-            <h1 class="glitch font-black">
+            <h1 class="font-black hero-title">
                 <span class="block">JAMAL BELAL</span>
-                <span class="block opacity-80">HARD TECHNICAL WORKER</span>
+                <span class="block opacity-80 hero-subtitle">HARD TECHNICAL WORKER</span>
             </h1>
 
-            <p class="max-w-2xl mx-auto leading-relaxed">
+            <p class="max-w-2xl mx-auto leading-relaxed hero-text">
                 Pushing sonic boundaries with industrial-strength techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
             </p>
 
-            <div class="flex justify-center gap-6">
+            <div class="flex justify-center gap-6 flex-col-mobile">
                 <button id="play-sample" class="bg-transparent border-2 font-bold">
                     PLAY DEMO
                 </button>
@@ -475,11 +542,11 @@
 
     <!-- Music Player -->
     <section class="min-h-screen py-20 px-8 relative overflow-hidden" id="music">
-        <h2 class="glitch text-4xl md:text-6xl font-bold mb-20 text-center">SYSTEM ARCHIVE</h2>
+        <h2 class="text-4xl md:text-6xl font-bold mb-20 text-center section-title">SYSTEM ARCHIVE</h2>
 
-        <div class="container mx-auto grid md:grid-cols-2 gap-12">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 music-player-grid">
             <!-- Player -->
-            <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20">
+            <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20 player-card">
                 <div class="flex items-center gap-6 mb-8">
                     <img id="now-playing-cover" src="https://via.placeholder.com/300" alt="Current album cover artwork for Jamal Belal" class="w-32 h-32 object-cover rounded-md" />
 
@@ -525,7 +592,7 @@
             </div>
 
             <!-- Tracklist -->
-            <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20 h-full">
+            <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20 h-full tracklist-card">
                 <h3 class="text-2xl font-bold mb-6">DISCOGRAPHY</h3>
 
                 <div class="space-y-2">
@@ -586,9 +653,9 @@
     <!-- Albums Section -->
     <section class="min-h-screen py-20 px-8" id="albums">
         <div class="container mx-auto">
-            <h2 class="glitch text-4xl md:text-6xl font-bold mb-20 text-center">TERMINAL ALBUMS</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-20 text-center section-title">TERMINAL ALBUMS</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 album-grid">
                 <div class="album-card">
                     <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Black+Dragon+Fury" alt="Album cover for Black Dragon Fury" class="album-cover w-full h-auto mb-4">
                     <h3 class="text-2xl font-bold">BLACK DRAGON FURY</h3>
@@ -649,14 +716,14 @@
     <!-- About Section -->
     <section class="min-h-screen py-20 px-8" id="about">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="glitch text-4xl md:text-6xl font-bold mb-12 text-center">SYSTEM PROFILE</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">SYSTEM PROFILE</h2>
 
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
+            <div class="grid md:grid-cols-2 gap-12 items-center about-grid">
+                <div class="about-image-container">
                     <img src="https://yt3.ggpht.com/ytc/AAUvwnh7Mpdys2hefs99798STQGVjvFgJZiHxK9VWq0vMA=s900-c-k-c0x00ffffff-no-rj" alt="Jamal Belal" class="w-full h-auto rounded-lg border-4 border-purple-900">
                 </div>
 
-                <div>
+                <div class="about-content-container">
                     <h3 class="text-2xl font-bold mb-4">JAMAL BELAL</h3>
                     <p class="mb-4 leading-relaxed">
                         Jamal Belal is a Syrian-Turkish music producer and composer specializing in hard techno, dubstep, and electronic music. With a background in music production since the age of 15, he has developed a unique sound that combines industrial energy with precision-tooled
@@ -669,7 +736,7 @@
                         His music has been featured in various media, including the Arabic series "Black Day", and he continues to push boundaries in the hard techno scene with his relentless productions.
                     </p>
 
-                    <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="mt-8 grid grid-cols-2 gap-4 about-info-grid">
                         <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
                             <p class="text-sm opacity-70 mb-1">RESIDENCY</p>
                             <p class="font-bold">ISTANBUL, TURKEY</p>
@@ -695,10 +762,10 @@
     <!-- Contact Section -->
     <section class="py-20 px-8 bg-black bg-opacity-70" id="contact">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="glitch text-4xl md:text-6xl font-bold mb-12 text-center">SYSTEM LINK</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">SYSTEM LINK</h2>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
+            <div class="grid md:grid-cols-2 gap-12 contact-grid">
+                <div class="contact-info-container">
                     <h3 class="text-2xl font-bold mb-4">BOOKINGS & MANAGEMENT</h3>
                     <p class="mb-8 leading-relaxed">
                         For bookings, press, or other inquiries, contact our management team.
@@ -721,7 +788,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="network-presence-container">
                     <h3 class="text-2xl font-bold mb-4">NETWORK PRESENCE</h3>
 
                     <div class="grid grid-cols-4 gap-4 mb-8">
@@ -782,7 +849,7 @@
 
                     <h3 class="text-2xl font-bold mb-4">NEWSLETTER</h3>
                     <p class="mb-4">Subscribe for tour dates, releases, and exclusive content.</p>
-                    <form class="flex gap-2">
+                    <form class="flex gap-2 flex-col-mobile md:flex-row">
                         <input type="email" placeholder="YOUR EMAIL" class="flex-1 bg-black bg-opacity-50 border border-purple-900 px-4 py-2 text-white focus:outline-none focus:border-purple-500">
                         <button type="submit" class="px-6 py-2 bg-purple-600 hover:bg-purple-500 transition-all font-bold">
                             SEND
@@ -1018,11 +1085,34 @@
         });
 
         // GSAP animations for page elements
-        gsap.from(".glitch", {
-            duration: 1.5,
+
+        // Hero Section initial animation
+        gsap.from(".hero-title", {
+            duration: 1.2,
             opacity: 0,
-            y: -20,
+            y: -50,
+            ease: "power3.out"
+        });
+        gsap.from(".hero-subtitle", {
+            duration: 1.2,
+            opacity: 0,
+            y: -30,
+            delay: 0.3,
+            ease: "power3.out"
+        });
+        gsap.from(".hero-text", {
+            duration: 1.2,
+            opacity: 0,
+            y: 30,
+            delay: 0.6,
+            ease: "power3.out"
+        });
+        gsap.from(".hero-section button", {
+            duration: 1,
+            opacity: 0,
+            y: 20,
             stagger: 0.2,
+            delay: 0.9,
             ease: "power2.out"
         });
 
@@ -1058,6 +1148,7 @@
                 gsap.to(card, {
                     y: -5,
                     scale: 1.02,
+                    rotateY: 5, // Added 3D rotation
                     boxShadow: "0 10px 25px rgba(106, 13, 173, 0.6)",
                     borderColor: "var(--primary)",
                     duration: 0.3,
@@ -1074,6 +1165,7 @@
                 gsap.to(card, {
                     y: 0,
                     scale: 1,
+                    rotateY: 0, // Reset rotation
                     boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
                     borderColor: "rgba(106, 13, 173, 0.3)",
                     duration: 0.3,
@@ -1087,17 +1179,141 @@
             });
         });
 
-        // ScrollTrigger for sections
+        // ScrollTrigger for sections and elements
         gsap.utils.toArray("section").forEach(section => {
             ScrollTrigger.create({
                 trigger: section,
-                start: "top 75%", // When the top of the section hits 75% of the viewport
+                start: "top 75%",
                 end: "bottom top",
                 onEnter: () => section.classList.add("is-in-view"),
                 onLeaveBack: () => section.classList.remove("is-in-view"),
                 // markers: true // Uncomment for debugging
             });
         });
+
+        // Section titles animation
+        gsap.utils.toArray(".section-title").forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: {
+                    trigger: title,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse",
+                },
+                opacity: 0,
+                y: -50,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Music Player elements animation
+        gsap.from(".player-card", {
+            scrollTrigger: {
+                trigger: "#music",
+                start: "top 70%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            x: -100,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.from(".tracklist-card", {
+            scrollTrigger: {
+                trigger: "#music",
+                start: "top 70%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            x: 100,
+            duration: 1,
+            delay: 0.2,
+            ease: "power3.out"
+        });
+
+        // Album cards animation on scroll
+        gsap.utils.toArray(".album-card").forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse",
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                delay: i * 0.1, // Staggered animation
+                ease: "power2.out"
+            });
+        });
+
+        // About section elements animation
+        gsap.from(".about-image-container", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 70%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            x: -100,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.from(".about-content-container", {
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 70%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            x: 100,
+            duration: 1,
+            delay: 0.2,
+            ease: "power3.out"
+        });
+
+        gsap.from(".about-info-grid > div", {
+            scrollTrigger: {
+                trigger: ".about-info-grid",
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            y: 20,
+            stagger: 0.1,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+
+
+        // Contact section elements animation
+        gsap.from(".contact-info-container", {
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 70%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            x: -100,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.from(".network-presence-container", {
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 70%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            x: 100,
+            duration: 1,
+            delay: 0.2,
+            ease: "power3.out"
+        });
+
 
         // Social icons hover animation
         document.querySelectorAll('.social-icon-btn').forEach(btn => {
@@ -1106,11 +1322,21 @@
                     color: 'var(--dark)',
                     duration: 0.3
                 });
+                gsap.to(btn, {
+                    scale: 1.1,
+                    duration: 0.3,
+                    ease: "back.out(1.7)"
+                }); // Pop effect
             });
             btn.addEventListener('mouseleave', () => {
                 gsap.to(btn.querySelector('svg'), {
                     color: 'currentColor',
                     duration: 0.3
+                });
+                gsap.to(btn, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
             });
         });
