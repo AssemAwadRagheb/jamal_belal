@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAMAL BELAL // Hard Techno Producer</title>
+    <title>جمال بلال // منتج هارد تكنو</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -26,6 +26,7 @@
             overflow-x: hidden;
             margin: 0;
             padding: 0;
+            line-height: 1.6; /* تحسين قابلية القراءة */
         }
         
         h1,
@@ -33,7 +34,8 @@
         h3 {
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em; /* تقليل تباعد الأحرف قليلاً */
+            line-height: 1.2; /* تحسين تباعد الأسطر للعناوين */
         }
         
         .stars-background {
@@ -71,45 +73,50 @@
         }
         
         .album-cover:hover {
-            transform: scale(1.1);
+            transform: scale(1.05); /* تقليل حجم التكبير قليلاً */
             filter: none;
             z-index: 10;
         }
         
         .audio-visualizer {
             width: 100%;
-            height: 100px;
+            height: 80px; /* تقليل الارتفاع */
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
             display: flex;
             align-items: flex-end;
             padding: 10px 0;
+            border-radius: 8px; /* إضافة حواف مستديرة */
         }
         
         .visual-bar {
             flex: 1;
-            height: 20px;
-            margin: 0 2px;
+            height: 15px; /* تقليل ارتفاع الشريط */
+            margin: 0 1.5px; /* تقليل الهامش بين الأشرطة */
             background: linear-gradient(to top, var(--primary), var(--secondary));
             transform-origin: bottom;
             transform: scaleY(0.1);
             transition: transform 0.1s ease-out;
+            border-radius: 2px; /* حواف مستديرة للأشرطة */
         }
         
         .track-item {
             cursor: pointer;
             transition: all 0.3s ease;
-            padding: 10px 20px;
+            padding: 12px 20px; /* زيادة المساحة الداخلية */
             border-left: 3px solid transparent;
+            border-radius: 8px; /* حواف مستديرة */
+            margin-bottom: 8px; /* مسافة بين العناصر */
         }
         
         .track-item:hover {
-            background: rgba(106, 13, 173, 0.1);
+            background: rgba(106, 13, 173, 0.15); /* زيادة الشفافية قليلاً */
             border-left: 3px solid var(--primary);
         }
         
         .track-item.playing {
-            background: rgba(106, 13, 173, 0.2);
+            background: rgba(106, 13, 173, 0.25); /* زيادة الشفافية قليلاً */
             border-left: 3px solid var(--secondary);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* إضافة ظل خفيف */
         }
         
         .pulse-circle {
@@ -148,6 +155,7 @@
         .animate-scroll-icon {
             animation: scroll-icon 1.5s infinite ease-in-out;
         }
+        
         /* Responsive design - تحسينات للجوال */
         
         @media (max-width: 768px) {
@@ -156,118 +164,134 @@
                 width: 100%;
             }
             h1 {
-                font-size: 2.5rem !important;
+                font-size: 2.2rem !important; /* تقليل حجم الخط */
             }
             h1 span:last-child {
-                font-size: 1.5rem !important;
+                font-size: 1.3rem !important; /* تقليل حجم الخط */
             }
             .hero-section h1 {
-                font-size: 2.2rem !important;
+                font-size: 2rem !important; /* تقليل حجم الخط */
             }
             .hero-section h1 span:last-child {
-                font-size: 1.3rem !important;
+                font-size: 1.1rem !important; /* تقليل حجم الخط */
             }
             .hero-section p {
-                font-size: 1rem !important;
-                padding: 0 1rem;
+                font-size: 0.95rem !important; /* تقليل حجم الخط */
+                padding: 0 0.5rem; /* تقليل المساحة الداخلية */
             }
             .hero-content {
-                padding: 1.5rem !important;
-                margin: 0 1rem;
+                padding: 1.5rem !important; /* تقليل المساحة الداخلية */
+                margin: 0 0.5rem; /* تقليل الهامش */
             }
             .hero-section .pulse-circle:nth-child(1) {
-                width: 150px;
-                height: 150px;
-            }
-            .hero-section .pulse-circle:nth-child(2) {
-                width: 250px;
-                height: 250px;
-            }
-            .hero-section .pulse-circle:nth-child(3) {
                 width: 120px;
                 height: 120px;
             }
+            .hero-section .pulse-circle:nth-child(2) {
+                width: 200px;
+                height: 200px;
+            }
+            .hero-section .pulse-circle:nth-child(3) {
+                width: 100px;
+                height: 100px;
+            }
             .hero-section button {
-                padding: 0.7rem 1.5rem;
-                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem; /* تقليل حجم الأزرار */
+                font-size: 0.85rem; /* تقليل حجم الخط */
             }
             .scroll-indicator {
-                margin-top: 2rem;
+                margin-top: 1.5rem; /* تقليل الهامش العلوي */
             }
             .scroll-indicator .w-6 {
-                width: 1.5rem;
-                height: 3rem;
+                width: 1.2rem; /* تقليل العرض */
+                height: 2.5rem; /* تقليل الارتفاع */
             }
             .scroll-indicator .w-3 {
-                width: 0.6rem;
-                height: 0.6rem;
+                width: 0.5rem; /* تقليل العرض */
+                height: 0.5rem; /* تقليل الارتفاع */
             }
             .music-player-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr !important; /* عمود واحد */
+                gap: 2rem !important; /* زيادة المسافة بين العناصر */
             }
             .album-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr !important; /* عمود واحد */
+                gap: 2rem !important;
             }
             .about-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr !important; /* عمود واحد */
+                gap: 2rem !important;
             }
             .contact-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr !important; /* عمود واحد */
+                gap: 2rem !important;
             }
             .section-title {
-                font-size: 2.5rem !important;
-                margin-bottom: 2rem !important;
+                font-size: 2rem !important; /* تقليل حجم الخط */
+                margin-bottom: 1.5rem !important; /* تقليل الهامش السفلي */
             }
             .hero-nav-buttons a {
-                font-size: 0.8rem;
-                padding: 0.5rem 1rem;
+                font-size: 0.75rem; /* تقليل حجم الخط */
+                padding: 0.4rem 0.8rem; /* تقليل المساحة الداخلية */
             }
             .container {
-                padding-left: 1rem;
-                padding-right: 1rem;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            .player-card, .tracklist-card, .album-card, .about-content-container, .contact-info-container, .network-presence-container {
+                padding: 1.5rem !important; /* تقليل المساحة الداخلية للكروت */
+            }
+            .about-image-container img {
+                margin-bottom: 1.5rem; /* إضافة مسافة تحت الصورة في وضع الجوال */
             }
         }
         
         @media (max-width: 480px) {
             .hero-section h1 {
-                font-size: 1.8rem !important;
+                font-size: 1.6rem !important;
             }
             .hero-section h1 span:last-child {
-                font-size: 1.1rem !important;
+                font-size: 1rem !important;
             }
             .hero-section p {
-                font-size: 0.9rem !important;
+                font-size: 0.85rem !important;
             }
             .hero-content {
                 padding: 1rem !important;
             }
             .hero-section button {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
             }
             .flex-col-mobile {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
             }
             .social-icon-btn {
-                width: 10vw;
-                height: 10vw;
+                width: 12vw; /* زيادة حجم الأيقونات قليلاً */
+                height: 12vw;
             }
             .hero-nav-buttons {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.4rem;
             }
             .section-title {
-                font-size: 2rem !important;
+                font-size: 1.8rem !important;
             }
             .track-item h4 {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .track-item p {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
             .album-card h3 {
-                font-size: 1.5rem !important;
+                font-size: 1.3rem !important;
+            }
+            .audio-visualizer {
+                height: 60px; /* تقليل ارتفاع الفيجوالايزر أكثر */
+            }
+            .visual-bar {
+                height: 12px; /* تقليل ارتفاع الشريط أكثر */
             }
         }
         /* Custom styles for Hero Section */
@@ -288,18 +312,18 @@
         .hero-content {
             z-index: 10;
             position: relative;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(106, 13, 173, 0.5);
-            box-shadow: 0 0 30px rgba(106, 13, 173, 0.4);
+            background: rgba(0, 0, 0, 0.4); /* زيادة الشفافية قليلاً */
+            backdrop-filter: blur(8px); /* زيادة التمويه */
+            padding: 2.5rem; /* زيادة المساحة الداخلية قليلاً */
+            border-radius: 20px; /* زيادة استدارة الحواف */
+            border: 1px solid rgba(106, 13, 173, 0.6); /* زيادة وضوح الحدود */
+            box-shadow: 0 0 40px rgba(106, 13, 173, 0.5); /* زيادة وضوح الظل */
             max-width: 900px;
             width: 100%;
         }
         
         .hero-section .pulse-circle {
-            background: rgba(0, 255, 255, 0.2);
+            background: rgba(0, 255, 255, 0.25); /* زيادة الشفافية قليلاً */
             animation: pulse 4s infinite ease-out;
         }
         
@@ -328,37 +352,39 @@
         }
         
         .hero-section h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem; /* زيادة حجم الخط قليلاً */
             line-height: 1.1;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; /* زيادة الهامش السفلي */
         }
         
         .hero-section h1 span:last-child {
-            font-size: 1.8rem;
+            font-size: 2rem; /* زيادة حجم الخط قليلاً */
             opacity: 0.9;
             display: block;
-            margin-top: 0.5rem;
+            margin-top: 0.6rem; /* زيادة الهامش العلوي */
         }
         
         .hero-section p {
-            font-size: 1.2rem;
+            font-size: 1.25rem; /* زيادة حجم الخط قليلاً */
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            opacity: 0.9;
+            margin-bottom: 2.5rem; /* زيادة الهامش السفلي */
+            line-height: 1.7; /* تحسين تباعد الأسطر */
+            opacity: 0.95; /* زيادة وضوح النص */
         }
         
         .hero-section button {
-            padding: 0.9rem 2rem;
-            font-size: 1rem;
-            border-radius: 5px;
+            padding: 1rem 2.2rem; /* زيادة حجم الأزرار */
+            font-size: 1.05rem; /* زيادة حجم الخط قليلاً */
+            border-radius: 8px; /* زيادة استدارة الحواف */
             cursor: pointer;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
+            font-weight: 700; /* جعل الخط أثقل */
+            letter-spacing: 0.05em; /* إضافة تباعد أحرف */
         }
         
         .hero-section button::before {
@@ -368,7 +394,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent); /* زيادة شفافية التدرج */
             transition: all 0.4s ease;
             z-index: -1;
         }
@@ -378,13 +404,14 @@
         }
         
         .hero-section button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(106, 13, 173, 0.6);
+            transform: translateY(-5px) scale(1.03); /* زيادة تأثير التحليق */
+            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.7); /* زيادة وضوح الظل */
         }
         
         .hero-section #play-sample {
             border-color: var(--secondary);
             color: var(--secondary);
+            background-color: rgba(0, 255, 255, 0.1); /* إضافة خلفية شفافة */
         }
         
         .hero-section #play-sample:hover {
@@ -394,36 +421,40 @@
         
         .hero-section .bg-purple-600 {
             background-color: var(--primary);
+            border: 2px solid var(--primary); /* إضافة حدود */
         }
         
         .hero-section .bg-purple-600:hover {
             background-color: var(--accent);
             color: var(--dark);
+            border-color: var(--accent);
         }
         
         .scroll-indicator {
-            margin-top: 3rem;
-            opacity: 0.8;
+            margin-top: 4rem; /* زيادة الهامش العلوي */
+            opacity: 0.9; /* زيادة الوضوح */
         }
         
         .scroll-indicator .w-6 {
-            width: 2rem;
-            height: 4rem;
-            border-width: 3px;
+            width: 2.2rem; /* زيادة العرض */
+            height: 4.5rem; /* زيادة الارتفاع */
+            border-width: 4px; /* زيادة سمك الحدود */
             border-color: var(--secondary);
         }
         
         .scroll-indicator .w-3 {
-            width: 0.75rem;
-            height: 0.75rem;
+            width: 0.85rem; /* زيادة العرض */
+            height: 0.85rem; /* زيادة الارتفاع */
             background-color: var(--secondary);
         }
         /* General Section Styling for ScrollTrigger */
         
         section {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(60px); /* زيادة مسافة التحرك */
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out; /* زيادة مدة الانتقال */
+            padding-top: 5rem; /* زيادة المساحة العلوية */
+            padding-bottom: 5rem; /* زيادة المساحة السفلية */
         }
         
         section.is-in-view {
@@ -435,27 +466,56 @@
         .album-card {
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(106, 13, 173, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            border-radius: 15px; /* زيادة استدارة الحواف */
+            background: rgba(0, 0, 0, 0.5); /* زيادة الشفافية */
+            border: 1px solid rgba(106, 13, 173, 0.4); /* زيادة وضوح الحدود */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* زيادة وضوح الظل */
+            transition: all 0.4s ease; /* زيادة مدة الانتقال */
+            padding: 1.5rem; /* إضافة مساحة داخلية */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         
         .album-card:hover {
-            transform: translateY(-5px) scale(1.02) rotateY(5deg);
-            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.6);
+            transform: translateY(-8px) scale(1.03) rotateY(3deg); /* زيادة تأثير التحليق وتقليل الدوران */
+            box-shadow: 0 15px 35px rgba(106, 13, 173, 0.7); /* زيادة وضوح الظل */
             border-color: var(--primary);
         }
         
         .album-card .album-cover {
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-            border-radius: 8px;
-            filter: grayscale(80%) contrast(110%);
+            border-radius: 12px; /* زيادة استدارة الحواف */
+            filter: grayscale(85%) contrast(115%); /* تعديل الفلتر */
+            margin-bottom: 1.2rem; /* زيادة المسافة السفلية */
         }
         
         .album-card:hover .album-cover {
             filter: none;
+        }
+        
+        .album-card h3 {
+            font-size: 2rem; /* زيادة حجم الخط */
+            margin-bottom: 0.5rem;
+        }
+        
+        .album-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .album-card button {
+            padding: 0.8rem 1.8rem; /* زيادة حجم الزر */
+            font-size: 0.95rem; /* زيادة حجم الخط */
+            border-radius: 6px;
+            background-color: rgba(106, 13, 173, 0.6); /* زيادة الشفافية */
+            border: 1px solid var(--primary); /* إضافة حدود */
+        }
+        
+        .album-card button:hover {
+            background-color: var(--primary);
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
         }
         /* Social Icons Hover */
         
@@ -463,6 +523,22 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            width: 56px; /* حجم ثابت للأيقونات */
+            height: 56px; /* حجم ثابت للأيقونات */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(106, 13, 173, 0.5); /* خلفية شفافة */
+            border: 1px solid rgba(106, 13, 173, 0.7); /* حدود واضحة */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+        }
+        
+        .social-icon-btn svg {
+            color: var(--light); /* لون الأيقونة */
+            width: 28px; /* حجم الأيقونة */
+            height: 28px; /* حجم الأيقونة */
+            transition: color 0.3s ease;
         }
         
         .social-icon-btn::before {
@@ -488,7 +564,123 @@
         }
         
         .social-icon-btn:active {
-            transform: scale(0.9);
+            transform: scale(0.85); /* تأثير الضغط */
+        }
+        /* Player Card & Tracklist Card */
+        .player-card, .tracklist-card {
+            background: rgba(0, 0, 0, 0.6); /* زيادة الشفافية */
+            backdrop-filter: blur(10px); /* زيادة التمويه */
+            border: 1px solid rgba(106, 13, 173, 0.7); /* حدود أوضح */
+            box-shadow: 0 0 25px rgba(106, 13, 173, 0.3); /* ظل أوضح */
+            border-radius: 15px; /* حواف مستديرة أكثر */
+            padding: 2rem; /* مساحة داخلية أكبر */
+        }
+        .player-card img {
+            border-radius: 10px; /* حواف مستديرة للصورة */
+            border: 2px solid var(--secondary); /* حدود للصورة */
+        }
+        .player-card h3 {
+            font-size: 2.2rem; /* حجم خط أكبر */
+        }
+        .player-card p {
+            font-size: 1rem;
+        }
+        .player-card button {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            transition: color 0.3s ease;
+        }
+        .player-card button:hover {
+            color: var(--accent);
+        }
+        .progress-bar {
+            height: 6px; /* شريط تقدم أسمك */
+            background-color: rgba(255, 255, 255, 0.2); /* خلفية شفافة للشريط */
+            border-radius: 3px;
+        }
+        .progress-fill {
+            background: linear-gradient(to right, var(--primary), var(--secondary)); /* تدرج لوني */
+            border-radius: 3px;
+        }
+
+        /* About Section */
+        .about-image-container img {
+            border-radius: 15px;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+        }
+        .about-content-container h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .about-content-container p {
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+        }
+        .about-info-grid > div {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(106, 13, 173, 0.6);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .about-info-grid p {
+            margin-bottom: 0.2rem;
+        }
+        .about-info-grid p.font-bold {
+            font-size: 1.05rem;
+        }
+
+        /* Contact Section */
+        .contact-info-container, .network-presence-container {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(106, 13, 173, 0.7);
+            box-shadow: 0 0 25px rgba(106, 13, 173, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+        .contact-info-container h3, .network-presence-container h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .contact-info-container p, .network-presence-container p {
+            font-size: 1.05rem;
+        }
+        .contact-info-container .space-y-4 > div {
+            padding: 0.5rem 0;
+        }
+        .contact-info-container .font-bold {
+            color: var(--secondary);
+        }
+        .network-presence-container form input {
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            padding: 0.8rem 1rem;
+            font-size: 0.95rem;
+        }
+        .network-presence-container form button {
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+            background-color: var(--primary);
+            transition: background-color 0.3s ease;
+        }
+        .network-presence-container form button:hover {
+            background-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--space);
+            padding: 1.5rem;
+            border-top: 1px solid rgba(106, 13, 173, 0.3);
+        }
+        footer p {
+            font-size: 0.85rem;
+            opacity: 0.6;
         }
     </style>
 </head>
@@ -506,36 +698,36 @@
 
         <div class="hero-content container mx-auto">
             <h1 class="font-black hero-title">
-                <span class="block">JAMAL BELAL</span>
-                <span class="block opacity-80 hero-subtitle">HARD TECHNICAL WORKER</span>
+                <span class="block">جمال بلال</span>
+                <span class="block opacity-80 hero-subtitle">منتج هارد تكنو</span>
             </h1>
 
             <p class="max-w-2xl mx-auto leading-relaxed hero-text">
-                Pushing sonic boundaries with industrial-strength techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
+                يدفع الحدود الصوتية بتقنية التكنو الصناعية منذ عام 2015. خطوط بيس وحشية. إيقاعات لا هوادة فيها. تصميم صوتي سيبراني.
             </p>
 
             <div class="flex justify-center gap-6 flex-col-mobile mb-8">
                 <button id="play-sample" class="bg-transparent border-2 font-bold">
-                    PLAY DEMO
+                    تشغيل عينة
                 </button>
                 <button class="bg-purple-600 text-white font-bold">
-                    BOOKINGS
+                    الحجوزات
                 </button>
             </div>
 
             <!-- Navigation Buttons -->
             <div class="flex justify-center gap-4 flex-wrap hero-nav-buttons">
                 <a href="#music" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
-                    MUSIC
+                    الموسيقى
                 </a>
                 <a href="#albums" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
-                    ALBUMS
+                    الألبومات
                 </a>
                 <a href="#about" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
-                    ABOUT
+                    عني
                 </a>
                 <a href="#contact" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
-                    CONTACT
+                    اتصل بنا
                 </a>
             </div>
         </div>
@@ -549,17 +741,17 @@
 
     <!-- Music Player -->
     <section class="min-h-screen py-20 px-8 relative overflow-hidden" id="music">
-        <h2 class="text-4xl md:text-6xl font-bold mb-20 text-center section-title">SYSTEM ARCHIVE</h2>
+        <h2 class="text-4xl md:text-6xl font-bold mb-20 text-center section-title">أرشيف النظام</h2>
 
         <div class="container mx-auto grid md:grid-cols-2 gap-12 music-player-grid">
             <!-- Player -->
             <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20 player-card">
                 <div class="flex items-center gap-6 mb-8">
-                    <img id="now-playing-cover" src="https://via.placeholder.com/300" alt="Current album cover artwork for Jamal Belal" class="w-32 h-32 object-cover rounded-md" />
+                    <img id="now-playing-cover" src="https://via.placeholder.com/300" alt="غلاف الألبوم الحالي لجمال بلال" class="w-32 h-32 object-cover rounded-md" />
 
                     <div>
-                        <h3 id="now-playing-title" class="text-2xl font-bold">NO TRACK SELECTED</h3>
-                        <p id="now-playing-artist" class="opacity-80">JAMAL BELAL</p>
+                        <h3 id="now-playing-title" class="text-2xl font-bold">لم يتم اختيار مقطع</h3>
+                        <p id="now-playing-artist" class="opacity-80">جمال بلال</p>
                         <div class="flex gap-2 mt-2">
                             <span id="now-playing-time" class="text-sm">0:00</span>
                             <span class="text-sm">/</span>
@@ -587,8 +779,8 @@
                 </div>
 
                 <div class="relative mb-8">
-                    <input type="range" id="progress-bar" class="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer" min="0" value="0">
-                    <div class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full" style="width: 0%" id="progress-fill"></div>
+                    <input type="range" id="progress-bar" class="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer progress-bar" min="0" value="0">
+                    <div class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full progress-fill" style="width: 0%" id="progress-fill"></div>
                 </div>
 
                 <div class="flex justify-center gap-8">
@@ -600,54 +792,54 @@
 
             <!-- Tracklist -->
             <div class="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg border border-purple-900 shadow-lg shadow-purple-900/20 h-full tracklist-card">
-                <h3 class="text-2xl font-bold mb-6">DISCOGRAPHY</h3>
+                <h3 class="text-2xl font-bold mb-6">ديسكوغرافيا</h3>
 
                 <div class="space-y-2">
-                    <div class="track-item" data-src="audio/riot.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Riot" data-title="Riot" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/riot.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Riot" data-title="Riot" data-artist="جمال بلال">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Riot</h4>
-                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                                <p class="text-sm opacity-70">جمال بلال | أغنية منفردة (2025)</p>
                             </div>
                             <span class="text-sm">3:42</span>
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/havoc.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Havoc" data-title="Havoc" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/havoc.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Havoc" data-title="Havoc" data-artist="جمال بلال">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Havoc</h4>
-                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                                <p class="text-sm opacity-70">جمال بلال | أغنية منفردة (2025)</p>
                             </div>
                             <span class="text-sm">5:18</span>
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/rage.mp3" data-cover="https://via.placeholder.com/300/ff00ff/000000?text=Rage" data-title="Rage" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/rage.mp3" data-cover="https://via.placeholder.com/300/ff00ff/000000?text=Rage" data-title="Rage" data-artist="جمال بلال">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Rage</h4>
-                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                                <p class="text-sm opacity-70">جمال بلال | أغنية منفردة (2025)</p>
                             </div>
                             <span class="text-sm">4:36</span>
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/flute-step.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Flute+Step" data-title="Flute Step" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/flute-step.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Flute+Step" data-title="Flute Step" data-artist="جمال بلال">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Flute Step</h4>
-                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                                <p class="text-sm opacity-70">جمال بلال | أغنية منفردة (2025)</p>
                             </div>
                             <span class="text-sm">6:24</span>
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/revolution.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Revolution" data-title="Revolution" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/revolution.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Revolution" data-title="Revolution" data-artist="جمال بلال">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Revolution</h4>
-                                <p class="text-sm opacity-70">Jamal Belal | Single (2025)</p>
+                                <p class="text-sm opacity-70">جمال بلال | أغنية منفردة (2025)</p>
                             </div>
                             <span class="text-sm">3:55</span>
                         </div>
@@ -661,60 +853,60 @@
     <!-- Albums Section -->
     <section class="min-h-screen py-20 px-8" id="albums">
         <div class="container mx-auto">
-            <h2 class="text-4xl md:text-6xl font-bold mb-20 text-center section-title">TERMINAL ALBUMS</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-20 text-center section-title">ألبومات المحطة</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 album-grid">
                 <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Black+Dragon+Fury" alt="Album cover for Black Dragon Fury" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">BLACK DRAGON FURY</h3>
-                    <p class="text-sm opacity-70 mb-2">2020 | Jamal Belal Productions</p>
+                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Black+Dragon+Fury" alt="غلاف ألبوم Black Dragon Fury" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">غضب التنين الأسود</h3>
+                    <p class="text-sm opacity-70 mb-2">2020 | إنتاجات جمال بلال</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        STREAM
+                        استمع الآن
                     </button>
                 </div>
 
                 <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Mysterious+Rock" alt="Album cover for Mysterious Rock EP" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">MYSTERIOUS ROCK EP</h3>
-                    <p class="text-sm opacity-70 mb-2">2020 | Jamal Belal Productions</p>
+                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Mysterious+Rock" alt="غلاف ألبوم Mysterious Rock EP" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">روك غامض EP</h3>
+                    <p class="text-sm opacity-70 mb-2">2020 | إنتاجات جمال بلال</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        STREAM
+                        استمع الآن
                     </button>
                 </div>
 
                 <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Joker+Music" alt="Album cover for Joker Music" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">JOKER MUSIC</h3>
-                    <p class="text-sm opacity-70 mb-2">2019 | Jamal Belal Productions</p>
+                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Joker+Music" alt="غلاف ألبوم Joker Music" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">موسيقى الجوكر</h3>
+                    <p class="text-sm opacity-70 mb-2">2019 | إنتاجات جمال بلال</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        STREAM
+                        استمع الآن
                     </button>
                 </div>
 
                 <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Beautiful+Moments" alt="Album cover for Beautiful Moments" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">BEAUTIFUL MOMENTS</h3>
-                    <p class="text-sm opacity-70 mb-2">2018 | Jamal Belal Productions</p>
+                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Beautiful+Moments" alt="غلاف ألبوم Beautiful Moments" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">لحظات جميلة</h3>
+                    <p class="text-sm opacity-70 mb-2">2018 | إنتاجات جمال بلال</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        STREAM
+                        استمع الآن
                     </button>
                 </div>
 
                 <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Dark+Black" alt="Album cover for Dark Black" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">DARK BLACK</h3>
-                    <p class="text-sm opacity-70 mb-2">2017 | Jamal Belal Productions</p>
+                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Dark+Black" alt="غلاف ألبوم Dark Black" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">أسود داكن</h3>
+                    <p class="text-sm opacity-70 mb-2">2017 | إنتاجات جمال بلال</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        STREAM
+                        استمع الآن
                     </button>
                 </div>
 
                 <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Dark+Mafia" alt="Album cover for Dark Mafia" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">DARK MAFIA</h3>
-                    <p class="text-sm opacity-70 mb-2">2016 | Jamal Belal Productions</p>
+                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Dark+Mafia" alt="غلاف ألبوم Dark Mafia" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">مافيا الظلام</h3>
+                    <p class="text-sm opacity-70 mb-2">2016 | إنتاجات جمال بلال</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        STREAM
+                        استمع الآن
                     </button>
                 </div>
             </div>
@@ -724,42 +916,41 @@
     <!-- About Section -->
     <section class="min-h-screen py-20 px-8" id="about">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">SYSTEM PROFILE</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">ملف النظام</h2>
 
             <div class="grid md:grid-cols-2 gap-12 items-center about-grid">
                 <div class="about-image-container">
-                    <img src="https://yt3.ggpht.com/ytc/AAUvwnh7Mpdys2hefs99798STQGVjvFgJZiHxK9VWq0vMA=s900-c-k-c0x00ffffff-no-rj" alt="Jamal Belal" class="w-full h-auto rounded-lg border-4 border-purple-900">
+                    <img src="https://yt3.ggpht.com/ytc/AAUvwnh7Mpdys2hefs99798STQGVjvFgJZiHxK9VWq0vMA=s900-c-k-c0x00ffffff-no-rj" alt="جمال بلال" class="w-full h-auto rounded-lg border-4 border-purple-900">
                 </div>
 
                 <div class="about-content-container">
-                    <h3 class="text-2xl font-bold mb-4">JAMAL BELAL</h3>
+                    <h3 class="text-2xl font-bold mb-4">جمال بلال</h3>
                     <p class="mb-4 leading-relaxed">
-                        Jamal Belal is a Syrian-Turkish music producer and composer specializing in hard techno, dubstep, and electronic music. With a background in music production since the age of 15, he has developed a unique sound that combines industrial energy with precision-tooled
-                        percussion.
+                        جمال بلال هو منتج موسيقي وملحن سوري-تركي متخصص في الهارد تكنو، الدابستيب، والموسيقى الإلكترونية. بفضل خلفيته في إنتاج الموسيقى منذ سن 15 عامًا، طور صوتًا فريدًا يجمع بين الطاقة الصناعية والإيقاعات الدقيقة.
                     </p>
                     <p class="mb-4 leading-relaxed">
-                        Born on July 27, 1995, with origins from Damascus and Adana, Jamal currently resides in Istanbul, Turkey. He holds a music production certificate from Royal Schools of Music and has produced over 12 albums and 1500 royalty-free tracks.
+                        ولد في 27 يوليو 1995، من أصول دمشقية وأضنة، ويقيم حاليًا في إسطنبول، تركيا. يحمل شهادة في الإنتاج الموسيقي من مدارس الموسيقى الملكية وقد أنتج أكثر من 12 ألبومًا و 1500 مقطعًا موسيقيًا بدون حقوق ملكية.
                     </p>
                     <p class="leading-relaxed">
-                        His music has been featured in various media, including the Arabic series "Black Day", and he continues to push boundaries in the hard techno scene with his relentless productions.
+                        تم عرض موسيقاه في وسائل إعلام مختلفة، بما في ذلك المسلسل العربي "يوم أسود"، ويواصل دفع الحدود في مشهد الهارد تكنو بإنتاجاته التي لا تتوقف.
                     </p>
 
                     <div class="mt-8 grid grid-cols-2 gap-4 about-info-grid">
                         <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
-                            <p class="text-sm opacity-70 mb-1">RESIDENCY</p>
-                            <p class="font-bold">ISTANBUL, TURKEY</p>
+                            <p class="text-sm opacity-70 mb-1">الإقامة</p>
+                            <p class="font-bold">إسطنبول، تركيا</p>
                         </div>
                         <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
-                            <p class="text-sm opacity-70 mb-1">LABELS</p>
-                            <p class="font-bold">SELF-RELEASED</p>
+                            <p class="text-sm opacity-70 mb-1">الشركات</p>
+                            <p class="font-bold">إصدار ذاتي</p>
                         </div>
                         <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
-                            <p class="text-sm opacity-70 mb-1">GENRES</p>
-                            <p class="font-bold">HARD INDUSTRIAL TECHNO</p>
+                            <p class="text-sm opacity-70 mb-1">الأنواع الموسيقية</p>
+                            <p class="font-bold">هارد تكنو صناعي</p>
                         </div>
                         <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
-                            <p class="text-sm opacity-70 mb-1">LANGUAGES</p>
-                            <p class="font-bold">AR, EN, TR</p>
+                            <p class="text-sm opacity-70 mb-1">اللغات</p>
+                            <p class="font-bold">العربية، الإنجليزية، التركية</p>
                         </div>
                     </div>
                 </div>
@@ -770,34 +961,34 @@
     <!-- Contact Section -->
     <section class="py-20 px-8 bg-black bg-opacity-70" id="contact">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">SYSTEM LINK</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">رابط النظام</h2>
 
             <div class="grid md:grid-cols-2 gap-12 contact-grid">
                 <div class="contact-info-container">
-                    <h3 class="text-2xl font-bold mb-4">BOOKINGS & MANAGEMENT</h3>
+                    <h3 class="text-2xl font-bold mb-4">الحجوزات والإدارة</h3>
                     <p class="mb-8 leading-relaxed">
-                        For bookings, press, or other inquiries, contact our management team.
+                        للحجوزات، الصحافة، أو أي استفسارات أخرى، يرجى الاتصال بفريق الإدارة لدينا.
                     </p>
 
                     <div class="space-y-4">
                         <div>
-                            <p class="text-sm opacity-70 mb-1">TURKEY (PRIMARY)</p>
+                            <p class="text-sm opacity-70 mb-1">تركيا (أساسي)</p>
                             <p class="font-bold">booking@jamalbelal.com</p>
                             <p class="font-bold">+90 123 456 7890</p>
                         </div>
                         <div>
-                            <p class="text-sm opacity-70 mb-1">EUROPE</p>
+                            <p class="text-sm opacity-70 mb-1">أوروبا</p>
                             <p class="font-bold">eu@jamalbelal.com</p>
                         </div>
                         <div>
-                            <p class="text-sm opacity-70 mb-1">MIDDLE EAST</p>
+                            <p class="text-sm opacity-70 mb-1">الشرق الأوسط</p>
                             <p class="font-bold">me@jamalbelal.com</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="network-presence-container">
-                    <h3 class="text-2xl font-bold mb-4">NETWORK PRESENCE</h3>
+                    <h3 class="text-2xl font-bold mb-4">التواجد على الشبكة</h3>
 
                     <div class="grid grid-cols-4 gap-4 mb-8">
                         <a href="https://www.instagram.com/jamalbelal.music/" target="_blank" class="social-icon-btn w-12 h-12 bg-purple-900 bg-opacity-50 flex items-center justify-center rounded-full">
@@ -856,12 +1047,12 @@
                         </a>
                     </div>
 
-                    <h3 class="text-2xl font-bold mb-4">NEWSLETTER</h3>
-                    <p class="mb-4">Subscribe for tour dates, releases, and exclusive content.</p>
+                    <h3 class="text-2xl font-bold mb-4">النشرة الإخبارية</h3>
+                    <p class="mb-4">اشترك للحصول على تواريخ الجولات، الإصدارات، والمحتوى الحصري.</p>
                     <form class="flex gap-2 flex-col-mobile md:flex-row">
-                        <input type="email" placeholder="YOUR EMAIL" class="flex-1 bg-black bg-opacity-50 border border-purple-900 px-4 py-2 text-white focus:outline-none focus:border-purple-500">
+                        <input type="email" placeholder="بريدك الإلكتروني" class="flex-1 bg-black bg-opacity-50 border border-purple-900 px-4 py-2 text-white focus:outline-none focus:border-purple-500">
                         <button type="submit" class="px-6 py-2 bg-purple-600 hover:bg-purple-500 transition-all font-bold">
-                            SEND
+                            إرسال
                         </button>
                     </form>
                 </div>
@@ -870,7 +1061,7 @@
     </section>
 
     <footer class="py-8 px-8 text-center">
-        <p class="text-sm opacity-70">© 2023 JAMAL BELAL PRODUCTIONS. ALL SYSTEMS OPERATIONAL.</p>
+        <p class="text-sm opacity-70">© 2023 إنتاجات جمال بلال. جميع الأنظمة تعمل.</p>
     </footer>
 
     <script>
