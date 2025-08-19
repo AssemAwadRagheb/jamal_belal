@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamal Belal | Music Producer & Composer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --primary: #ff0055;
+            /* Neon Red/Pink */
+            --dark: #0a0a1a;
+            /* Very Dark Blue/Black */
+            --light: #e0e0e0;
+            /* Light Gray */
+            --accent: #00ffff;
+            /* Electric Cyan */
+            --secondary-dark: #150a2e;
+            /* Dark Purple/Blue for sections */
+            --text-light: #f0f0f0;
+            --text-muted: #888888;
+            --glow-primary: rgba(255, 0, 85, 0.7);
+            --glow-accent: rgba(0, 255, 255, 0.7);
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.3);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--primary) !important;
+            text-shadow: 0 0 10px var(--glow-primary);
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            margin: 0 15px;
+            position: relative;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent) !important;
+            transform: translateY(-3px);
+            text-shadow: 0 0 8px var(--glow-accent);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 4px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        section {
+            padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section:nth-of-type(even) {
+            background-color: var(--secondary-dark);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 10, 26, 0.9) 0%, rgba(21, 10, 46, 0.9) 100%), url('https://images.unsplash.com/photo-1519085360753-af0f389a7d2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            text-align: center;
+            color: white;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 0, 85, 0.15) 0%, transparent 70%);
+            animation: pulse 4s infinite alternate;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 0 40px var(--glow-primary);
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px var(--primary), 0 0 35px var(--accent);
+            animation: text-glow 2s infinite alternate;
+        }
+        
+        .hero p {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--text-light);
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px var(--glow-primary);
+            text-transform: uppercase;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 30px var(--glow-accent);
+            filter: brightness(1.2);
+        }
+        
+        .btn-outline-light {
+            border: 2px solid var(--primary);
+            color: var(--primary) !important;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--primary);
+            color: var(--dark) !important;
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 30px var(--glow-primary);
+        }
+        
+        .about-img {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 3px solid var(--primary);
+        }
+        
+        .about-img:hover {
+            transform: scale(1.07) rotate(3deg);
+            box-shadow: 0 30px 50px var(--glow-primary);
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 70px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary);
+            text-shadow: 0 0 15px var(--glow-primary);
+            text-transform: uppercase;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 6px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
+        h3 {
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 25px;
+            text-shadow: 0 0 8px var(--glow-accent);
+        }
+        
+        p,
+        ul {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        strong {
+            color: var(--primary);
+        }
+        
+        .skill-item {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 45px;
+            border-radius: 25px;
+            margin-bottom: 35px;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-20px) scale(1.03);
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 25px 50px var(--glow-primary);
+            border-color: var(--primary);
+        }
+        
+        .skill-icon {
+            font-size: 4.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px var(--glow-primary);
+        }
+        
+        .progress {
+            height: 18px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            transition: width 1.2s ease-out;
+            font-weight: 700;
+            color: var(--dark);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+            filter: brightness(0.7);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.8) 0%, rgba(0, 255, 255, 0.8) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.5s ease;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.2) rotate(4deg);
+            filter: brightness(1);
+        }
+        
+        .portfolio-overlay h3 {
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            font-size: 1.8rem;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .contact-info {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 35px;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-12px) scale(1.02);
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 25px 50px var(--glow-accent);
+            border-color: var(--accent);
+        }
+        
+        .contact-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px var(--glow-primary);
+        }
+        
+        .contact-info h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        form .form-control {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 0, 85, 0.4);
+            color: var(--text-light);
+            padding: 18px 25px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            font-size: 1.1rem;
+        }
+        
+        form .form-control:focus {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--glow-primary);
+            color: var(--text-light);
+        }
+        
+        form .form-control::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        
+        .social-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 18px;
+            color: var(--primary);
+            font-size: 2.2rem;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            transform: translateY(-10px) scale(1.15);
+            box-shadow: 0 18px 35px var(--glow-accent);
+            border-color: var(--accent);
+        }
+        
+        .footer {
+            background-color: var(--secondary-dark);
+            padding: 45px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        .footer p {
+            margin-bottom: 0;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 45px;
+            right: 45px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            z-index: 999;
+            box-shadow: 0 8px 20px var(--glow-primary);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            transform: translateY(-7px) scale(1.08);
+            box-shadow: 0 15px 30px var(--glow-accent);
+        }
+        /* Animation classes */
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Keyframe Animations */
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0.1;
+            }
+        }
+        
+        @keyframes text-glow {
+            0% {
+                text-shadow: 0 0 15px var(--primary), 0 0 25px var(--accent);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--primary), 0 0 35px var(--accent), 0 0 50px rgba(0, 255, 255, 0.6);
+            }
+        }
+        /* Responsive adjustments */
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            .hero p {
+                font-size: 1.6rem;
+            }
+            .section-title {
+                font-size: 3.5rem;
+            }
+            .navbar-brand {
+                font-size: 1.6rem;
+            }
+            .nav-link {
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 90px 0;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .hero p {
+                font-size: 1.4rem;
+            }
+            .section-title {
+                font-size: 3rem;
+            }
+            .skill-icon {
+                font-size: 4rem;
+            }
+            .social-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 2rem;
+                margin: 0 12px;
+            }
+            .back-to-top {
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+                bottom: 25px;
+                right: 25px;
+            }
+        }
+        /* Music player styles */
+        
+        .music-player {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 60px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px var(--glow-accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .music-player::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.15) 0%, transparent 70%);
+            animation: rotate-glow 20s linear infinite;
+            z-index: 0;
+        }
+        
+        .track-info {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .track-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-shadow: 0 0 12px var(--glow-primary);
+        }
+        
+        .track-artist {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            margin: 30px 0;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 6px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: -20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 35px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .control-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 18px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px var(--glow-primary);
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            transform: scale(1.18);
+            box-shadow: 0 12px 25px var(--glow-accent);
+        }
+        
+        .control-btn i {
+            font-size: 2rem;
+        }
+        
+        @keyframes rotate-glow {
+            0% {
+                transform: rotate(0deg);
+                opacity: 0.15;
+            }
+            100% {
+                transform: rotate(360deg);
+                opacity: 0.15;
+            }
+        }
+        /* Timeline styles */
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 60px;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -4px;
+            border-radius: 4px;
+            box-shadow: 0 0 20px var(--glow-primary);
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            right: -16px;
+            background-color: var(--accent);
+            border: 6px solid var(--primary);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 20px var(--glow-accent);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 32px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid rgba(0, 0, 0, 0.7);
+            border-width: 15px 0 15px 15px;
+            border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 32px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid rgba(0, 0, 0, 0.7);
+            border-width: 15px 15px 15px 0;
+            border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+        }
+        
+        .right::after {
+            left: -16px;
+        }
+        
+        .timeline-content {
+            padding: 30px 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-15px) scale(1.02);
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 20px 40px var(--glow-primary);
+            border-color: var(--primary);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--glow-primary);
+            font-size: 1.6rem;
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 35px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 30px;
+            }
+            .timeline-item::before {
+                left: 65px;
+                border: medium solid rgba(0, 0, 0, 0.7);
+                border-width: 15px 15px 15px 0;
+                border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+            }
+            .left::after,
+            .right::after {
+                left: 18px;
+            }
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">JAMAL BELAL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#timeline">Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center fade-in">
+                    <h1>JAMAL BELAL</h1>
+                    <p class="lead">Pioneering Electronic Music Producer | Visionary Composer | Immersive Sound Designer</p>
+                    <div class="d-flex justify-content-center gap-4 mt-5">
+                        <a href="#portfolio" class="btn btn-primary btn-lg">Explore My Sonic Universe</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Connect & Collaborate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center fade-in">About Me</h2>
+            <div class="row align-items-center mt-5">
+                <div class="col-lg-6 fade-in">
+                    <div class="about-img">
+                        <!-- REPLACE THIS IMAGE WITH JAMAL BELAL'S REAL PHOTO -->
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0f389a7d2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Jamal Belal" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <h3 class="mt-4 mt-lg-0">Who Am I?</h3>
+                    <p>I'm Jamal Belal, a Syrian-Turkish music producer and composer based in Istanbul, Turkey. With over a decade of experience in music production, I specialize in crafting powerful, immersive electronic music across various genres, pushing
+                        the boundaries of sound design and composition.</p>
+
+                    <h3 class="mt-5">Personal Info</h3>
+                    <ul class="list-unstyled info-list">
+                        <li><strong>Full Name:</strong> Jamal Basem Belal</li>
+                        <li><strong>Date of Birth:</strong> July 27, 1995</li>
+                        <li><strong>Origin:</strong> Syrian - Turkish (Damascus / Adana)</li>
+                        <li><strong>Current Residence:</strong> Istanbul, Turkey</li>
+                        <li><strong>Languages:</strong> Arabic (Fluent), English (Good), Turkish (Intermediate)</li>
+                    </ul>
+
+                    <div class="mt-5">
+                        <a href="#" class="btn btn-primary btn-lg">Download My Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center fade-in">My Expertise</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 fade-in">
+                    <div class="skill-item text-center">
+                        <div class="skill-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Music Composition</h3>
+                        <p>Crafting original, innovative melodies and complex harmonies that resonate deeply and elevate the emotional impact of every track.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="skill-item text-center">
+                        <div class="skill-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Advanced Sound Design</h3>
+                        <p>Sculpting unique, cutting-edge sounds and textures, defining the sonic character of electronic music productions with precision.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="skill-item text-center">
+                        <div class="skill-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3>Professional Audio Mixing & Mastering</h3>
+                        <p>Expertly balancing and processing all audio elements to achieve a polished, powerful, and industry-standard professional sound.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-6 fade-in">
+                    <h3 class="mb-4">Preferred Music Genres</h3>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Dubstep</div>
+                    </div>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Trance</div>
+                    </div>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">Trap Bass</div>
+                    </div>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Techno</div>
+                    </div>
+                </div>
+                <div class="col-md-6 fade-in">
+                    <h3 class="mb-4">Software Proficiency</h3>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">FL Studio</div>
+                    </div>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">Ableton Live</div>
+                    </div>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Logic Pro</div>
+                    </div>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">Pro Tools</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center fade-in">My Sonic Creations</h2>
+
+            <!-- Music Player -->
+            <div class="row justify-content-center fade-in">
+                <div class="col-lg-8 music-player">
+                    <div class="track-info">
+                        <div class="track-title">Now Playing: Untitled Track</div>
+                        <div class="track-artist">Jamal Belal</div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="time-info">
+                        <span class="current-time">0:00</span>
+                        <span class="duration">0:00</span>
+                        <!-- Will be updated by JS -->
+                    </div>
+                    <div class="player-controls">
+                        <div class="control-btn" id="prev-btn">
+                            <i class="fas fa-step-backward"></i>
+                        </div>
+                        <div class="control-btn" id="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="control-btn" id="next-btn">
+                            <i class="fas fa-step-forward"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-4 fade-in">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hard Techno Night" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Industrial Pulse</h3>
+                            <p>2023 Single - Raw Techno</p>
+                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cyberpunk Soundscape" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Cybernetic Dreams</h3>
+                            <p>2024 EP - Dark Synthwave</p>
+                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1518623489648-b1717925b72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Abstract Light Show" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Quantum Flux</h3>
+                            <p>2025 Album - Experimental Bass</p>
+                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4 fade-in">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1517457375827-8047421b712e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Crowd Energy" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Rave Revolution</h3>
+                            <p>2023 Single - Driving Trance</p>
+                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0f389a7d2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dark Alley" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Urban Decay</h3>
+                            <p>Album - Industrial Dubstep</p>
+                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1517457375827-8047421b712e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Neon City" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Metropolis Echoes</h3>
+                            <p>Album - Cinematic Electronic</p>
+                            <a href="#" class="btn btn-outline-light mt-3">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 fade-in">
+                <a href="#" class="btn btn-primary btn-lg">View All Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center fade-in">My Journey Through Sound</h2>
+
+            <div class="timeline mt-5">
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-content">
+                        <h3>2010 - The Genesis</h3>
+                        <p>Began my musical journey at age 15, composing and producing electronic music using FruityLoops (FL Studio), laying the foundation for my sonic explorations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-content">
+                        <h3>2015 - Formal Training & Certification</h3>
+                        <p>Achieved a prestigious music production certificate from Royal Schools of Music, complementing my studies at the esteemed Damascus Music Institute.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-content">
+                        <h3>2018 - Istanbul & Professional Launch</h3>
+                        <p>Relocated to Istanbul, Turkey, marking a pivotal moment in my career as I established my professional music production studio and brand.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-content">
+                        <h3>2020 - "Black Dragon Fury" Album Release</h3>
+                        <p>Unleashed the critically acclaimed album "Black Dragon Fury," a 9-track masterpiece blending electronic and dubstep styles, gaining significant traction.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-content">
+                        <h3>2024-2025 - Global Recognition & Hit Singles</h3>
+                        <p>Released multiple chart-topping singles including "Riot," "Flute Step," and "Rage," solidifying my presence and gaining international recognition in the electronic music scene.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-content">
+                        <h3>Present - Prolific Creator & Industry Contributor</h3>
+                        <p>To date, I have proudly produced over 12 full-length albums and contributed 1500+ royalty-free music tracks, widely utilized in diverse media projects across the globe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center fade-in">Connect With Me</h2>
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6 fade-in">
+                            <div class="contact-info text-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h3>Email Me</h3>
+                                <p>contact@jamalbelal.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 fade-in">
+                            <div class="contact-info text-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h3>My Location</h3>
+                                <p>Istanbul, Turkey</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="mt-5 fade-in">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="mb-4">
+                            <textarea class="form-control" rows="6" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                        </div>
+                    </form>
+
+                    <div class="social-icons fade-in">
+                        <a href="https://instagram.com/jamalbelal.music" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/jamalbelal8" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://youtube.com/JamalBelalChannel" target="_blank" class="social-icon">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://spotify.com/JamalBelal" target="_blank" class="social-icon">
+                            <i class="fab fa-spotify"></i>
+                        </a>
+                        <a href="https://soundcloud.com/JamalBelal" target="_blank" class="social-icon">
+                            <i class="fab fa-soundcloud"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2025 Jamal Belal. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>Crafted with <i class="fas fa-heart text-danger"></i> for the love of sound</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Scroll to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(10, 10, 26, 0.98)'; /* Slightly more opaque on scroll */
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.7)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(10, 10, 26, 0.95)';
+                navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.5)';
+            }
+        });
+
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInOnScroll = function() {
+            for (let i = 0; i < fadeElements.length; i++) {
+                const elem = fadeElements[i];
+                const distInView = elem.getBoundingClientRect().top - window.innerHeight + 180; /* Adjust trigger point */
+
+                if (distInView < 0) {
+                    elem.classList.add('visible');
+                } else {
+                    // Optional: remove 'visible' class when element scrolls out of view
+                    // elem.classList.remove('visible'); 
+                }
+            }
+        };
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll); // Trigger on load for elements already in view
+
+        // Music player functionality
+        const playBtn = document.getElementById('play-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.querySelector('.progress-bar');
+        const progressContainer = document.querySelector('.progress-container');
+        const currentTimeEl = document.querySelector('.current-time');
+        const durationEl = document.querySelector('.duration');
+
+        let isPlaying = false;
+        let currentProgress = 0;
+        let animationFrameId;
+        const totalSeconds = 225; // Example duration: 3:45 in seconds
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+
+        function updateProgressBar() {
+            if (isPlaying) {
+                currentProgress += (100 / (totalSeconds * 1000 / 50)); // Increment based on 50ms update for total duration
+                if (currentProgress >= 100) {
+                    currentProgress = 0;
+                    isPlaying = false;
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    cancelAnimationFrame(animationFrameId);
+                    currentTimeEl.textContent = formatTime(0); // Reset current time
+                }
+                progressBar.style.width = currentProgress + '%';
+
+                const currentSeconds = Math.floor(totalSeconds * currentProgress / 100);
+                currentTimeEl.textContent = formatTime(currentSeconds);
+
+                animationFrameId = requestAnimationFrame(updateProgressBar);
+            }
+        }
+
+        playBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                this.innerHTML = '<i class="fas fa-play"></i>';
+                isPlaying = false;
+                cancelAnimationFrame(animationFrameId);
+            } else {
+                this.innerHTML = '<i class="fas fa-pause"></i>';
+                isPlaying = true;
+                animationFrameId = requestAnimationFrame(updateProgressBar);
+            }
+        });
+
+        progressContainer.addEventListener('click', function(e) {
+            const clickX = e.offsetX;
+            const width = this.clientWidth;
+            currentProgress = (clickX / width) * 100;
+            progressBar.style.width = currentProgress + '%';
+
+            const currentSeconds = Math.floor(totalSeconds * currentProgress / 100);
+            currentTimeEl.textContent = formatTime(currentSeconds);
+
+            if (!isPlaying) {
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                isPlaying = true;
+                animationFrameId = requestAnimationFrame(updateProgressBar);
+            }
+        });
+
+        // Set initial duration display
+        durationEl.textContent = formatTime(totalSeconds);
+    </script>
+</body>
+
+</html>
