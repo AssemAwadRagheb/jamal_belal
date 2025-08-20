@@ -1592,14 +1592,14 @@
             text-align: center;
             padding: 2.5rem;
             /* More padding */
-            border-radius: 15px;
-            /* Changed from 20px to 15px for consistency with other cards */
-            background: rgba(0, 0, 0, 0.6);
-            /* Changed from gradient to solid for consistency */
-            border: 1px solid rgba(106, 13, 173, 0.7);
-            /* Changed from 2px solid to 1px solid for consistency */
-            box-shadow: 0 0 25px rgba(106, 13, 173, 0.3);
-            /* Changed from 35px to 25px for consistency */
+            border-radius: 20px;
+            /* More rounded */
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(10, 10, 26, 0.8));
+            /* Gradient background */
+            border: 2px solid rgba(106, 13, 173, 0.8);
+            /* Stronger border */
+            box-shadow: 0 0 35px rgba(106, 13, 173, 0.4);
+            /* Enhanced shadow */
         }
         
         #discography-now-playing-cover {
@@ -1987,120 +1987,6 @@
                 font-size: 0.85rem;
             }
         }
-        /* New styles for YouTube player and enhanced visualizer */
-        
-        .youtube-player-container {
-            position: relative;
-            width: 100%;
-            /* Set a fixed aspect ratio for YouTube player */
-            padding-bottom: 56.25%;
-            /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            background-color: black;
-            border-radius: 10px;
-            border: 2px solid var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .youtube-player-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        /* Hide YouTube controls */
-        
-        .youtube-player-container iframe {
-            pointer-events: none;
-            /* Disable interaction with iframe controls */
-        }
-        /* Adjust player card size to fit YouTube iframe */
-        
-        #discography-player-card .youtube-player-container,
-        .playlist-player-card .youtube-player-container {
-            width: 100%;
-            /* Ensure it takes full width of its parent */
-            max-width: 640px;
-            /* Standard YouTube width for 16:9 aspect ratio */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* Hide visualizer when YouTube video is active */
-        
-        .youtube-active .visualizer-container {
-            display: none;
-        }
-        /* Hide cover image when YouTube video is active */
-        
-        .youtube-active #now-playing-cover {
-            display: none;
-        }
-        /* Adjust info layout when YouTube video is active */
-        
-        .youtube-active .now-playing-info {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .youtube-active .now-playing-info>div {
-            text-align: center;
-        }
-        /* Playlist Player specific styles */
-        
-        .playlist-player-card {
-            display: none;
-            /* Hidden by default */
-            flex-direction: column;
-            align-items: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 2rem;
-            /* Space from the album grid */
-        }
-        
-        .playlist-player-card.active {
-            display: flex;
-            /* Show when active */
-        }
-        /* Position the playlist player directly below the active album card */
-        
-        .album-card.playing+.playlist-player-card {
-            display: flex;
-            margin-top: 1rem;
-            /* Adjust spacing as needed */
-        }
-        /* Ensure the playlist player is not displayed if no album card is playing */
-        
-        .playlist-player-card:not(.active) {
-            display: none;
-        }
-        /* Responsive adjustments for player */
-        
-        @media (max-width: 768px) {
-            .youtube-player-container {
-                margin-bottom: 1rem;
-            }
-            .visualizer-container {
-                height: 60px;
-                margin-bottom: 1rem;
-            }
-            .visual-bar {
-                height: 10px;
-            }
-            .progress-bar-container {
-                height: 4px;
-                margin-bottom: 1rem;
-            }
-            .progress-bar::-webkit-slider-thumb,
-            .progress-bar::-moz-range-thumb {
-                width: 12px;
-                height: 12px;
-                margin-top: -4px;
-            }
-        }
     </style>
 </head>
 
@@ -2474,7 +2360,7 @@
                         </a>
                         <a href="https://twitter.com/jamalbelal8" target="_blank" class="social-icon-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter">
-                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
                             </svg>
                         </a>
                         <a href="https://www.youtube.com/c/JamalBelal" target="_blank" class="social-icon-btn">
@@ -2674,13 +2560,13 @@
         // --- YouTube Player API for Discography ---
         function onDiscographyYouTubeIframeAPIReady() {
             discographyYoutubePlayer = new YT.Player('discography-youtube-player', {
-                height: '360', // Standard 16:9 height for 640px width
-                width: '640', // Standard YouTube width
+                height: '315',
+                width: '560',
                 videoId: '', // Will be set dynamically
                 playerVars: {
                     'playsinline': 1,
                     'autoplay': 0,
-                    'controls': 0, // Hide YouTube controls
+                    'controls': 1,
                     'showinfo': 0,
                     'rel': 0,
                     'modestbranding': 1
@@ -2732,13 +2618,13 @@
         // --- YouTube Player API for Playlists ---
         function onPlaylistYouTubeIframeAPIReady() {
             playlistYoutubePlayer = new YT.Player('playlist-youtube-player', {
-                height: '360', // Standard 16:9 height for 640px width
-                width: '640', // Standard YouTube width
+                height: '315',
+                width: '560',
                 videoId: '', // Will be set dynamically
                 playerVars: {
                     'playsinline': 1,
                     'autoplay': 0,
-                    'controls': 0, // Hide YouTube controls
+                    'controls': 1,
                     'showinfo': 0,
                     'rel': 0,
                     'modestbranding': 1,
@@ -2836,7 +2722,6 @@
         function resetPlaylistPlayerUI() {
             playlistItems.forEach(p => p.classList.remove('playing'));
             playlistPlayerCard.classList.remove('active');
-            playlistPlayerCard.style.display = 'none'; // Ensure it's hidden
             playlistPlayerTitle.textContent = '';
             playlistNowPlayingVideoTitle.textContent = '';
             playlistNowPlayingVideoArtist.textContent = 'Jamal Belal';
@@ -2893,13 +2778,13 @@
                 } else {
                     // If player not ready, set videoId and it will load on API ready
                     discographyYoutubePlayer = new YT.Player('discography-youtube-player', {
-                        height: '360',
-                        width: '640',
+                        height: '315',
+                        width: '560',
                         videoId: youtubeVideoId,
                         playerVars: {
                             'playsinline': 1,
                             'autoplay': 1,
-                            'controls': 0, // Hide YouTube controls
+                            'controls': 1,
                             'showinfo': 0,
                             'rel': 0,
                             'modestbranding': 1
@@ -2932,23 +2817,16 @@
         }
 
         // --- Playlist Handling ---
-        function loadPlaylist(playlistId, playlistTitle, albumCardElement) {
+        function loadPlaylist(playlistId, playlistTitle) {
             stopAllPlayback(); // Stop everything first
 
-            // Remove 'playing' class from all album cards
             playlistItems.forEach(p => p.classList.remove('playing'));
-            // Add 'playing' class to the clicked album card
-            if (albumCardElement) {
-                albumCardElement.classList.add('playing');
+            const selectedPlaylistItem = document.querySelector(`.playlist-item[data-playlist-id="${playlistId}"]`);
+            if (selectedPlaylistItem) {
+                selectedPlaylistItem.classList.add('playing');
             }
 
-            // Append the playlist player card directly after the clicked album card
-            if (albumCardElement) {
-                albumCardElement.after(playlistPlayerCard);
-            }
             playlistPlayerCard.classList.add('active'); // Show the playlist player
-            playlistPlayerCard.style.display = 'flex'; // Ensure it's displayed
-
             playlistPlayerTitle.textContent = playlistTitle;
             playlistNowPlayingVideoArtist.textContent = 'Jamal Belal'; // Default artist for playlist videos
 
@@ -2965,12 +2843,12 @@
                 playlistYoutubePlayer.playVideo();
             } else {
                 playlistYoutubePlayer = new YT.Player('playlist-youtube-player', {
-                    height: '360',
-                    width: '640',
+                    height: '315',
+                    width: '560',
                     playerVars: {
                         'playsinline': 1,
                         'autoplay': 1,
-                        'controls': 0, // Hide YouTube controls
+                        'controls': 1,
                         'showinfo': 0,
                         'rel': 0,
                         'modestbranding': 1,
@@ -3051,7 +2929,7 @@
                 // If no playlist is playing, try to play the first playlist
                 if (currentPlaylistId === null && playlistItems.length > 0) {
                     const firstPlaylist = playlistItems[0];
-                    loadPlaylist(firstPlaylist.getAttribute('data-playlist-id'), firstPlaylist.getAttribute('data-playlist-title'), firstPlaylist);
+                    loadPlaylist(firstPlaylist.getAttribute('data-playlist-id'), firstPlaylist.getAttribute('data-playlist-title'));
                 } else if (currentPlaylistId !== null) {
                     // If a playlist is loaded but paused, play it
                     playCurrentPlaylist();
@@ -3067,11 +2945,10 @@
             } else {
                 if (currentPlaylistId !== null) {
                     // Re-load and play the current playlist
-                    const activePlaylistItem = document.querySelector(`.playlist-item.playing`);
-                    loadPlaylist(currentPlaylistId, playlistPlayerTitle.textContent, activePlaylistItem);
+                    loadPlaylist(currentPlaylistId, playlistPlayerTitle.textContent);
                 } else if (playlistItems.length > 0) {
                     const firstPlaylist = playlistItems[0];
-                    loadPlaylist(firstPlaylist.getAttribute('data-playlist-id'), firstPlaylist.getAttribute('data-playlist-title'), firstPlaylist);
+                    loadPlaylist(firstPlaylist.getAttribute('data-playlist-id'), firstPlaylist.getAttribute('data-playlist-title'));
                 }
             }
         }
@@ -3212,7 +3089,7 @@
             playlistItem.addEventListener('click', () => {
                 const playlistId = playlistItem.getAttribute('data-playlist-id');
                 const playlistTitle = playlistItem.getAttribute('data-playlist-title');
-                loadPlaylist(playlistId, playlistTitle, playlistItem); // Pass the albumCardElement
+                loadPlaylist(playlistId, playlistTitle);
             });
         });
 
