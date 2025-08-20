@@ -795,10 +795,10 @@
                 margin: 0 auto;
             }
             .album-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            justify-items: center;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                justify-items: center;
             }
             .album-card {
                 width: 100%;
@@ -1196,8 +1196,8 @@
                 height: 18px;
             }
         }
-        
         /* تحسينات خاصة للهيرو على الجوال */
+        
         @media (max-width: 768px) {
             .hero-section .pulse-circle:nth-child(1) {
                 width: 120px;
@@ -1205,25 +1205,21 @@
                 left: 5%;
                 top: 15%;
             }
-            
             .hero-section .pulse-circle:nth-child(2) {
                 width: 180px;
                 height: 180px;
                 right: 3%;
                 bottom: 8%;
             }
-            
             .hero-section .pulse-circle:nth-child(3) {
                 width: 100px;
                 height: 100px;
                 left: 20%;
                 bottom: 3%;
             }
-            
             .hero-section .pulse-circle {
                 animation: pulse 5s infinite ease-out;
             }
-            
             .hero-content {
                 box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
             }
@@ -1252,7 +1248,6 @@
                 Pushing sonic boundaries with industrial techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
             </p>
 
-      
             <!-- Navigation Buttons -->
             <div class="flex justify-center gap-2 flex-wrap hero-nav-buttons mb-4">
                 <a href="#music" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all text-sm">
@@ -1269,7 +1264,6 @@
                 </a>
             </div>
         </div>
-
     </section>
 
     <!-- Music Player -->
@@ -1835,30 +1829,30 @@
         });
 
         // Play demo button
-        playDemoBtn.addEventListener('click', () => {
-            loadTrack(0);
-            playCurrentTrack();
+        // playDemoBtn.addEventListener('click', () => { // Removed event listener as button is removed
+        //     loadTrack(0);
+        //     playCurrentTrack();
 
-            // Animate button on click
-            gsap.to(playDemoBtn, {
-                scale: 1.1,
-                duration: 0.2,
-                yoyo: true,
-                repeat: 1
-            });
-        });
+        //     // Animate button on click
+        //     gsap.to(playDemoBtn, {
+        //         scale: 1.1,
+        //         duration: 0.2,
+        //         yoyo: true,
+        //         repeat: 1
+        //     });
+        // });
 
         // Scroll down indicator click handler
-        scrollDownIndicator.addEventListener('click', () => {
-            gsap.to(window, {
-                duration: 1,
-                scrollTo: {
-                    y: "#music",
-                    offsetY: 50
-                },
-                ease: "power2.inOut"
-            });
-        });
+        // scrollDownIndicator.addEventListener('click', () => { // Removed event listener as indicator is removed
+        //     gsap.to(window, {
+        //         duration: 1,
+        //         scrollTo: {
+        //             y: "#music",
+        //             offsetY: 50
+        //         },
+        //         ease: "power2.inOut"
+        //     });
+        // });
 
         // GSAP animations for page elements
 
@@ -1883,14 +1877,15 @@
             delay: 0.6,
             ease: "power3.out"
         });
-        gsap.from(".hero-section button", {
-            duration: 1,
-            opacity: 0,
-            y: 20,
-            stagger: 0.2,
-            delay: 0.9,
-            ease: "power2.out"
-        });
+        // Removed animation for hero buttons as they are removed
+        // gsap.from(".hero-section button", {
+        //     duration: 1,
+        //     opacity: 0,
+        //     y: 20,
+        //     stagger: 0.2,
+        //     delay: 0.9,
+        //     ease: "power2.out"
+        // });
 
         gsap.to(".pulse-circle", {
             duration: 3,
@@ -2112,4 +2107,3 @@
 </body>
 
 </html>
-
