@@ -791,14 +791,14 @@
                 height: 28px;
             }
 
-            /* Mobile visualizer adjustment */
+            /* Mobile visualizer adjustments */
             .audio-visualizer {
                 height: 60px; /* Smaller height for mobile */
                 padding: 5px 0;
             }
             .visual-bar {
-                height: 10px; /* Smaller bar height for mobile */
-                margin: 0 1px; /* Smaller margin for mobile */
+                height: 10px; /* Smaller bar height */
+                margin: 0 1px; /* Reduced margin */
             }
         }
         
@@ -840,7 +840,7 @@
                 height: 50px; /* Even smaller height for very small screens */
             }
             .visual-bar {
-                height: 8px; /* Even smaller bar height for very small screens */
+                height: 8px; /* Even smaller bar height */
             }
             .player-card,
             .tracklist-card {
@@ -891,13 +891,13 @@
                 font-size: 0.75rem;
             }
             .hero-nav-buttons {
-                flex-direction: row; /* Keep navigation buttons in a row for better spacing on very small screens */
+                flex-direction: row; /* Keep buttons in a row if space allows */
                 justify-content: center;
                 gap: 0.3rem;
             }
             .hero-nav-buttons a {
-                padding: 0.3rem 0.6rem; /* Smaller padding for nav buttons */
-                font-size: 0.65rem; /* Smaller font size for nav buttons */
+                padding: 0.3rem 0.8rem;
+                font-size: 0.7rem;
             }
             .section-title {
                 font-size: 1.8rem !important;
@@ -944,7 +944,7 @@
                 Pushing sonic boundaries with industrial techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
             </p>
 
-            <div class="flex justify-center gap-4 flex-col-mobile mb-8">
+            <div class="flex justify-center gap-4 flex-col-mobile mb-6">
                 <button id="play-sample" class="bg-transparent border-2 font-bold">
                     Play Sample
                 </button>
@@ -1347,8 +1347,7 @@
         const nowPlayingDuration = document.getElementById('now-playing-duration');
         const visualizerBars = document.querySelectorAll('.visual-bar');
         const playDemoBtn = document.getElementById('play-sample');
-        const scrollDownIndicator = document.getElementById('scroll-down-indicator');
-
+        // const scrollDownIndicator = document.getElementById('scroll-down-indicator'); // Removed
 
         // Initialize Web Audio API for visualizer
         let audioContext, analyser, dataArray, sourceNode;
@@ -1526,20 +1525,17 @@
             });
         });
 
-        // Scroll down indicator click handler (removed from HTML, but keeping JS for completeness if needed elsewhere)
-        if (scrollDownIndicator) {
-            scrollDownIndicator.addEventListener('click', () => {
-                gsap.to(window, {
-                    duration: 1,
-                    scrollTo: {
-                        y: "#music",
-                        offsetY: 50
-                    },
-                    ease: "power2.inOut"
-                });
-            });
-        }
-
+        // Scroll down indicator click handler (removed from HTML, keeping JS for reference if needed)
+        // scrollDownIndicator.addEventListener('click', () => {
+        //     gsap.to(window, {
+        //         duration: 1,
+        //         scrollTo: {
+        //             y: "#music",
+        //             offsetY: 50
+        //         },
+        //         ease: "power2.inOut"
+        //     });
+        // });
 
         // GSAP animations for page elements
 
@@ -1581,7 +1577,7 @@
             ease: "none"
         });
 
-        // Parallax effect for hero section (removed mousemove listener to remove mouse icon)
+        // Parallax effect for hero section (removed mousemove for cleaner mobile experience)
         // window.addEventListener('mousemove', (e) => {
         //     const x = e.clientX / window.innerWidth - 0.5;
         //     const y = e.clientY / window.innerHeight - 0.5;
