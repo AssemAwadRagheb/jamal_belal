@@ -49,7 +49,7 @@
         }
         
         .section-title {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
             margin-bottom: 3rem;
             text-align: center;
             color: var(--secondary);
@@ -249,20 +249,20 @@
         }
         
         .hero-section h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 8vw, 3.5rem); /* Responsive font size */
             line-height: 1.1;
             margin-bottom: 0.8rem;
         }
         
         .hero-section h1 span:last-child {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 4vw, 1.8rem); /* Responsive font size */
             opacity: 0.9;
             display: block;
             margin-top: 0.5rem;
         }
         
         .hero-section p {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive font size */
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -397,12 +397,12 @@
         }
         
         .album-card h3 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
             margin-bottom: 0.5rem;
         }
         
         .album-card p {
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem); /* Responsive font size */
             margin-bottom: 1rem;
         }
         
@@ -485,22 +485,41 @@
         }
         
         .player-card h3 {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem); /* Responsive font size */
         }
         
         .player-card p {
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
         }
         
         .player-card button {
             background: none;
             border: none;
             color: var(--secondary);
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem; /* Add padding for easier touch */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .player-card button:hover {
             color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .player-card button:active {
+            transform: scale(0.9);
+        }
+
+        .player-card button svg {
+            width: clamp(1.5rem, 6vw, 2rem); /* Responsive icon size */
+            height: clamp(1.5rem, 6vw, 2rem); /* Responsive icon size */
+        }
+
+        #play-pause svg {
+            width: clamp(2.5rem, 10vw, 3rem); /* Larger play/pause icon */
+            height: clamp(2.5rem, 10vw, 3rem); /* Larger play/pause icon */
         }
         
         .progress-bar {
@@ -522,12 +541,12 @@
         }
         
         .about-content-container h3 {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem); /* Responsive font size */
             margin-bottom: 1rem;
         }
         
         .about-content-container p {
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem); /* Responsive font size */
             margin-bottom: 1.2rem;
         }
         
@@ -544,7 +563,7 @@
         }
         
         .about-info-grid p.font-bold {
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem); /* Responsive font size */
         }
         /* Contact Section */
         
@@ -560,13 +579,13 @@
         
         .contact-info-container h3,
         .network-presence-container h3 {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem); /* Responsive font size */
             margin-bottom: 1rem;
         }
         
         .contact-info-container p,
         .network-presence-container p {
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem); /* Responsive font size */
         }
         
         .contact-info-container .space-y-4>div {
@@ -607,7 +626,7 @@
         }
         
         footer p {
-            font-size: 0.85rem;
+            font-size: clamp(0.75rem, 2vw, 0.85rem); /* Responsive font size */
             opacity: 0.6;
         }
         /* Mobile-specific improvements */
@@ -649,7 +668,7 @@
             color: var(--secondary);
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
             margin-bottom: 1.5rem;
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 5vw, 2rem); /* Responsive font size */
         }
         
         .contact-info-container .space-y-4>div,
@@ -659,21 +678,21 @@
         
         .network-presence-container .social-icons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Smaller minmax for mobile */
             gap: 1rem;
             justify-items: center;
             margin-bottom: 2rem;
         }
         
         .social-icon-btn {
-            width: 60px;
-            height: 60px;
+            width: 50px; /* Adjusted for mobile */
+            height: 50px; /* Adjusted for mobile */
             font-size: 1.5rem;
         }
         
         .social-icon-btn svg {
-            width: 32px;
-            height: 32px;
+            width: 28px; /* Adjusted for mobile */
+            height: 28px; /* Adjusted for mobile */
         }
         
         .network-presence-container form {
@@ -690,17 +709,17 @@
         
         @media (max-width: 768px) {
             .section-title {
-                font-size: 2.5rem !important;
+                font-size: clamp(2rem, 6vw, 2.5rem) !important;
                 margin-bottom: 2rem !important;
             }
             .hero-section h1 {
-                font-size: 2.8rem !important;
+                font-size: clamp(2.2rem, 7vw, 2.8rem) !important;
             }
             .hero-section h1 span:last-child {
-                font-size: 1.5rem !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem) !important;
             }
             .hero-section p {
-                font-size: 1rem !important;
+                font-size: clamp(0.9rem, 2.5vw, 1rem) !important;
                 padding: 0 0.75rem;
             }
             .hero-content {
@@ -716,7 +735,15 @@
                 padding: 0.5rem 1rem;
             }
             .scroll-indicator {
-                display: none; /* Hide scroll indicator on mobile */
+                margin-top: 1.5rem;
+            }
+            .scroll-indicator .w-6 {
+                width: 1.8rem;
+                height: 3.5rem;
+            }
+            .scroll-indicator .w-3 {
+                width: 0.7rem;
+                height: 0.7rem;
             }
             .music-player-grid,
             .album-grid,
@@ -759,7 +786,7 @@
                 height: 100px;
             }
             #now-playing-title {
-                font-size: 1.8rem;
+                font-size: clamp(1.5rem, 4vw, 1.8rem);
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -769,52 +796,42 @@
                 padding: 10px 15px;
             }
             .track-item h4 {
-                font-size: 1rem;
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
             }
             .track-item p {
-                font-size: 0.8rem;
+                font-size: clamp(0.7rem, 2vw, 0.8rem);
             }
             .centered-heading {
-                font-size: 1.8rem;
+                font-size: clamp(1.5rem, 4vw, 1.8rem);
                 margin-bottom: 1rem;
             }
             .network-presence-container .social-icons-grid {
-                grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); /* Even smaller for very small screens */
                 gap: 0.8rem;
             }
             .social-icon-btn {
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
             }
             .social-icon-btn svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            /* Mobile visualizer adjustments */
-            .audio-visualizer {
-                height: 60px; /* Smaller height for mobile */
-                padding: 5px 0;
-            }
-            .visual-bar {
-                height: 10px; /* Smaller bar height */
-                margin: 0 1px; /* Reduced margin */
+                width: 24px;
+                height: 24px;
             }
         }
         
         @media (max-width: 480px) {
             .section-title {
-                font-size: 2rem !important;
+                font-size: clamp(1.8rem, 5vw, 2rem) !important;
                 margin-bottom: 1.5rem !important;
             }
             .hero-section h1 {
-                font-size: 2.2rem !important;
+                font-size: clamp(2rem, 6vw, 2.2rem) !important;
             }
             .hero-section h1 span:last-child {
-                font-size: 1.2rem !important;
+                font-size: clamp(1rem, 3vw, 1.2rem) !important;
             }
             .hero-section p {
-                font-size: 0.9rem !important;
+                font-size: clamp(0.85rem, 2.2vw, 0.9rem) !important;
                 line-height: 1.5 !important;
                 padding: 0 0.5rem;
             }
@@ -834,13 +851,13 @@
                 gap: 0.4rem;
             }
             .album-card h3 {
-                font-size: 1.8rem !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.8rem) !important;
             }
             .audio-visualizer {
-                height: 50px; /* Even smaller height for very small screens */
+                height: 60px;
             }
             .visual-bar {
-                height: 8px; /* Even smaller bar height */
+                height: 12px;
             }
             .player-card,
             .tracklist-card {
@@ -851,73 +868,70 @@
                 height: 80px !important;
             }
             #now-playing-title {
-                font-size: 1.5rem !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem) !important;
             }
-            .player-controls button {
-                font-size: 1.8rem !important;
+            .player-controls button svg {
+                width: clamp(1.2rem, 5vw, 1.8rem);
+                height: clamp(1.2rem, 5vw, 1.8rem);
             }
-            #play-pause {
-                font-size: 3rem !important;
+            #play-pause svg {
+                width: clamp(2rem, 8vw, 3rem);
+                height: clamp(2rem, 8vw, 3rem);
             }
             .centered-heading {
-                font-size: 1.5rem;
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
             }
             .network-presence-container .social-icons-grid {
-                grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
                 gap: 0.6rem;
             }
             .social-icon-btn {
-                width: 45px;
-                height: 45px;
+                width: 35px;
+                height: 35px;
             }
             .social-icon-btn svg {
-                width: 24px;
-                height: 24px;
+                width: 20px;
+                height: 20px;
             }
         }
         
         @media (max-width: 375px) {
             .hero-section h1 {
-                font-size: 1.8rem !important;
+                font-size: clamp(1.5rem, 5vw, 1.8rem) !important;
             }
             .hero-section h1 span:last-child {
-                font-size: 1rem !important;
+                font-size: clamp(0.8rem, 2.5vw, 1rem) !important;
             }
             .hero-section p {
-                font-size: 0.85rem !important;
+                font-size: clamp(0.75rem, 2vw, 0.85rem) !important;
             }
             .hero-section button {
                 padding: 0.5rem 1rem;
                 font-size: 0.75rem;
-            }
-            .hero-nav-buttons {
-                flex-direction: row; /* Keep buttons in a row if space allows */
-                justify-content: center;
-                gap: 0.3rem;
             }
             .hero-nav-buttons a {
                 padding: 0.3rem 0.8rem;
                 font-size: 0.7rem;
             }
             .section-title {
-                font-size: 1.8rem !important;
+                font-size: clamp(1.5rem, 5vw, 1.8rem) !important;
             }
             .track-item h4 {
-                font-size: 0.9rem;
+                font-size: clamp(0.8rem, 2.2vw, 0.9rem);
             }
             .track-item p {
-                font-size: 0.75rem;
+                font-size: clamp(0.65rem, 1.8vw, 0.75rem);
             }
             .album-card h3 {
-                font-size: 1.5rem !important;
+                font-size: clamp(1rem, 3vw, 1.5rem) !important;
             }
             .social-icon-btn {
-                width: 40px;
-                height: 40px;
+                width: 30px;
+                height: 30px;
             }
             .social-icon-btn svg {
-                width: 20px;
-                height: 20px;
+                width: 18px;
+                height: 18px;
             }
         }
     </style>
@@ -940,11 +954,11 @@
                 <span class="block opacity-80 hero-subtitle">Hard Techno Producer</span>
             </h1>
 
-            <p class="max-w-2xl mx-auto leading-relaxed hero-text mb-8">
+            <p class="max-w-2xl mx-auto leading-relaxed hero-text">
                 Pushing sonic boundaries with industrial techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
             </p>
 
-            <div class="flex justify-center gap-4 flex-col-mobile mb-6">
+            <div class="flex justify-center gap-4 flex-col-mobile mb-4">
                 <button id="play-sample" class="bg-transparent border-2 font-bold">
                     Play Sample
                 </button>
@@ -954,7 +968,7 @@
             </div>
 
             <!-- Navigation Buttons -->
-            <div class="flex justify-center gap-3 flex-wrap hero-nav-buttons">
+            <div class="flex justify-center gap-3 flex-wrap hero-nav-buttons mb-4">
                 <a href="#music" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
                     Music
                 </a>
@@ -970,7 +984,11 @@
             </div>
         </div>
 
-        <!-- Scroll indicator removed -->
+        <div class="scroll-indicator animate-bounce flex justify-center" id="scroll-down-indicator">
+            <div class="w-6 h-16 border-4 rounded-full">
+                <div class="w-3 h-3 rounded-full mx-auto my-1 animate-scroll-icon"></div>
+            </div>
+        </div>
     </section>
 
     <!-- Music Player -->
@@ -1076,9 +1094,21 @@
                 </div>
 
                 <div class="player-controls">
-                    <button id="prev-track" class="text-3xl hover:text-purple-400 transition-colors">⏮</button>
-                    <button id="play-pause" class="text-5xl hover:text-purple-400 transition-colors">▶</button>
-                    <button id="next-track" class="text-3xl hover:text-purple-400 transition-colors">⏭</button>
+                    <button id="prev-track" class="text-3xl hover:text-purple-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M18.75 8.25V6.75A2.25 2.25 0 0016.5 4.5h-1.5a2.25 2.25 0 00-2.25 2.25v1.5m-4.5 0V6.75A2.25 2.25 0 006.75 4.5H5.25A2.25 2.25 0 003 6.75v1.5m15 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+                        </svg>
+                    </button>
+                    <button id="play-pause" class="text-5xl hover:text-purple-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <button id="next-track" class="text-3xl hover:text-purple-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M5.25 8.25V6.75A2.25 2.25 0 017.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m4.5 0V6.75A2.25 2.25 0 0116.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m-4.5 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1235,12 +1265,12 @@
                         </a>
                         <a href="https://twitter.com/jamalbelal8" target="_blank" class="social-icon-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
                             </svg>
                         </a>
                         <a href="https://www.youtube.com/c/JamalBelal" target="_blank" class="social-icon-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube">
-                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
+                                <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 001.94-2A29 29 0 0023 12a29 29 0 00-.46-5.58z"></path>
                                 <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                             </svg>
                         </a>
@@ -1261,23 +1291,23 @@
                         </a>
                         <a href="https://www.deezer.com/artist/jamalbelal" target="_blank" class="social-icon-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-headphones">
-                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                                <path d="M3 18v-6a9 9 0 0118 0v6"></path>
+                                <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
                             </svg>
                         </a>
                         <a href="https://soundcloud.com/jamalbelal" target="_blank" class="social-icon-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-soundcloud">
                                 <path d="M18 11.999c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4 4-1.79 4-4z"></path>
-                                <path d="M6 10v4a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z"></path>
+                                <path d="M6 10v4a2 2 0 002 2h1a2 2 0 002-2v-4a2 2 0 00-2-2H8a2 2 0 00-2 2z"></path>
                                 <path d="M8 10v4"></path>
-                                <path d="M11 10v4a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H13a2 2 0 0 0-2 2z"></path>
+                                <path d="M11 10v4a2 2 0 002 2h1a2 2 0 002-2v-4a2 2 0 00-2-2H13a2 2 0 00-2 2z"></path>
                                 <path d="M14 10v4"></path>
                             </svg>
                         </a>
                         <a href="https://jamalbelal.com" target="_blank" class="social-icon-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
                             </svg>
                         </a>
                     </div>
@@ -1347,7 +1377,19 @@
         const nowPlayingDuration = document.getElementById('now-playing-duration');
         const visualizerBars = document.querySelectorAll('.visual-bar');
         const playDemoBtn = document.getElementById('play-sample');
-        // const scrollDownIndicator = document.getElementById('scroll-down-indicator'); // Removed
+        const scrollDownIndicator = document.getElementById('scroll-down-indicator');
+
+        // SVG icons for player controls
+        const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" /></svg>`;
+        const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" /></svg>`;
+        const prevIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" clip-rule="evenodd" /><path fill-rule="evenodd" d="M19.5 19.5L12 12m0 0l7.5-7.5M12 12h7.5" clip-rule="evenodd" /></svg>`;
+        const nextIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" clip-rule="evenodd" /><path fill-rule="evenodd" d="M4.5 4.5L12 12m0 0L4.5 19.5M12 12H3" clip-rule="evenodd" /></svg>`;
+
+        // Set initial icons
+        playPauseBtn.innerHTML = playIcon;
+        prevBtn.innerHTML = prevIcon;
+        nextBtn.innerHTML = nextIcon;
+
 
         // Initialize Web Audio API for visualizer
         let audioContext, analyser, dataArray, sourceNode;
@@ -1432,12 +1474,12 @@
         function togglePlayPause() {
             if (audioPlayer.paused) {
                 audioPlayer.play().then(() => {
-                    playPauseBtn.textContent = '⏸';
+                    playPauseBtn.innerHTML = pauseIcon; // Change to pause icon
                     updateVisualizer(); // Ensure visualizer is running
                 }).catch(e => console.error("Error playing audio:", e));
             } else {
                 audioPlayer.pause();
-                playPauseBtn.textContent = '▶';
+                playPauseBtn.innerHTML = playIcon; // Change to play icon
             }
         }
 
@@ -1525,17 +1567,17 @@
             });
         });
 
-        // Scroll down indicator click handler (removed from HTML, keeping JS for reference if needed)
-        // scrollDownIndicator.addEventListener('click', () => {
-        //     gsap.to(window, {
-        //         duration: 1,
-        //         scrollTo: {
-        //             y: "#music",
-        //             offsetY: 50
-        //         },
-        //         ease: "power2.inOut"
-        //     });
-        // });
+        // Scroll down indicator click handler
+        scrollDownIndicator.addEventListener('click', () => {
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: {
+                    y: "#music",
+                    offsetY: 50
+                },
+                ease: "power2.inOut"
+            });
+        });
 
         // GSAP animations for page elements
 
@@ -1577,18 +1619,18 @@
             ease: "none"
         });
 
-        // Parallax effect for hero section (removed mousemove for cleaner mobile experience)
-        // window.addEventListener('mousemove', (e) => {
-        //     const x = e.clientX / window.innerWidth - 0.5;
-        //     const y = e.clientY / window.innerHeight - 0.5;
+        // Parallax effect for hero section
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth - 0.5;
+            const y = e.clientY / window.innerHeight - 0.5;
 
-        //     gsap.to(".hero-section .pulse-circle", {
-        //         x: x * 50,
-        //         y: y * 50,
-        //         duration: 0.5,
-        //         ease: "power2.out"
-        //     });
-        // });
+            gsap.to(".hero-section .pulse-circle", {
+                x: x * 50,
+                y: y * 50,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        });
 
         // Album hover animations
         document.querySelectorAll('.album-card').forEach(card => {
