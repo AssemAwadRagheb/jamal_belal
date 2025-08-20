@@ -218,10 +218,10 @@
             box-shadow: 0 0 40px rgba(106, 13, 173, 0.5);
             max-width: 900px;
             width: 100%;
-            display: flex; /* Added for centering content */
-            flex-direction: column; /* Added for centering content */
-            justify-content: center; /* Added for centering content */
-            align-items: center; /* Added for centering content */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         .hero-section .pulse-circle {
@@ -254,39 +254,39 @@
         }
         
         .hero-section h1 {
-            font-size: clamp(3.5rem, 8vw, 5rem); /* Increased font size for TV */
+            font-size: clamp(3.5rem, 8vw, 5rem);
             line-height: 1.1;
             margin-bottom: 0.8rem;
         }
         
         .hero-section h1 span:last-child {
-            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Increased font size for TV */
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             opacity: 0.9;
             display: block;
             margin-top: 0.5rem;
         }
         
         .hero-section p {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem); /* Increased font size for TV */
-            max-width: 800px; /* Increased max-width for TV */
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 2rem; /* Increased margin for TV */
-            line-height: 1.8; /* Increased line-height for readability on TV */
+            margin-bottom: 2rem;
+            line-height: 1.8;
             opacity: 0.95;
         }
         
         .hero-section button {
-            padding: 1rem 2.5rem; /* Increased padding for TV */
-            font-size: 1.2rem; /* Increased font size for TV */
-            border-radius: 10px; /* Slightly larger border-radius */
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
             font-weight: 700;
-            letter-spacing: 0.08em; /* Increased letter spacing */
+            letter-spacing: 0.08em;
         }
         
         .hero-section button::before {
@@ -306,14 +306,14 @@
         }
         
         .hero-section button:hover {
-            transform: translateY(-8px) scale(1.05); /* More pronounced hover effect */
-            box-shadow: 0 15px 35px rgba(106, 13, 173, 0.8); /* Stronger shadow */
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(106, 13, 173, 0.8);
         }
         
         .hero-section #play-sample {
             border-color: var(--secondary);
             color: var(--secondary);
-            background-color: rgba(0, 255, 255, 0.15); /* Slightly more opaque */
+            background-color: rgba(0, 255, 255, 0.15);
         }
         
         .hero-section #play-sample:hover {
@@ -333,21 +333,21 @@
         }
         
         .scroll-indicator {
-            margin-top: 2.5rem; /* Increased margin */
+            margin-top: 2.5rem;
             opacity: 0.9;
             cursor: pointer;
         }
         
         .scroll-indicator .w-6 {
-            width: 2.5rem; /* Larger scroll indicator */
-            height: 5rem; /* Larger scroll indicator */
-            border-width: 4px; /* Thicker border */
+            width: 2.5rem;
+            height: 5rem;
+            border-width: 4px;
             border-color: var(--secondary);
         }
         
         .scroll-indicator .w-3 {
-            width: 1rem; /* Larger dot */
-            height: 1rem; /* Larger dot */
+            width: 1rem;
+            height: 1rem;
             background-color: var(--secondary);
         }
         /* General Section Styling for ScrollTrigger */
@@ -403,13 +403,11 @@
         
         .album-card h3 {
             font-size: clamp(1.5rem, 4vw, 2rem);
-            /* Responsive font size */
             margin-bottom: 0.5rem;
         }
         
         .album-card p {
             font-size: clamp(0.8rem, 2vw, 0.9rem);
-            /* Responsive font size */
             margin-bottom: 1rem;
         }
         
@@ -493,12 +491,10 @@
         
         .player-card h3 {
             font-size: clamp(1.8rem, 5vw, 2.2rem);
-            /* Responsive font size */
         }
         
         .player-card p {
             font-size: clamp(0.9rem, 2.5vw, 1rem);
-            /* Responsive font size */
         }
         
         .player-card button {
@@ -507,7 +503,6 @@
             color: var(--secondary);
             transition: color 0.3s ease, transform 0.2s ease;
             padding: 0.5rem;
-            /* Add padding for easier touch */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -524,16 +519,12 @@
         
         .player-card button svg {
             width: clamp(1.5rem, 6vw, 2rem);
-            /* Responsive icon size */
             height: clamp(1.5rem, 6vw, 2rem);
-            /* Responsive icon size */
         }
         
         #play-pause svg {
             width: clamp(2.5rem, 10vw, 3rem);
-            /* Larger play/pause icon */
             height: clamp(2.5rem, 10vw, 3rem);
-            /* Larger play/pause icon */
         }
         
         .progress-bar {
@@ -556,13 +547,11 @@
         
         .about-content-container h3 {
             font-size: clamp(1.8rem, 5vw, 2.2rem);
-            /* Responsive font size */
             margin-bottom: 1rem;
         }
         
         .about-content-container p {
             font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-            /* Responsive font size */
             margin-bottom: 1.2rem;
         }
         
@@ -580,7 +569,6 @@
         
         .about-info-grid p.font-bold {
             font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-            /* Responsive font size */
         }
         /* Contact Section */
         
@@ -597,14 +585,12 @@
         .contact-info-container h3,
         .network-presence-container h3 {
             font-size: clamp(1.8rem, 5vw, 2.2rem);
-            /* Responsive font size */
             margin-bottom: 1rem;
         }
         
         .contact-info-container p,
         .network-presence-container p {
             font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-            /* Responsive font size */
         }
         
         .contact-info-container .space-y-4>div {
@@ -646,7 +632,6 @@
         
         footer p {
             font-size: clamp(0.75rem, 2vw, 0.85rem);
-            /* Responsive font size */
             opacity: 0.6;
         }
         /* Mobile-specific improvements */
@@ -689,7 +674,6 @@
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
             margin-bottom: 1.5rem;
             font-size: clamp(1.8rem, 5vw, 2rem);
-            /* Responsive font size */
         }
         
         .contact-info-container .space-y-4>div,
@@ -700,7 +684,6 @@
         .network-presence-container .social-icons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-            /* Smaller minmax for mobile */
             gap: 1rem;
             justify-items: center;
             margin-bottom: 2rem;
@@ -708,17 +691,13 @@
         
         .social-icon-btn {
             width: 50px;
-            /* Adjusted for mobile */
             height: 50px;
-            /* Adjusted for mobile */
             font-size: 1.5rem;
         }
         
         .social-icon-btn svg {
             width: 28px;
-            /* Adjusted for mobile */
             height: 28px;
-            /* Adjusted for mobile */
         }
         
         .network-presence-container form {
@@ -731,8 +710,248 @@
         .network-presence-container form button {
             width: 100%;
         }
-        /* Responsive design */
         
+        /* TV-Specific Styles */
+        @media (min-width: 1200px) and (min-height: 800px) {
+            .hero-section {
+                min-height: 100vh;
+                padding: 3rem 1rem;
+                justify-content: center;
+            }
+            
+            .hero-content {
+                padding: 3rem !important;
+                max-width: 1000px;
+            }
+            
+            .hero-section h1 {
+                font-size: clamp(4rem, 10vw, 6rem) !important;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-section h1 span:last-child {
+                font-size: clamp(2.5rem, 6vw, 3.5rem) !important;
+                margin-top: 1rem;
+            }
+            
+            .hero-section p {
+                font-size: clamp(1.5rem, 3vw, 2rem) !important;
+                max-width: 900px;
+                margin-bottom: 3rem;
+                line-height: 1.8;
+            }
+            
+            .hero-section button {
+                padding: 1.5rem 3rem;
+                font-size: 1.5rem;
+                border-radius: 12px;
+            }
+            
+            .hero-nav-buttons a {
+                padding: 1rem 2rem !important;
+                font-size: 1.2rem !important;
+                border-radius: 10px;
+            }
+            
+            .flex-col-mobile {
+                flex-direction: row !important;
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+            
+            .hero-nav-buttons {
+                flex-direction: row !important;
+                gap: 1.5rem;
+                margin-bottom: 3rem;
+            }
+            
+            .scroll-indicator {
+                margin-top: 4rem;
+            }
+            
+            .scroll-indicator .w-6 {
+                width: 3rem;
+                height: 6rem;
+                border-width: 5px;
+            }
+            
+            .scroll-indicator .w-3 {
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+            
+            /* Center all content for TV */
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .music-player-grid,
+            .album-grid,
+            .about-grid,
+            .contact-grid {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .player-card,
+            .tracklist-card,
+            .album-card,
+            .about-content-container,
+            .contact-info-container,
+            .network-presence-container {
+                width: 90%;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            
+            .album-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                justify-items: center;
+            }
+            
+            .album-card {
+                width: 100%;
+                max-width: 450px;
+            }
+            
+            .about-grid {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-image-container,
+            .about-content-container {
+                width: 100%;
+                max-width: 800px;
+                text-align: center;
+            }
+            
+            .about-info-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                width: 100%;
+            }
+            
+            .contact-grid {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+            }
+            
+            .contact-info-container,
+            .network-presence-container {
+                width: 100%;
+                max-width: 800px;
+            }
+            
+            .network-presence-container .social-icons-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .social-icon-btn {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .social-icon-btn svg {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .network-presence-container form {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .network-presence-container form input {
+                flex: 1;
+                padding: 1.2rem;
+                font-size: 1.1rem;
+            }
+            
+            .network-presence-container form button {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: clamp(3.5rem, 8vw, 5rem) !important;
+                margin-bottom: 4rem !important;
+            }
+            
+            .centered-heading {
+                font-size: clamp(2.5rem, 6vw, 3.5rem) !important;
+                margin-bottom: 2rem;
+            }
+            
+            .tracklist-card h3 {
+                font-size: clamp(2rem, 5vw, 2.8rem) !important;
+            }
+            
+            .track-item {
+                padding: 1.2rem 1.5rem;
+            }
+            
+            .track-item h4 {
+                font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+            }
+            
+            .track-item p {
+                font-size: clamp(1rem, 2.5vw, 1.2rem) !important;
+            }
+            
+            .track-time {
+                font-size: clamp(1rem, 2.5vw, 1.2rem) !important;
+            }
+            
+            .now-playing-info img {
+                width: 180px !important;
+                height: 180px !important;
+            }
+            
+            #now-playing-title {
+                font-size: clamp(2rem, 5vw, 2.5rem) !important;
+            }
+            
+            #now-playing-artist {
+                font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+            }
+            
+            .player-controls button svg {
+                width: clamp(2rem, 5vw, 2.5rem) !important;
+                height: clamp(2rem, 5vw, 2.5rem) !important;
+            }
+            
+            #play-pause svg {
+                width: clamp(3rem, 8vw, 4rem) !important;
+                height: clamp(3rem, 8vw, 4rem) !important;
+            }
+            
+            .audio-visualizer {
+                height: 100px;
+            }
+            
+            .visual-bar {
+                height: 20px;
+            }
+            
+            .progress-bar {
+                height: 8px;
+            }
+        }
+        
+        /* Responsive design */
         @media (max-width: 768px) {
             .section-title {
                 font-size: clamp(2rem, 6vw, 2.5rem) !important;
@@ -833,7 +1052,6 @@
             }
             .network-presence-container .social-icons-grid {
                 grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-                /* Even smaller for very small screens */
                 gap: 0.8rem;
             }
             .social-icon-btn {
@@ -986,7 +1204,7 @@
                 Pushing sonic boundaries with industrial techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
             </p>
 
-            <div class="flex justify-center gap-6 flex-col-mobile mb-6"> <!-- Increased gap and margin -->
+            <div class="flex justify-center gap-6 flex-col-mobile mb-6">
                 <button id="play-sample" class="bg-transparent border-2 font-bold">
                     Play Sample
                 </button>
@@ -996,8 +1214,8 @@
             </div>
 
             <!-- Navigation Buttons -->
-            <div class="flex justify-center gap-4 flex-wrap hero-nav-buttons mb-6"> <!-- Increased gap and margin -->
-                <a href="#music" class="px-6 py-3 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all text-lg"> <!-- Increased padding and font size -->
+            <div class="flex justify-center gap-4 flex-wrap hero-nav-buttons mb-6">
+                <a href="#music" class="px-6 py-3 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all text-lg">
                     Music
                 </a>
                 <a href="#albums" class="px-6 py-3 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all text-lg">
@@ -1409,7 +1627,7 @@
 
         // SVG icons for player controls
         const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" /></svg>`;
-        const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" /></svg>`;
+        const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule"evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" /></svg>`;
         const prevIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" clip-rule="evenodd" /><path fill-rule="evenodd" d="M19.5 19.5L12 12m0 0l7.5-7.5M12 12h7.5" clip-rule="evenodd" /></svg>`;
         const nextIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" clip-rule="evenodd" /><path fill-rule="evenodd" d="M4.5 4.5L12 12m0 0L4.5 19.5M12 12H3" clip-rule="evenodd" /></svg>`;
 
@@ -1646,19 +1864,6 @@
             repeat: -1,
             ease: "none"
         });
-
-        // Removed parallax effect for hero section as it's not suitable for TV screens
-        // window.addEventListener('mousemove', (e) => {
-        //     const x = e.clientX / window.innerWidth - 0.5;
-        //     const y = e.clientY / window.innerHeight - 0.5;
-
-        //     gsap.to(".hero-section .pulse-circle", {
-        //         x: x * 50,
-        //         y: y * 50,
-        //         duration: 0.5,
-        //         ease: "power2.out"
-        //     });
-        // });
 
         // Album hover animations
         document.querySelectorAll('.album-card').forEach(card => {
