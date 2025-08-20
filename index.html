@@ -10,31 +10,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
-         :root {
+
+        :root {
             --primary: #6a0dad;
+            /* Deep Purple */
             --secondary: #00ffff;
+            /* Cyan */
             --accent: #ff00ff;
+            /* Magenta */
             --dark: #0a0a1a;
+            /* Very Dark Blue */
             --light: #f0f0f0;
+            /* Off-White */
             --space: #000022;
+            /* Darker Space Blue */
             --text-glow-start: #00ffff;
-            /* New variable for text glow */
             --text-glow-end: #6a0dad;
-            /* New variable for text glow */
         }
-        
+
         body {
             background-color: var(--dark);
             color: var(--light);
             font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
-            /* Prevent horizontal scroll */
             margin: 0;
             padding: 0;
             line-height: 1.6;
             position: relative;
         }
-        
+
         h1,
         h2,
         h3 {
@@ -43,22 +47,16 @@
             letter-spacing: 0.08em;
             line-height: 1.2;
             text-align: center;
-            /* Center all main headings */
         }
-        /* Ensure main section titles are centered and styled */
-        
+
         .section-title {
             font-size: 3.5rem;
-            /* Larger font size for main titles */
             margin-bottom: 3rem;
-            /* More space below titles */
             text-align: center;
             color: var(--secondary);
-            /* Highlight main titles */
             text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-            /* Add a subtle glow */
         }
-        
+
         .stars-background {
             position: fixed;
             top: 0;
@@ -69,14 +67,14 @@
             background: linear-gradient(to bottom, var(--space), var(--dark));
             overflow: hidden;
         }
-        
+
         .star {
             position: absolute;
             background-color: white;
             border-radius: 50%;
             animation: twinkle linear infinite;
         }
-        
+
         @keyframes twinkle {
             0%,
             100% {
@@ -86,19 +84,19 @@
                 opacity: 1;
             }
         }
-        
+
         .album-cover {
             transition: transform 0.3s ease, filter 0.3s ease;
             filter: grayscale(100%) contrast(120%);
             cursor: pointer;
         }
-        
+
         .album-cover:hover {
             transform: scale(1.05);
             filter: none;
             z-index: 10;
         }
-        
+
         .audio-visualizer {
             width: 100%;
             height: 80px;
@@ -108,7 +106,7 @@
             padding: 10px 0;
             border-radius: 8px;
         }
-        
+
         .visual-bar {
             flex: 1;
             height: 15px;
@@ -119,7 +117,7 @@
             transition: transform 0.1s ease-out;
             border-radius: 2px;
         }
-        
+
         .track-item {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -128,18 +126,18 @@
             border-radius: 8px;
             margin-bottom: 8px;
         }
-        
+
         .track-item:hover {
             background: rgba(106, 13, 173, 0.15);
             border-left: 3px solid var(--primary);
         }
-        
+
         .track-item.playing {
             background: rgba(106, 13, 173, 0.25);
             border-left: 3px solid var(--secondary);
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
-        
+
         .pulse-circle {
             position: absolute;
             border-radius: 50%;
@@ -148,7 +146,7 @@
             z-index: -1;
             opacity: 0;
         }
-        
+
         @keyframes pulse {
             0% {
                 transform: scale(0);
@@ -162,7 +160,7 @@
                 opacity: 0;
             }
         }
-        
+
         @keyframes scroll-icon {
             0%,
             100% {
@@ -172,19 +170,18 @@
                 transform: translateY(8px);
             }
         }
-        
+
         .animate-scroll-icon {
             animation: scroll-icon 1.5s infinite ease-in-out;
         }
-        /* New text glow animation */
-        
+
         .text-glow {
             color: var(--secondary);
             text-shadow: 0 0 10px var(--text-glow-start), 0 0 20px var(--text-glow-end);
             transition: all 0.4s ease-in-out;
             animation: text-glow-pulse 3s infinite alternate;
         }
-        
+
         @keyframes text-glow-pulse {
             0%,
             100% {
@@ -194,223 +191,8 @@
                 text-shadow: 0 0 20px var(--text-glow-start), 0 0 40px var(--text-glow-end);
             }
         }
-        /* Responsive design */
-        
-        @media (max-width: 768px) {
-            .album-cover {
-                clip-path: none;
-                width: 100%;
-            }
-            h1 {
-                font-size: 2.2rem !important;
-            }
-            h1 span:last-child {
-                font-size: 1.3rem !important;
-            }
-            .hero-section h1 {
-                font-size: 2rem !important;
-            }
-            .hero-section h1 span:last-child {
-                font-size: 1.1rem !important;
-            }
-            .hero-section p {
-                font-size: 0.95rem !important;
-                padding: 0 0.5rem;
-            }
-            .hero-content {
-                padding: 1.5rem !important;
-                margin: 0 0.5rem;
-            }
-            .hero-section .pulse-circle:nth-child(1) {
-                width: 120px;
-                height: 120px;
-            }
-            .hero-section .pulse-circle:nth-child(2) {
-                width: 200px;
-                height: 200px;
-            }
-            .hero-section .pulse-circle:nth-child(3) {
-                width: 100px;
-                height: 100px;
-            }
-            .hero-section button {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
-            .scroll-indicator {
-                margin-top: 1.5rem;
-                /* Adjusted for mobile - smaller */
-            }
-            .scroll-indicator .w-6 {
-                width: 1.5rem;
-                /* Adjusted for mobile */
-                height: 3rem;
-                /* Adjusted for mobile */
-            }
-            .scroll-indicator .w-3 {
-                width: 0.6rem;
-                /* Adjusted for mobile */
-                height: 0.6rem;
-                /* Adjusted for mobile */
-            }
-            .music-player-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-            .album-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-            .about-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-            .section-title {
-                font-size: 2.5rem !important;
-                /* Adjusted for mobile */
-                margin-bottom: 1.5rem !important;
-            }
-            .hero-nav-buttons a {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .container {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-            .player-card,
-            .tracklist-card,
-            .album-card,
-            .about-content-container,
-            .contact-info-container,
-            .network-presence-container {
-                padding: 1.5rem !important;
-            }
-            .about-image-container img {
-                margin-bottom: 1.5rem;
-            }
-            /* Mobile-specific fixes */
-            .player-card {
-                order: 2;
-            }
-            .tracklist-card {
-                order: 1;
-                margin-bottom: 1.5rem;
-            }
-            .tracklist-card h3 {
-                text-align: center;
-                margin-bottom: 1.5rem;
-            }
-            .now-playing-info {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-            .now-playing-info img {
-                margin: 0 auto;
-            }
-            .player-controls {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            #now-playing-title {
-                font-size: 1.5rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 100%;
-            }
-            .track-item {
-                padding: 10px 15px;
-            }
-            .track-item h4 {
-                font-size: 1rem;
-            }
-            .track-item p {
-                font-size: 0.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-section h1 {
-                font-size: 1.8rem !important;
-                /* Slightly larger for better impact */
-            }
-            .hero-section h1 span:last-child {
-                font-size: 1.1rem !important;
-                /* Slightly larger */
-            }
-            .hero-section p {
-                font-size: 0.9rem !important;
-                /* Slightly larger */
-                line-height: 1.5 !important;
-                /* Tighter line height */
-            }
-            .hero-content {
-                padding: 1.2rem !important;
-                /* Reduced padding */
-            }
-            .hero-section button {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-            }
-            .flex-col-mobile {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            .social-icon-btn {
-                width: 12vw;
-                height: 12vw;
-            }
-            .hero-nav-buttons {
-                flex-direction: column;
-                gap: 0.4rem;
-            }
-            .section-title {
-                font-size: 2rem !important;
-                /* Further adjusted for smaller screens */
-            }
-            .track-item h4 {
-                font-size: 0.9rem;
-            }
-            .track-item p {
-                font-size: 0.75rem;
-            }
-            .album-card h3 {
-                font-size: 1.3rem !important;
-            }
-            .audio-visualizer {
-                height: 60px;
-            }
-            .visual-bar {
-                height: 12px;
-            }
-            /* Extra small device fixes */
-            .player-card,
-            .tracklist-card {
-                padding: 1rem !important;
-            }
-            .now-playing-info img {
-                width: 80px !important;
-                height: 80px !important;
-            }
-            #now-playing-title {
-                font-size: 1.2rem !important;
-            }
-            .player-controls button {
-                font-size: 1.5rem !important;
-            }
-            #play-pause {
-                font-size: 2.5rem !important;
-            }
-        }
+
         /* Custom styles for Hero Section */
-        
         .hero-section {
             background: transparent;
             position: relative;
@@ -424,26 +206,25 @@
             text-align: center;
             z-index: 1;
         }
-        
+
         .hero-content {
             z-index: 10;
             position: relative;
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(8px);
             padding: 2rem;
-            /* Reduced padding */
             border-radius: 20px;
             border: 1px solid rgba(106, 13, 173, 0.6);
             box-shadow: 0 0 40px rgba(106, 13, 173, 0.5);
             max-width: 900px;
             width: 100%;
         }
-        
+
         .hero-section .pulse-circle {
             background: rgba(0, 255, 255, 0.25);
             animation: pulse 4s infinite ease-out;
         }
-        
+
         .hero-section .pulse-circle:nth-child(1) {
             width: 300px;
             height: 300px;
@@ -451,7 +232,7 @@
             top: 20%;
             animation-delay: 0s;
         }
-        
+
         .hero-section .pulse-circle:nth-child(2) {
             width: 450px;
             height: 450px;
@@ -459,7 +240,7 @@
             bottom: 10%;
             animation-delay: 1.5s;
         }
-        
+
         .hero-section .pulse-circle:nth-child(3) {
             width: 250px;
             height: 250px;
@@ -467,42 +248,33 @@
             bottom: 5%;
             animation-delay: 0.7s;
         }
-        
+
         .hero-section h1 {
             font-size: 3.5rem;
-            /* Slightly reduced font size */
             line-height: 1.1;
             margin-bottom: 0.8rem;
-            /* Reduced margin */
         }
-        
+
         .hero-section h1 span:last-child {
             font-size: 1.8rem;
-            /* Slightly reduced font size */
             opacity: 0.9;
             display: block;
             margin-top: 0.5rem;
-            /* Reduced margin */
         }
-        
+
         .hero-section p {
             font-size: 1.1rem;
-            /* Slightly reduced font size */
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 1rem;
-            /* Reduced margin */
             line-height: 1.6;
-            /* Slightly tighter line height */
             opacity: 0.95;
         }
-        
+
         .hero-section button {
             padding: 0.8rem 1.8rem;
-            /* Reduced padding */
             font-size: 0.95rem;
-            /* Reduced font size */
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.4s ease;
@@ -512,7 +284,7 @@
             font-weight: 700;
             letter-spacing: 0.05em;
         }
-        
+
         .hero-section button::before {
             content: '';
             position: absolute;
@@ -524,65 +296,58 @@
             transition: all 0.4s ease;
             z-index: -1;
         }
-        
+
         .hero-section button:hover::before {
             left: 100%;
         }
-        
+
         .hero-section button:hover {
             transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 25px rgba(106, 13, 173, 0.7);
         }
-        
+
         .hero-section #play-sample {
             border-color: var(--secondary);
             color: var(--secondary);
             background-color: rgba(0, 255, 255, 0.1);
         }
-        
+
         .hero-section #play-sample:hover {
             background-color: var(--secondary);
             color: var(--dark);
         }
-        
+
         .hero-section .bg-purple-600 {
             background-color: var(--primary);
             border: 2px solid var(--primary);
         }
-        
+
         .hero-section .bg-purple-600:hover {
             background-color: var(--accent);
             color: var(--dark);
             border-color: var(--accent);
         }
-        
+
         .scroll-indicator {
             margin-top: 1.5rem;
-            /* Reduced from 2rem to make it smaller */
             opacity: 0.9;
             cursor: pointer;
-            /* Make it clickable */
         }
-        
+
         .scroll-indicator .w-6 {
             width: 2rem;
-            /* Slightly reduced width */
             height: 4rem;
-            /* Slightly reduced height */
             border-width: 3px;
-            /* Slightly reduced border */
             border-color: var(--secondary);
         }
-        
+
         .scroll-indicator .w-3 {
             width: 0.75rem;
-            /* Slightly reduced width */
             height: 0.75rem;
-            /* Slightly reduced height */
             background-color: var(--secondary);
         }
+
         /* General Section Styling for ScrollTrigger */
-        
         section {
             opacity: 0;
             transform: translateY(60px);
@@ -592,15 +357,14 @@
             position: relative;
             z-index: 1;
             background: transparent;
-            /* Sections should have transparent background to show stars */
         }
-        
+
         section.is-in-view {
             opacity: 1;
             transform: translateY(0);
         }
+
         /* Album Card Hover Effect */
-        
         .album-card {
             position: relative;
             overflow: hidden;
@@ -615,34 +379,34 @@
             align-items: center;
             text-align: center;
         }
-        
+
         .album-card:hover {
             transform: translateY(-8px) scale(1.03) rotateY(3deg);
             box-shadow: 0 15px 35px rgba(106, 13, 173, 0.7);
             border-color: var(--primary);
         }
-        
+
         .album-card .album-cover {
             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
             border-radius: 12px;
             filter: grayscale(85%) contrast(115%);
             margin-bottom: 1.2rem;
         }
-        
+
         .album-card:hover .album-cover {
             filter: none;
         }
-        
+
         .album-card h3 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .album-card p {
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
-        
+
         .album-card button {
             padding: 0.8rem 1.8rem;
             font-size: 0.95rem;
@@ -650,13 +414,13 @@
             background-color: rgba(106, 13, 173, 0.6);
             border: 1px solid var(--primary);
         }
-        
+
         .album-card button:hover {
             background-color: var(--primary);
             box-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
         }
+
         /* Social Icons Hover */
-        
         .social-icon-btn {
             position: relative;
             overflow: hidden;
@@ -671,14 +435,14 @@
             border: 1px solid rgba(106, 13, 173, 0.7);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
-        
+
         .social-icon-btn svg {
             color: var(--light);
             width: 28px;
             height: 28px;
             transition: color 0.3s ease;
         }
-        
+
         .social-icon-btn::before {
             content: '';
             position: absolute;
@@ -692,20 +456,20 @@
             transition: transform 0.3s ease;
             z-index: -1;
         }
-        
+
         .social-icon-btn:hover::before {
             transform: scale(1);
         }
-        
+
         .social-icon-btn:hover svg {
             color: var(--dark);
         }
-        
+
         .social-icon-btn:active {
             transform: scale(0.85);
         }
+
         /* Player Card & Tracklist Card */
-        
         .player-card,
         .tracklist-card {
             background: rgba(0, 0, 0, 0.6);
@@ -715,59 +479,59 @@
             border-radius: 15px;
             padding: 2rem;
         }
-        
+
         .player-card img {
             border-radius: 10px;
             border: 2px solid var(--secondary);
         }
-        
+
         .player-card h3 {
             font-size: 2.2rem;
         }
-        
+
         .player-card p {
             font-size: 1rem;
         }
-        
+
         .player-card button {
             background: none;
             border: none;
             color: var(--secondary);
             transition: color 0.3s ease;
         }
-        
+
         .player-card button:hover {
             color: var(--accent);
         }
-        
+
         .progress-bar {
             height: 6px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 3px;
         }
-        
+
         .progress-fill {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             border-radius: 3px;
         }
+
         /* About Section */
-        
         .about-image-container img {
             border-radius: 15px;
             border: 4px solid var(--primary);
             box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
         }
-        
+
         .about-content-container h3 {
             font-size: 2.2rem;
             margin-bottom: 1rem;
         }
-        
+
         .about-content-container p {
             font-size: 1.05rem;
             margin-bottom: 1.2rem;
         }
-        
+
         .about-info-grid>div {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(106, 13, 173, 0.6);
@@ -775,16 +539,16 @@
             padding: 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-        
+
         .about-info-grid p {
             margin-bottom: 0.2rem;
         }
-        
+
         .about-info-grid p.font-bold {
             font-size: 1.05rem;
         }
+
         /* Contact Section */
-        
         .contact-info-container,
         .network-presence-container {
             background: rgba(0, 0, 0, 0.6);
@@ -794,26 +558,26 @@
             border-radius: 15px;
             padding: 2rem;
         }
-        
+
         .contact-info-container h3,
         .network-presence-container h3 {
             font-size: 2.2rem;
             margin-bottom: 1rem;
         }
-        
+
         .contact-info-container p,
         .network-presence-container p {
             font-size: 1.05rem;
         }
-        
+
         .contact-info-container .space-y-4>div {
             padding: 0.5rem 0;
         }
-        
+
         .contact-info-container .font-bold {
             color: var(--secondary);
         }
-        
+
         .network-presence-container form input {
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -821,7 +585,7 @@
             padding: 0.8rem 1rem;
             font-size: 0.95rem;
         }
-        
+
         .network-presence-container form button {
             border-radius: 8px;
             padding: 0.8rem 1.5rem;
@@ -829,12 +593,12 @@
             background-color: var(--primary);
             transition: background-color 0.3s ease;
         }
-        
+
         .network-presence-container form button:hover {
             background-color: var(--accent);
         }
+
         /* Footer */
-        
         footer {
             background-color: var(--space);
             padding: 1.5rem;
@@ -842,20 +606,20 @@
             position: relative;
             z-index: 2;
         }
-        
+
         footer p {
             font-size: 0.85rem;
             opacity: 0.6;
         }
+
         /* Mobile-specific improvements */
-        
         .now-playing-info {
             display: flex;
             align-items: center;
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .player-controls {
             display: flex;
             justify-content: center;
@@ -863,276 +627,345 @@
             gap: 2rem;
             margin-top: 1.5rem;
         }
-        
+
         .tracklist-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
+
         .tracklist-header h3 {
             margin: 0;
         }
-        
+
         .track-time {
             font-size: 0.85rem;
             opacity: 0.8;
         }
+
         /* Custom additions for spacing and centering */
-        
         .centered-heading {
             text-align: center;
             color: var(--secondary);
-            /* Apply secondary color to these headings */
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
-            /* Subtle glow */
             margin-bottom: 1.5rem;
-            /* Adjusted margin */
             font-size: 2rem;
-            /* Adjusted font size */
         }
-        
+
         .contact-info-container .space-y-4>div,
         .network-presence-container .space-y-4>div {
             margin-bottom: 1rem;
-            /* Add space between contact items */
         }
-        
+
         .network-presence-container .social-icons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-            /* Responsive grid for icons */
             gap: 1rem;
-            /* Space between icons */
             justify-items: center;
-            /* Center icons within their grid cells */
             margin-bottom: 2rem;
-            /* Space below social icons */
         }
-        
+
         .social-icon-btn {
             width: 60px;
-            /* Fixed width for icons */
             height: 60px;
-            /* Fixed height for icons */
             font-size: 1.5rem;
-            /* Icon size */
         }
-        
+
         .social-icon-btn svg {
             width: 32px;
-            /* SVG icon size */
             height: 32px;
-            /* SVG icon size */
         }
-        
+
         .network-presence-container form {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            /* Space between form elements */
         }
-        
+
         .network-presence-container form input,
         .network-presence-container form button {
             width: 100%;
-            /* Full width for form elements */
         }
-        /* Adjustments for smaller screens */
-        
+
+        /* Responsive design */
         @media (max-width: 768px) {
-            .centered-heading {
-                font-size: 1.8rem;
-                /* Smaller font size for mobile */
-                margin-bottom: 1rem;
+            .section-title {
+                font-size: 2.5rem !important;
+                margin-bottom: 2rem !important;
             }
+
+            .hero-section h1 {
+                font-size: 2.8rem !important;
+            }
+
+            .hero-section h1 span:last-child {
+                font-size: 1.5rem !important;
+            }
+
+            .hero-section p {
+                font-size: 1rem !important;
+                padding: 0 0.75rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem !important;
+                margin: 0 0.75rem;
+            }
+
+            .hero-section button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-nav-buttons a {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .scroll-indicator {
+                margin-top: 1.5rem;
+            }
+
+            .scroll-indicator .w-6 {
+                width: 1.8rem;
+                height: 3.5rem;
+            }
+
+            .scroll-indicator .w-3 {
+                width: 0.7rem;
+                height: 0.7rem;
+            }
+
+            .music-player-grid,
+            .album-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2.5rem !important;
+            }
+
+            .player-card,
+            .tracklist-card,
+            .album-card,
+            .about-content-container,
             .contact-info-container,
             .network-presence-container {
-                padding: 1rem;
-                /* Reduced padding for mobile */
+                padding: 1.5rem !important;
             }
+
+            .about-image-container img {
+                margin-bottom: 1.5rem;
+            }
+
+            /* Mobile-specific order for player */
+            .player-card {
+                order: 2;
+            }
+
+            .tracklist-card {
+                order: 1;
+                margin-bottom: 1.5rem;
+            }
+
+            .tracklist-card h3 {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .now-playing-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .now-playing-info img {
+                margin: 0 auto;
+                width: 100px;
+                height: 100px;
+            }
+
+            #now-playing-title {
+                font-size: 1.8rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
+            }
+
+            .track-item {
+                padding: 10px 15px;
+            }
+
+            .track-item h4 {
+                font-size: 1rem;
+            }
+
+            .track-item p {
+                font-size: 0.8rem;
+            }
+
+            .centered-heading {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
             .network-presence-container .social-icons-grid {
                 grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-                /* Adjust grid for smaller screens */
                 gap: 0.8rem;
             }
+
             .social-icon-btn {
                 width: 50px;
                 height: 50px;
             }
+
             .social-icon-btn svg {
                 width: 28px;
                 height: 28px;
             }
         }
-        
+
         @media (max-width: 480px) {
+            .section-title {
+                font-size: 2rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .hero-section h1 {
+                font-size: 2.2rem !important;
+            }
+
+            .hero-section h1 span:last-child {
+                font-size: 1.2rem !important;
+            }
+
+            .hero-section p {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                padding: 0 0.5rem;
+            }
+
+            .hero-content {
+                padding: 1.2rem !important;
+            }
+
+            .hero-section button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .flex-col-mobile {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .hero-nav-buttons {
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+
+            .album-card h3 {
+                font-size: 1.8rem !important;
+            }
+
+            .audio-visualizer {
+                height: 60px;
+            }
+
+            .visual-bar {
+                height: 12px;
+            }
+
+            .player-card,
+            .tracklist-card {
+                padding: 1.2rem !important;
+            }
+
+            .now-playing-info img {
+                width: 80px !important;
+                height: 80px !important;
+            }
+
+            #now-playing-title {
+                font-size: 1.5rem !important;
+            }
+
+            .player-controls button {
+                font-size: 1.8rem !important;
+            }
+
+            #play-pause {
+                font-size: 3rem !important;
+            }
+
             .centered-heading {
                 font-size: 1.5rem;
             }
+
             .network-presence-container .social-icons-grid {
                 grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
                 gap: 0.6rem;
             }
+
             .social-icon-btn {
                 width: 45px;
                 height: 45px;
             }
+
             .social-icon-btn svg {
                 width: 24px;
                 height: 24px;
             }
         }
 
-        /* Custom adjustments for overall spacing and mobile view */
-        .container {
-            max-width: 100%; /* Ensure container doesn't exceed viewport width */
-            padding-left: 1rem; /* Add some padding on sides */
-            padding-right: 1rem; /* Add some padding on sides */
-        }
-
-        /* Reduce padding/margin for sections on smaller screens */
-        section {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-
-        /* Adjust hero section elements for tighter fit */
-        .hero-section h1 {
-            font-size: 2.5rem; /* Smaller font size for main title */
-            margin-bottom: 0.5rem;
-        }
-        .hero-section h1 span:last-child {
-            font-size: 1.4rem; /* Smaller font size for subtitle */
-            margin-top: 0.3rem;
-        }
-        .hero-section p {
-            font-size: 1rem; /* Smaller font size for paragraph */
-            margin-bottom: 0.8rem;
-            padding: 0 0.5rem; /* Add horizontal padding to prevent overflow */
-        }
-        .hero-section button {
-            padding: 0.7rem 1.5rem; /* Smaller buttons */
-            font-size: 0.9rem;
-        }
-        .hero-nav-buttons {
-            gap: 0.5rem; /* Reduce gap between navigation buttons */
-            margin-bottom: 1rem; /* Reduce margin below navigation buttons */
-        }
-        .hero-nav-buttons a {
-            padding: 0.3rem 0.7rem; /* Smaller navigation buttons */
-            font-size: 0.7rem;
-        }
-
-        /* Adjust section titles */
-        .section-title {
-            font-size: 2.2rem !important; /* Smaller section titles */
-            margin-bottom: 1.5rem !important;
-        }
-
-        /* Adjust music player and tracklist card padding */
-        .player-card, .tracklist-card {
-            padding: 1.2rem !important; /* Reduced padding */
-        }
-
-        /* Adjust album card padding and font sizes */
-        .album-card {
-            padding: 1rem !important;
-        }
-        .album-card h3 {
-            font-size: 1.8rem !important;
-        }
-        .album-card p {
-            font-size: 0.8rem !important;
-        }
-        .album-card button {
-            padding: 0.6rem 1.2rem !important;
-            font-size: 0.85rem !important;
-        }
-
-        /* Adjust about section content */
-        .about-content-container h3 {
-            font-size: 1.8rem !important;
-            margin-bottom: 0.8rem !important;
-        }
-        .about-content-container p {
-            font-size: 0.95rem !important;
-            margin-bottom: 1rem !important;
-        }
-        .about-info-grid > div {
-            padding: 0.8rem !important;
-        }
-        .about-info-grid p.font-bold {
-            font-size: 0.95rem !important;
-        }
-
-        /* Adjust contact section content */
-        .contact-info-container h3, .network-presence-container h3 {
-            font-size: 1.8rem !important;
-            margin-bottom: 0.8rem !important;
-        }
-        .contact-info-container p, .network-presence-container p {
-            font-size: 0.95rem !important;
-        }
-        .contact-info-container .space-y-4 > div {
-            padding: 0.3rem 0 !important;
-        }
-        .network-presence-container .social-icons-grid {
-            gap: 0.5rem; /* Smaller gap for social icons */
-            margin-bottom: 1.5rem;
-        }
-        .social-icon-btn {
-            width: 40px; /* Even smaller social icons */
-            height: 40px;
-        }
-        .social-icon-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-        .network-presence-container form input, .network-presence-container form button {
-            padding: 0.6rem 1rem !important;
-            font-size: 0.85rem !important;
-        }
-
-        /* Ensure no horizontal scroll on very small screens */
         @media (max-width: 375px) {
             .hero-section h1 {
-                font-size: 1.6rem !important;
+                font-size: 1.8rem !important;
             }
+
             .hero-section h1 span:last-child {
                 font-size: 1rem !important;
             }
+
             .hero-section p {
                 font-size: 0.85rem !important;
             }
+
             .hero-section button {
-                padding: 0.4rem 0.8rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+            }
+
+            .hero-nav-buttons a {
+                padding: 0.3rem 0.8rem;
                 font-size: 0.7rem;
             }
-            .hero-nav-buttons a {
-                padding: 0.2rem 0.5rem;
-                font-size: 0.65rem;
-            }
+
             .section-title {
                 font-size: 1.8rem !important;
             }
+
             .track-item h4 {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
+
             .track-item p {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
             }
+
             .album-card h3 {
                 font-size: 1.5rem !important;
             }
+
             .social-icon-btn {
-                width: 35px;
-                height: 35px;
+                width: 40px;
+                height: 40px;
             }
+
             .social-icon-btn svg {
-                width: 18px;
-                height: 18px;
+                width: 20px;
+                height: 20px;
             }
         }
     </style>
@@ -1159,8 +992,7 @@
                 Pushing sonic boundaries with industrial techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
             </p>
 
-            <div class="flex justify-center gap-4 flex-col-mobile mb-3">
-                <!-- Changed mb-4 to mb-3 for less space -->
+            <div class="flex justify-center gap-4 flex-col-mobile mb-4">
                 <button id="play-sample" class="bg-transparent border-2 font-bold">
                     Play Sample
                 </button>
@@ -1170,8 +1002,7 @@
             </div>
 
             <!-- Navigation Buttons -->
-            <div class="flex justify-center gap-3 flex-wrap hero-nav-buttons mb-2">
-                <!-- Changed mb-4 to mb-2 for less space -->
+            <div class="flex justify-center gap-3 flex-wrap hero-nav-buttons mb-4">
                 <a href="#music" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
                     Music
                 </a>
@@ -1187,8 +1018,7 @@
             </div>
         </div>
 
-        <div class="scroll-indicator animate-bounce flex justify-center" id="scroll-down-indicator" style="margin-top: 1.5rem;">
-            <!-- Changed margin-top to 1.5rem for less space -->
+        <div class="scroll-indicator animate-bounce flex justify-center" id="scroll-down-indicator">
             <div class="w-6 h-16 border-4 rounded-full">
                 <div class="w-3 h-3 rounded-full mx-auto my-1 animate-scroll-icon"></div>
             </div>
@@ -1741,7 +1571,7 @@
 
             // Animate button on click
             gsap.to(playDemoBtn, {
-                scale: 1.2,
+                scale: 1.1,
                 duration: 0.2,
                 yoyo: true,
                 repeat: 1
@@ -1755,7 +1585,7 @@
                 scrollTo: {
                     y: "#music",
                     offsetY: 50
-                }, // Scroll to the music section with an offset
+                },
                 ease: "power2.inOut"
             });
         });
@@ -1818,13 +1648,13 @@
             const cover = card.querySelector('.album-cover');
             gsap.set(cover, {
                 filter: "grayscale(80%) contrast(110%)"
-            }); // Initial filter
+            });
 
             card.addEventListener('mouseenter', () => {
                 gsap.to(card, {
                     y: -5,
                     scale: 1.02,
-                    rotateY: 5, // Added 3D rotation
+                    rotateY: 5,
                     boxShadow: "0 10px 25px rgba(106, 13, 173, 0.6)",
                     borderColor: "var(--primary)",
                     duration: 0.3,
@@ -1841,7 +1671,7 @@
                 gsap.to(card, {
                     y: 0,
                     scale: 1,
-                    rotateY: 0, // Reset rotation
+                    rotateY: 0,
                     boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
                     borderColor: "rgba(106, 13, 173, 0.3)",
                     duration: 0.3,
@@ -1863,7 +1693,6 @@
                 end: "bottom top",
                 onEnter: () => section.classList.add("is-in-view"),
                 onLeaveBack: () => section.classList.remove("is-in-view"),
-                // markers: true // Uncomment for debugging
             });
         });
 
@@ -1919,7 +1748,7 @@
                 opacity: 0,
                 y: 50,
                 duration: 0.8,
-                delay: i * 0.1, // Staggered animation
+                delay: i * 0.1,
                 ease: "power2.out"
             });
         });
@@ -2002,7 +1831,7 @@
                     scale: 1.1,
                     duration: 0.3,
                     ease: "back.out(1.7)"
-                }); // Pop effect
+                });
             });
             btn.addEventListener('mouseleave', () => {
                 gsap.to(btn.querySelector('svg'), {
