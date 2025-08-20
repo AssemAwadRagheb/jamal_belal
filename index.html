@@ -1224,6 +1224,883 @@
                 box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
             }
         }
+        /* New styles for YouTube player and enhanced visualizer */
+        
+        .youtube-player-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: black;
+            border-radius: 10px;
+            border: 2px solid var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .youtube-player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .visualizer-container {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            /* Adjust as needed */
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            padding: 10px 0;
+            border-radius: 8px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            overflow: hidden;
+            /* Ensure bars don't overflow */
+        }
+        
+        .visual-bar {
+            flex: 1;
+            height: 15px;
+            margin: 0 1.5px;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            transform-origin: bottom;
+            transform: scaleY(0.1);
+            transition: transform 0.1s ease-out;
+            border-radius: 2px;
+        }
+        
+        .player-controls button {
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .player-controls button:hover {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+        
+        .player-controls button:active {
+            transform: scale(0.95);
+        }
+        
+        .progress-bar-container {
+            position: relative;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            /* Hide default input range background */
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+        
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary);
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            margin-top: -5px;
+            /* Center thumb vertically */
+        }
+        
+        .progress-bar::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary);
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+        
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+            z-index: 1;
+        }
+        /* Hide visualizer when YouTube video is active */
+        
+        .youtube-active .visualizer-container {
+            display: none;
+        }
+        /* Hide cover image when YouTube video is active */
+        
+        .youtube-active #now-playing-cover {
+            display: none;
+        }
+        /* Adjust info layout when YouTube video is active */
+        
+        .youtube-active .now-playing-info {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .youtube-active .now-playing-info>div {
+            text-align: center;
+        }
+        /* Responsive adjustments for player */
+        
+        @media (max-width: 768px) {
+            .youtube-player-container {
+                margin-bottom: 1rem;
+            }
+            .visualizer-container {
+                height: 60px;
+                margin-bottom: 1rem;
+            }
+            .visual-bar {
+                height: 10px;
+            }
+            .progress-bar-container {
+                height: 4px;
+                margin-bottom: 1rem;
+            }
+            .progress-bar::-webkit-slider-thumb,
+            .progress-bar::-moz-range-thumb {
+                width: 12px;
+                height: 12px;
+                margin-top: -4px;
+            }
+        }
+        /* New styles for playlist player */
+        
+        .playlist-player-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.7);
+            /* Cyan border for distinction */
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+            /* Cyan shadow */
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            /* Space from albums grid */
+            display: none;
+            /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            /* Match hero content width */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .playlist-player-card.active {
+            display: flex;
+            /* Show when active */
+        }
+        
+        .playlist-player-card .youtube-player-container {
+            margin-bottom: 1rem;
+        }
+        
+        .playlist-player-card .now-playing-info {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            /* Ensure it takes full width for text alignment */
+        }
+        
+        .playlist-player-card .now-playing-info h3 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 0.2rem;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+            overflow: hidden;
+            /* Hide overflow text */
+            text-overflow: ellipsis;
+            /* Add ellipsis for overflow */
+            max-width: 100%;
+            /* Ensure it respects container width */
+        }
+        
+        .playlist-player-card .now-playing-info p {
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+            opacity: 0.8;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+            overflow: hidden;
+            /* Hide overflow text */
+            text-overflow: ellipsis;
+            /* Add ellipsis for overflow */
+            max-width: 100%;
+            /* Ensure it respects container width */
+        }
+        
+        .playlist-player-card .player-controls {
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .playlist-player-card .player-controls button {
+            color: var(--secondary);
+            /* Cyan controls */
+        }
+        
+        .playlist-player-card .player-controls button:hover {
+            color: var(--accent);
+            /* Magenta on hover */
+        }
+        
+        .playlist-player-card .progress-bar-container {
+            margin-bottom: 1rem;
+        }
+        
+        .playlist-player-card .progress-fill {
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            /* Cyan to Magenta fill */
+        }
+        
+        .playlist-player-card .progress-bar::-webkit-slider-thumb {
+            background: var(--accent);
+            /* Magenta thumb */
+            border-color: var(--secondary);
+            /* Cyan border */
+        }
+        
+        .playlist-player-card .progress-bar::-moz-range-thumb {
+            background: var(--accent);
+            /* Magenta thumb */
+            border-color: var(--secondary);
+            /* Cyan border */
+        }
+        /* Responsive adjustments for playlist player */
+        
+        @media (max-width: 768px) {
+            .playlist-player-card {
+                padding: 1.5rem;
+                margin-top: 2rem;
+            }
+            .playlist-player-card .now-playing-info h3 {
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            }
+            .playlist-player-card .now-playing-info p {
+                font-size: clamp(0.75rem, 2vw, 0.85rem);
+            }
+            .playlist-player-card .player-controls {
+                gap: 1rem;
+            }
+            .playlist-player-card .player-controls button svg {
+                width: clamp(1.2rem, 5vw, 1.8rem);
+                height: clamp(1.2rem, 5vw, 1.8rem);
+            }
+            .playlist-player-card #play-pause svg {
+                width: clamp(2rem, 8vw, 3rem);
+                height: clamp(2rem, 8vw, 3rem);
+            }
+        }
+        /* Custom styles for track items */
+        
+        .track-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            padding: 15px 20px;
+            /* Increased padding */
+            border-radius: 10px;
+            /* More rounded corners */
+            background: rgba(0, 0, 0, 0.3);
+            /* Slightly darker background */
+            border: 1px solid rgba(106, 13, 173, 0.2);
+            /* Subtle border */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Soft shadow */
+            transition: all 0.3s ease;
+        }
+        
+        .track-item:hover {
+            background: rgba(106, 13, 173, 0.25);
+            /* More pronounced hover */
+            border-left: 4px solid var(--primary);
+            /* Thicker border on hover */
+            transform: translateY(-3px);
+            /* Slight lift effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .track-item.playing {
+            background: rgba(106, 13, 173, 0.4);
+            /* Even more pronounced for playing */
+            border-left: 4px solid var(--secondary);
+            /* Cyan border for playing */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            /* Stronger glow */
+            transform: scale(1.01);
+            /* Slightly larger when playing */
+        }
+        
+        .track-item .flex.justify-between.items-center {
+            width: 100%;
+            /* Ensure content spans full width */
+        }
+        
+        .track-item h4 {
+            font-size: 1.1rem;
+            /* Slightly larger track title */
+            color: var(--light);
+            margin-bottom: 4px;
+            /* Space between title and subtitle */
+        }
+        
+        .track-item p {
+            font-size: 0.85rem;
+            /* Slightly larger subtitle */
+            opacity: 0.8;
+            color: var(--light);
+        }
+        
+        .track-time {
+            font-size: 0.9rem;
+            /* Larger time display */
+            color: var(--secondary);
+            /* Cyan color for time */
+            font-weight: bold;
+        }
+        /* Discography Player Enhancements */
+        
+        #discography-player-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2.5rem;
+            /* More padding */
+            border-radius: 15px;
+            /* Changed from 20px to 15px for consistency with other cards */
+            background: rgba(0, 0, 0, 0.6);
+            /* Changed from gradient to solid for consistency */
+            border: 1px solid rgba(106, 13, 173, 0.7);
+            /* Changed from 2px solid to 1px solid for consistency */
+            box-shadow: 0 0 25px rgba(106, 13, 173, 0.3);
+            /* Changed from 35px to 25px for consistency */
+        }
+        
+        #discography-now-playing-cover {
+            width: 180px;
+            /* Larger cover */
+            height: 180px;
+            border-radius: 15px;
+            /* More rounded cover */
+            border: 3px solid var(--secondary);
+            /* Thicker cyan border */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            /* Glow effect */
+            margin-bottom: 1.5rem;
+        }
+        
+        #discography-now-playing-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            /* Responsive title size */
+            color: var(--secondary);
+            /* Cyan title */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            margin-bottom: 0.5rem;
+        }
+        
+        #discography-now-playing-artist {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            /* Responsive artist size */
+            color: var(--light);
+            opacity: 0.9;
+        }
+        
+        .player-controls {
+            margin-top: 2rem;
+            /* More space for controls */
+            gap: 2.5rem;
+            /* Increased gap between buttons */
+        }
+        
+        .player-controls button {
+            color: var(--secondary);
+            /* Cyan controls */
+            transition: all 0.3s ease;
+        }
+        
+        .player-controls button:hover {
+            color: var(--accent);
+            /* Magenta on hover */
+            transform: scale(1.15);
+            /* More pronounced hover effect */
+        }
+        
+        #discography-play-pause svg {
+            width: clamp(3rem, 8vw, 4rem);
+            /* Larger play/pause button */
+            height: clamp(3rem, 8vw, 4rem);
+        }
+        
+        .visualizer-container {
+            height: 100px;
+            /* Taller visualizer */
+            background: rgba(0, 0, 0, 0.6);
+            /* Darker background for visualizer */
+            border-radius: 10px;
+            padding: 15px 0;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .visual-bar {
+            height: 20px;
+            /* Taller bars */
+            margin: 0 2px;
+            /* Slightly more space between bars */
+            border-radius: 3px;
+        }
+        
+        .progress-bar-container {
+            height: 8px;
+            /* Thicker progress bar */
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.15);
+            /* Lighter background */
+            margin-top: 1.5rem;
+        }
+        
+        .progress-fill {
+            border-radius: 4px;
+        }
+        
+        .progress-bar::-webkit-slider-thumb {
+            width: 20px;
+            /* Larger thumb */
+            height: 20px;
+            border: 3px solid var(--primary);
+            /* Thicker border */
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+            /* Stronger glow */
+            margin-top: -6px;
+            /* Adjust to center */
+        }
+        
+        .progress-bar::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+        }
+        /* Album Card (Playlist Item) Enhancements */
+        
+        .album-card {
+            border-radius: 20px;
+            /* More rounded corners */
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.6), rgba(10, 10, 26, 0.7));
+            /* Gradient background */
+            border: 2px solid rgba(106, 13, 173, 0.5);
+            /* Stronger border */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            /* Deeper shadow */
+            padding: 2rem;
+            /* More padding */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Smoother transition */
+        }
+        
+        .album-card:hover {
+            transform: translateY(-10px) scale(1.04) rotateY(4deg);
+            /* More pronounced lift and rotation */
+            box-shadow: 0 20px 45px rgba(106, 13, 173, 0.8);
+            /* Intense glow */
+            border-color: var(--secondary);
+            /* Cyan border on hover */
+        }
+        
+        .album-card .album-cover {
+            border-radius: 18px;
+            /* More rounded cover */
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            /* Subtle cyan border */
+            filter: grayscale(90%) contrast(120%);
+            /* Stronger initial filter */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .album-card:hover .album-cover {
+            filter: none;
+            /* Full color on hover */
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+            /* Stronger glow on hover */
+        }
+        
+        .album-card h3 {
+            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+            /* Larger title */
+            color: var(--secondary);
+            /* Cyan title */
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+            margin-bottom: 0.8rem;
+        }
+        
+        .album-card p {
+            font-size: clamp(0.85rem, 2.2vw, 1rem);
+            /* Larger description */
+            opacity: 0.85;
+        }
+        
+        .album-card button {
+            padding: 0.9rem 2rem;
+            /* Larger button */
+            font-size: 1rem;
+            border-radius: 8px;
+            background-color: var(--primary);
+            /* Primary color button */
+            border: 2px solid var(--primary);
+            color: var(--light);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .album-card button:hover {
+            background-color: var(--accent);
+            /* Magenta on hover */
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+            /* Magenta glow */
+            transform: translateY(-2px);
+        }
+        /* Playlist Player Enhancements */
+        
+        .playlist-player-card {
+            border: 2px solid var(--secondary);
+            /* Cyan border */
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.4);
+            /* Cyan glow */
+            padding: 2.5rem;
+            /* More padding */
+            border-radius: 20px;
+            /* More rounded */
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(10, 10, 26, 0.8));
+            /* Gradient background */
+        }
+        
+        .playlist-player-card .youtube-player-container {
+            border: 3px solid var(--accent);
+            /* Magenta border for YouTube player */
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+            /* Magenta glow */
+        }
+        
+        .playlist-player-card .now-playing-info h3 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            /* Larger title */
+            color: var(--accent);
+            /* Magenta title */
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+        
+        .playlist-player-card .now-playing-info p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            /* Larger artist */
+            color: var(--light);
+            opacity: 0.9;
+        }
+        
+        .playlist-player-card .player-controls button {
+            color: var(--accent);
+            /* Magenta controls */
+        }
+        
+        .playlist-player-card .player-controls button:hover {
+            color: var(--secondary);
+            /* Cyan on hover */
+        }
+        
+        .playlist-player-card .progress-fill {
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+            /* Magenta to Cyan fill */
+        }
+        
+        .playlist-player-card .progress-bar::-webkit-slider-thumb {
+            background: var(--secondary);
+            /* Cyan thumb */
+            border-color: var(--accent);
+            /* Magenta border */
+            box-shadow: 0 0 8px rgba(255, 0, 255, 0.7);
+            /* Magenta glow */
+        }
+        
+        .playlist-player-card .progress-bar::-moz-range-thumb {
+            background: var(--secondary);
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(255, 0, 255, 0.7);
+        }
+        /* Responsive adjustments for enhanced styles */
+        
+        @media (max-width: 768px) {
+            .track-item {
+                padding: 12px 15px;
+            }
+            .track-item h4 {
+                font-size: 1rem;
+            }
+            .track-item p {
+                font-size: 0.8rem;
+            }
+            .track-time {
+                font-size: 0.8rem;
+            }
+            #discography-player-card,
+            .playlist-player-card {
+                padding: 1.5rem;
+            }
+            #discography-now-playing-cover {
+                width: 120px;
+                height: 120px;
+            }
+            #discography-now-playing-title,
+            .playlist-player-card .now-playing-info h3 {
+                font-size: clamp(1.5rem, 4vw, 1.8rem);
+            }
+            #discography-now-playing-artist,
+            .playlist-player-card .now-playing-info p {
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
+            }
+            .player-controls {
+                gap: 1.5rem;
+            }
+            #discography-play-pause svg {
+                width: clamp(2.5rem, 8vw, 3rem);
+                height: clamp(2.5rem, 8vw, 3rem);
+            }
+            .visualizer-container {
+                height: 80px;
+            }
+            .visual-bar {
+                height: 15px;
+            }
+            .progress-bar-container {
+                height: 6px;
+            }
+            .progress-bar::-webkit-slider-thumb,
+            .progress-bar::-moz-range-thumb {
+                width: 16px;
+                height: 16px;
+                margin-top: -5px;
+            }
+            .album-card {
+                padding: 1.5rem;
+            }
+            .album-card h3 {
+                font-size: clamp(1.4rem, 4vw, 1.8rem);
+            }
+            .album-card p {
+                font-size: clamp(0.75rem, 2vw, 0.9rem);
+            }
+            .album-card button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .track-item {
+                padding: 10px 12px;
+            }
+            .track-item h4 {
+                font-size: 0.9rem;
+            }
+            .track-item p {
+                font-size: 0.75rem;
+            }
+            .track-time {
+                font-size: 0.75rem;
+            }
+            #discography-player-card,
+            .playlist-player-card {
+                padding: 1rem;
+            }
+            #discography-now-playing-cover {
+                width: 100px;
+                height: 100px;
+            }
+            #discography-now-playing-title,
+            .playlist-player-card .now-playing-info h3 {
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            }
+            #discography-now-playing-artist,
+            .playlist-player-card .now-playing-info p {
+                font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+            }
+            .player-controls {
+                gap: 1rem;
+            }
+            #discography-play-pause svg {
+                width: clamp(2rem, 6vw, 2.5rem);
+                height: clamp(2rem, 6vw, 2.5rem);
+            }
+            .visualizer-container {
+                height: 60px;
+            }
+            .visual-bar {
+                height: 12px;
+            }
+            .progress-bar-container {
+                height: 4px;
+            }
+            .progress-bar::-webkit-slider-thumb,
+            .progress-bar::-moz-range-thumb {
+                width: 12px;
+                height: 12px;
+                margin-top: -4px;
+            }
+            .album-card {
+                padding: 1.2rem;
+            }
+            .album-card h3 {
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            }
+            .album-card p {
+                font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            }
+            .album-card button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+        /* New styles for YouTube player and enhanced visualizer */
+        
+        .youtube-player-container {
+            position: relative;
+            width: 100%;
+            /* Set a fixed aspect ratio for YouTube player */
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: black;
+            border-radius: 10px;
+            border: 2px solid var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .youtube-player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Hide YouTube controls */
+        
+        .youtube-player-container iframe {
+            pointer-events: none;
+            /* Disable interaction with iframe controls */
+        }
+        /* Adjust player card size to fit YouTube iframe */
+        
+        #discography-player-card .youtube-player-container,
+        .playlist-player-card .youtube-player-container {
+            width: 100%;
+            /* Ensure it takes full width of its parent */
+            max-width: 640px;
+            /* Standard YouTube width for 16:9 aspect ratio */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Hide visualizer when YouTube video is active */
+        
+        .youtube-active .visualizer-container {
+            display: none;
+        }
+        /* Hide cover image when YouTube video is active */
+        
+        .youtube-active #now-playing-cover {
+            display: none;
+        }
+        /* Adjust info layout when YouTube video is active */
+        
+        .youtube-active .now-playing-info {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .youtube-active .now-playing-info>div {
+            text-align: center;
+        }
+        /* Playlist Player specific styles */
+        
+        .playlist-player-card {
+            display: none;
+            /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            /* Space from the album grid */
+        }
+        
+        .playlist-player-card.active {
+            display: flex;
+            /* Show when active */
+        }
+        /* Position the playlist player directly below the active album card */
+        
+        .album-card.playing+.playlist-player-card {
+            display: flex;
+            margin-top: 1rem;
+            /* Adjust spacing as needed */
+        }
+        /* Ensure the playlist player is not displayed if no album card is playing */
+        
+        .playlist-player-card:not(.active) {
+            display: none;
+        }
+        /* Responsive adjustments for player */
+        
+        @media (max-width: 768px) {
+            .youtube-player-container {
+                margin-bottom: 1rem;
+            }
+            .visualizer-container {
+                height: 60px;
+                margin-bottom: 1rem;
+            }
+            .visual-bar {
+                height: 10px;
+            }
+            .progress-bar-container {
+                height: 4px;
+                margin-bottom: 1rem;
+            }
+            .progress-bar::-webkit-slider-thumb,
+            .progress-bar::-moz-range-thumb {
+                width: 12px;
+                height: 12px;
+                margin-top: -4px;
+            }
+        }
     </style>
 </head>
 
@@ -1266,7 +2143,7 @@
         </div>
     </section>
 
-    <!-- Music Player -->
+    <!-- Music Player (Discography) -->
     <section class="min-h-screen py-20 px-4 relative overflow-hidden" id="music">
         <h2 class="text-4xl md:text-6xl font-bold mb-12 md:mb-20 text-center section-title">System Archive</h2>
 
@@ -1278,7 +2155,7 @@
                 </div>
 
                 <div class="space-y-2">
-                    <div class="track-item" data-src="audio/riot.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Riot" data-title="Riot" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/riot.mp3" data-cover="https://img.youtube.com/vi/lqHB3Ojgu_s/hqdefault.jpg" data-title="Riot" data-artist="Jamal Belal" data-youtube-link="https://www.youtube.com/embed/lqHB3Ojgu_s?autoplay=1&controls=0&showinfo=0&rel=0">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Riot</h4>
@@ -1288,7 +2165,7 @@
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/havoc.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Havoc" data-title="Havoc" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/havoc.mp3" data-cover="https://img.youtube.com/vi/7H0K-IsjGkA/hqdefault.jpg" data-title="Havoc" data-artist="Jamal Belal" data-youtube-link="https://www.youtube.com/embed/7H0K-IsjGkA?autoplay=1&controls=0&showinfo=0&rel=0">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Havoc</h4>
@@ -1298,7 +2175,7 @@
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/rage.mp3" data-cover="https://via.placeholder.com/300/ff00ff/000000?text=Rage" data-title="Rage" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/rage.mp3" data-cover="https://img.youtube.com/vi/Z1TUj24jEtk/hqdefault.jpg" data-title="Rage" data-artist="Jamal Belal" data-youtube-link="https://www.youtube.com/embed/Z1TUj24jEtk?autoplay=1&controls=0&showinfo=0&rel=0">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Rage</h4>
@@ -1308,7 +2185,7 @@
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/flute-step.mp3" data-cover="https://via.placeholder.com/300/6a0dad/ffffff?text=Flute+Step" data-title="Flute Step" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/flute-step.mp3" data-cover="https://img.youtube.com/vi/-XhQo9pE6NU/hqdefault.jpg" data-title="Flute Step" data-artist="Jamal Belal" data-youtube-link="https://www.youtube.com/embed/-XhQo9pE6NU?autoplay=1&controls=0&showinfo=0&rel=0">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Flute Step</h4>
@@ -1318,7 +2195,7 @@
                         </div>
                     </div>
 
-                    <div class="track-item" data-src="audio/revolution.mp3" data-cover="https://via.placeholder.com/300/00ffff/000000?text=Revolution" data-title="Revolution" data-artist="Jamal Belal">
+                    <div class="track-item" data-src="audio/revolution.mp3" data-cover="https://img.youtube.com/vi/Kqy2VrN8Xds/hqdefault.jpg" data-title="Revolution" data-artist="Jamal Belal" data-youtube-link="https://www.youtube.com/embed/Kqy2VrN8Xds?autoplay=1&controls=0&showinfo=0&rel=0">
                         <div class="flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold">Revolution</h4>
@@ -1330,22 +2207,28 @@
                 </div>
             </div>
 
-            <!-- Player -->
-            <div class="player-card">
+            <!-- Player for Discography Tracks -->
+            <div class="player-card" id="discography-player-card">
                 <div class="now-playing-info">
-                    <img id="now-playing-cover" src="https://via.placeholder.com/300" alt="Current Album Cover for Jamal Belal" class="w-32 h-32 object-cover rounded-md" />
+                    <img id="discography-now-playing-cover" src="" alt="Current Album Cover for Jamal Belal" class="w-32 h-32 object-cover rounded-md hidden" />
                     <div class="flex-1 min-w-0">
-                        <h3 id="now-playing-title" class="text-2xl font-bold truncate">No track selected</h3>
-                        <p id="now-playing-artist" class="opacity-80">Jamal Belal</p>
+                        <h3 id="discography-now-playing-title" class="text-2xl font-bold truncate">No track selected</h3>
+                        <p id="discography-now-playing-artist" class="opacity-80">Jamal Belal</p>
                         <div class="flex gap-2 mt-2">
-                            <span id="now-playing-time" class="text-sm">0:00</span>
+                            <span id="discography-now-playing-time" class="text-sm">0:00</span>
                             <span class="text-sm">/</span>
-                            <span id="now-playing-duration" class="text-sm">0:00</span>
+                            <span id="discography-now-playing-duration" class="text-sm">0:00</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="audio-visualizer mb-6" id="visualizer">
+                <!-- YouTube Player Container for Discography -->
+                <div class="youtube-player-container hidden" id="discography-youtube-player-container">
+                    <div id="discography-youtube-player"></div>
+                </div>
+
+                <!-- Audio Visualizer for Discography -->
+                <div class="visualizer-container" id="discography-visualizer">
                     <div class="visual-bar"></div>
                     <div class="visual-bar"></div>
                     <div class="visual-bar"></div>
@@ -1363,27 +2246,32 @@
                     <div class="visual-bar"></div>
                 </div>
 
-                <div class="relative mb-8">
-                    <input type="range" id="progress-bar" class="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer progress-bar" min="0" value="0">
-                    <div class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full progress-fill" style="width: 0%" id="progress-fill"></div>
+                <div class="progress-bar-container">
+                    <input type="range" id="discography-progress-bar" class="progress-bar" min="0" value="0">
+                    <div class="progress-fill" style="width: 0%" id="discography-progress-fill"></div>
                 </div>
 
                 <div class="player-controls">
-                    <button id="prev-track" class="text-3xl hover:text-purple-400 transition-colors">
+                    <button id="discography-prev-track" class="text-3xl hover:text-purple-400 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path d="M18.75 8.25V6.75A2.25 2.25 0 0016.5 4.5h-1.5a2.25 2.25 0 00-2.25 2.25v1.5m-4.5 0V6.75A2.25 2.25 0 006.75 4.5H5.25A2.25 2.25 0 003 6.75v1.5m15 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
                         </svg>
                     </button>
-                    <button id="play-pause" class="text-5xl hover:text-purple-400 transition-colors">
+                    <button id="discography-play-pause" class="text-5xl hover:text-purple-400 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" />
                         </svg>
                     </button>
-                    <button id="next-track" class="text-3xl hover:text-purple-400 transition-colors">
+                    <button id="discography-next-track" class="text-3xl hover:text-purple-400 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path d="M5.25 8.25V6.75A2.25 2.25 0 017.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m4.5 0V6.75A2.25 2.25 0 0116.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m-4.5 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
                         </svg>
                     </button>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <a id="discography-youtube-original-link" href="#" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-200 transition-colors hidden">
+                        Watch on YouTube
+                    </a>
                 </div>
             </div>
         </div>
@@ -1392,61 +2280,107 @@
     <!-- Albums Section -->
     <section class="min-h-screen py-20 px-4" id="albums">
         <div class="container mx-auto">
-            <h2 class="text-4xl md:text-6xl font-bold mb-12 md:mb-20 text-center section-title">Station Albums</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 md:mb-20 text-center section-title">Station Playlists</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 album-grid">
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Black+Dragon+Fury" alt="Black Dragon Fury Album Cover" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">Black Dragon Fury</h3>
-                    <p class="text-sm opacity-70 mb-2">2020 | Jamal Belal Productions</p>
+                <div class="album-card playlist-item" data-playlist-id="PLmbD41oTv-4Rwy0N2jy25YoXCPWVX_I5e" data-playlist-title="Official Melodic Techno">
+                    <img src="https://img.youtube.com/vi/lqHB3Ojgu_s/hqdefault.jpg" alt="Official Melodic Techno Playlist Cover" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">Official Melodic Techno</h3>
+                    <p class="text-sm opacity-70 mb-2">Jamal Belal Productions</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        Listen Now
+                        Listen Playlist
                     </button>
                 </div>
 
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Mysterious+Rock" alt="Mysterious Rock EP Album Cover" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">Mysterious Rock EP</h3>
-                    <p class="text-sm opacity-70 mb-2">2020 | Jamal Belal Productions</p>
+                <div class="album-card playlist-item" data-playlist-id="PLmbD41oTv-4SrrFaMiccRcFzFLJC1uOwe" data-playlist-title="Jamal Belal Remix">
+                    <img src="https://img.youtube.com/vi/7H0K-IsjGkA/hqdefault.jpg" alt="Jamal Belal Remix Playlist Cover" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">Jamal Belal Remix</h3>
+                    <p class="text-sm opacity-70 mb-2">Jamal Belal Productions</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        Listen Now
+                        Listen Playlist
                     </button>
                 </div>
 
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Joker+Music" alt="Joker Music Album Cover" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">Joker Music</h3>
-                    <p class="text-sm opacity-70 mb-2">2019 | Jamal Belal Productions</p>
-                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        Listen Now
-                    </button>
-                </div>
-
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/6a0dad/ffffff?text=Beautiful+Moments" alt="Beautiful Moments Album Cover" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">Beautiful Moments</h3>
-                    <p class="text-sm opacity-70 mb-2">2018 | Jamal Belal Productions</p>
-                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        Listen Now
-                    </button>
-                </div>
-
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/00ffff/000000?text=Dark+Black" alt="Dark Black Album Cover" class="album-cover w-full h-auto mb-4">
-                    <h3 class="text-2xl font-bold">Dark Black</h3>
-                    <p class="text-sm opacity-70 mb-2">2017 | Jamal Belal Productions</p>
-                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        Listen Now
-                    </button>
-                </div>
-
-                <div class="album-card">
-                    <img src="https://via.placeholder.com/600x600/ff00ff/000000?text=Dark+Mafia" alt="Dark Mafia Album Cover" class="album-cover w-full h-auto mb-4">
+                <div class="album-card playlist-item" data-playlist-id="PLmbD41oTv-4R2wLSGnwhnO3SHY3E6UPmw" data-playlist-title="Dark Mafia">
+                    <img src="https://img.youtube.com/vi/Z1TUj24jEtk/hqdefault.jpg" alt="Dark Mafia Playlist Cover" class="album-cover w-full h-auto mb-4">
                     <h3 class="text-2xl font-bold">Dark Mafia</h3>
-                    <p class="text-sm opacity-70 mb-2">2016 | Jamal Belal Productions</p>
+                    <p class="text-sm opacity-70 mb-2">Jamal Belal Productions</p>
                     <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
-                        Listen Now
+                        Listen Playlist
                     </button>
+                </div>
+
+                <div class="album-card playlist-item" data-playlist-id="PLmbD41oTv-4TgMWX1N7xGQ4V4D2N-n0xs" data-playlist-title="Electronic Refreshing">
+                    <img src="https://img.youtube.com/vi/-XhQo9pE6NU/hqdefault.jpg" alt="Electronic Refreshing Playlist Cover" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">Electronic Refreshing</h3>
+                    <p class="text-sm opacity-70 mb-2">Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        Listen Playlist
+                    </button>
+                </div>
+
+                <div class="album-card playlist-item" data-playlist-id="PLmbD41oTv-4T14uTCUNiestjR1hcuHhEO" data-playlist-title="Dubstep">
+                    <img src="https://img.youtube.com/vi/Kqy2VrN8Xds/hqdefault.jpg" alt="Dubstep Playlist Cover" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">Dubstep</h3>
+                    <p class="text-sm opacity-70 mb-2">Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        Listen Playlist
+                    </button>
+                </div>
+
+                <div class="album-card playlist-item" data-playlist-id="PLmbD41oTv-4R1OVWtoO_keC3psUfd8lXR" data-playlist-title="Big Room">
+                    <img src="https://img.youtube.com/vi/lqHB3Ojgu_s/hqdefault.jpg" alt="Big Room Playlist Cover" class="album-cover w-full h-auto mb-4">
+                    <h3 class="text-2xl font-bold">Big Room</h3>
+                    <p class="text-sm opacity-70 mb-2">Jamal Belal Productions</p>
+                    <button class="mt-2 px-4 py-2 bg-purple-900 bg-opacity-50 hover:bg-opacity-70 transition-all font-bold">
+                        Listen Playlist
+                    </button>
+                </div>
+            </div>
+
+            <!-- Playlist Player (New) -->
+            <div class="playlist-player-card" id="playlist-player-card">
+                <h3 class="text-2xl font-bold centered-heading mb-4" id="playlist-player-title"></h3>
+                <div class="youtube-player-container">
+                    <div id="playlist-youtube-player"></div>
+                </div>
+
+                <div class="now-playing-info">
+                    <h3 id="playlist-now-playing-video-title" class="text-xl font-bold truncate"></h3>
+                    <p id="playlist-now-playing-video-artist" class="opacity-80">Jamal Belal</p>
+                    <div class="flex gap-2 mt-2">
+                        <span id="playlist-now-playing-time" class="text-sm">0:00</span>
+                        <span class="text-sm">/</span>
+                        <span id="playlist-now-playing-duration" class="text-sm">0:00</span>
+                    </div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <input type="range" id="playlist-progress-bar" class="progress-bar" min="0" value="0">
+                    <div class="progress-fill" style="width: 0%" id="playlist-progress-fill"></div>
+                </div>
+
+                <div class="player-controls">
+                    <button id="playlist-prev-track" class="text-3xl hover:text-cyan-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M18.75 8.25V6.75A2.25 2.25 0 0016.5 4.5h-1.5a2.25 2.25 0 00-2.25 2.25v1.5m-4.5 0V6.75A2.25 2.25 0 006.75 4.5H5.25A2.25 2.25 0 003 6.75v1.5m15 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+                        </svg>
+                    </button>
+                    <button id="playlist-play-pause" class="text-5xl hover:text-cyan-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <button id="playlist-next-track" class="text-3xl hover:text-cyan-400 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M5.25 8.25V6.75A2.25 2.25 0 017.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m4.5 0V6.75A2.25 2.25 0 0116.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m-4.5 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <a id="playlist-youtube-original-link" href="#" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-200 transition-colors hidden">
+                        Watch Playlist on YouTube
+                    </a>
                 </div>
             </div>
         </div>
@@ -1540,7 +2474,7 @@
                         </a>
                         <a href="https://twitter.com/jamalbelal8" target="_blank" class="social-icon-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
                             </svg>
                         </a>
                         <a href="https://www.youtube.com/c/JamalBelal" target="_blank" class="social-icon-btn">
@@ -1604,6 +2538,7 @@
         <p class="text-sm opacity-70">© 2023 Jamal Belal Productions. All systems operational.</p>
     </footer>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         // Register ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
@@ -1636,165 +2571,583 @@
             }
         }
 
-        // Audio player functionality
-        const audioPlayer = new Audio();
-        let currentTrack = -1;
-        const tracks = document.querySelectorAll('.track-item');
-        const playPauseBtn = document.getElementById('play-pause');
-        const prevBtn = document.getElementById('prev-track');
-        const nextBtn = document.getElementById('next-track');
-        const progressBar = document.getElementById('progress-bar');
-        const progressFill = document.getElementById('progress-fill');
-        const nowPlayingTitle = document.getElementById('now-playing-title');
-        const nowPlayingArtist = document.getElementById('now-playing-artist');
-        const nowPlayingCover = document.getElementById('now-playing-cover');
-        const nowPlayingTime = document.getElementById('now-playing-time');
-        const nowPlayingDuration = document.getElementById('now-playing-duration');
-        const visualizerBars = document.querySelectorAll('.visual-bar');
-        const playDemoBtn = document.getElementById('play-sample');
-        const scrollDownIndicator = document.getElementById('scroll-down-indicator');
+        // --- Discography Player Elements ---
+        const discographyAudioPlayer = new Audio();
+        let currentDiscographyTrackIndex = -1;
+        const discographyTracks = document.querySelectorAll('.track-item');
+        const discographyPlayPauseBtn = document.getElementById('discography-play-pause');
+        const discographyPrevBtn = document.getElementById('discography-prev-track');
+        const discographyNextBtn = document.getElementById('discography-next-track');
+        const discographyProgressBar = document.getElementById('discography-progress-bar');
+        const discographyProgressFill = document.getElementById('discography-progress-fill');
+        const discographyNowPlayingTitle = document.getElementById('discography-now-playing-title');
+        const discographyNowPlayingArtist = document.getElementById('discography-now-playing-artist');
+        const discographyNowPlayingCover = document.getElementById('discography-now-playing-cover');
+        const discographyNowPlayingTime = document.getElementById('discography-now-playing-time');
+        const discographyNowPlayingDuration = document.getElementById('discography-now-playing-duration');
+        const discographyVisualizerBars = document.querySelectorAll('#discography-visualizer .visual-bar');
+        const discographyVisualizerContainer = document.getElementById('discography-visualizer');
+        const discographyYoutubePlayerContainer = document.getElementById('discography-youtube-player-container');
+        const discographyYoutubeOriginalLink = document.getElementById('discography-youtube-original-link');
+        const discographyPlayerCard = document.getElementById('discography-player-card');
+
+        let discographyYoutubePlayer; // YouTube Player API object for discography
+        let isDiscographyYouTubePlaying = false;
+        let isDiscographyLocalAudioPlaying = false;
+
+        // --- Playlist Player Elements ---
+        const playlistPlayerCard = document.getElementById('playlist-player-card');
+        const playlistPlayerTitle = document.getElementById('playlist-player-title');
+        const playlistYoutubePlayerContainer = document.querySelector('#playlist-player-card .youtube-player-container');
+        const playlistNowPlayingVideoTitle = document.getElementById('playlist-now-playing-video-title');
+        const playlistNowPlayingVideoArtist = document.getElementById('playlist-now-playing-video-artist');
+        const playlistNowPlayingTime = document.getElementById('playlist-now-playing-time');
+        const playlistNowPlayingDuration = document.getElementById('playlist-now-playing-duration');
+        const playlistProgressBar = document.getElementById('playlist-progress-bar');
+        const playlistProgressFill = document.getElementById('playlist-progress-fill');
+        const playlistPlayPauseBtn = document.getElementById('playlist-play-pause');
+        const playlistPrevBtn = document.getElementById('playlist-prev-track');
+        const playlistNextBtn = document.getElementById('playlist-next-track');
+        const playlistYoutubeOriginalLink = document.getElementById('playlist-youtube-original-link');
+
+        let playlistYoutubePlayer; // YouTube Player API object for playlists
+        let currentPlaylistId = null;
+        let isPlaylistYouTubePlaying = false;
+
+        const playlistItems = document.querySelectorAll('.playlist-item');
 
         // SVG icons for player controls
         const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" /></svg>`;
-        const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule"evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" /></svg>`;
-        const prevIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" clip-rule="evenodd" /><path fill-rule="evenodd" d="M19.5 19.5L12 12m0 0l7.5-7.5M12 12h7.5" clip-rule="evenodd" /></svg>`;
-        const nextIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" clip-rule="evenodd" /><path fill-rule="evenodd" d="M4.5 4.5L12 12m0 0L4.5 19.5M12 12H3" clip-rule="evenodd" /></svg>`;
+        const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" /></svg>`;
+        const prevIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.75 8.25V6.75A2.25 2.25 0 0016.5 4.5h-1.5a2.25 2.25 0 00-2.25 2.25v1.5m-4.5 0V6.75A2.25 2.25 0 006.75 4.5H5.25A2.25 2.25 0 003 6.75v1.5m15 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+                        </svg>`;
+        const nextIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5.25 8.25V6.75A2.25 2.25 0 017.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m4.5 0V6.75A2.25 2.25 0 0116.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m-4.5 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+                        </svg>`;
 
-        // Set initial icons
-        playPauseBtn.innerHTML = playIcon;
-        prevBtn.innerHTML = prevIcon;
-        nextBtn.innerHTML = nextIcon;
+        // Set initial icons for both players
+        discographyPlayPauseBtn.innerHTML = playIcon;
+        discographyPrevBtn.innerHTML = prevIcon;
+        discographyNextBtn.innerHTML = nextIcon;
 
+        playlistPlayPauseBtn.innerHTML = playIcon;
+        playlistPrevBtn.innerHTML = prevIcon;
+        playlistNextBtn.innerHTML = nextIcon;
 
-        // Initialize Web Audio API for visualizer
-        let audioContext, analyser, dataArray, sourceNode;
+        // Initialize Web Audio API for visualizer (Discography Player only)
+        let discographyAudioContext, discographyAnalyser, discographyDataArray, discographySourceNode;
 
-        function initAudioContext() {
-            if (audioContext) return; // Prevent re-initialization
+        function initDiscographyAudioContext() {
+            if (discographyAudioContext && discographyAudioContext.state !== 'closed') return;
 
-            audioContext = new(window.AudioContext || window.webkitAudioContext)();
-            analyser = audioContext.createAnalyser();
-            analyser.fftSize = 32; // Smaller FFT size for more responsive visualizer
+            discographyAudioContext = new(window.AudioContext || window.webkitAudioContext)();
+            discographyAnalyser = discographyAudioContext.createAnalyser();
+            discographyAnalyser.fftSize = 32;
 
-            sourceNode = audioContext.createMediaElementSource(audioPlayer);
-            sourceNode.connect(analyser);
-            analyser.connect(audioContext.destination);
+            discographySourceNode = discographyAudioContext.createMediaElementSource(discographyAudioPlayer);
+            discographySourceNode.connect(discographyAnalyser);
+            discographyAnalyser.connect(discographyAudioContext.destination);
 
-            dataArray = new Uint8Array(analyser.frequencyBinCount);
-            updateVisualizer(); // Start visualizer updates
+            discographyDataArray = new Uint8Array(discographyAnalyser.frequencyBinCount);
+            updateDiscographyVisualizer();
         }
 
-        function updateVisualizer() {
-            if (!analyser || audioPlayer.paused) {
-                // Reset bars if paused or no analyser
-                visualizerBars.forEach(bar => bar.style.transform = `scaleY(0.1)`);
-                requestAnimationFrame(updateVisualizer); // Keep requesting to reset if paused
+        function updateDiscographyVisualizer() {
+            if (isDiscographyYouTubePlaying || !discographyAnalyser || discographyAudioPlayer.paused) {
+                discographyVisualizerBars.forEach(bar => bar.style.transform = `scaleY(0.1)`);
+                if (!isDiscographyYouTubePlaying) {
+                    requestAnimationFrame(updateDiscographyVisualizer);
+                }
                 return;
             }
 
-            analyser.getByteFrequencyData(dataArray);
+            discographyAnalyser.getByteFrequencyData(discographyDataArray);
 
-            visualizerBars.forEach((bar, i) => {
-                const value = dataArray[i] / 255; // Normalize value to 0-1
-                // Apply a power curve for more dynamic visualizer
-                const height = Math.max(0.1, Math.pow(value, 2) * 2); // value^2 * 2
+            discographyVisualizerBars.forEach((bar, i) => {
+                const value = discographyDataArray[i] / 255;
+                const height = Math.max(0.1, Math.pow(value, 2) * 2);
                 bar.style.transform = `scaleY(${height})`;
             });
 
-            requestAnimationFrame(updateVisualizer);
+            requestAnimationFrame(updateDiscographyVisualizer);
         }
 
-        // Track handling
-        function loadTrack(index) {
-            const track = tracks[index];
-            if (!track) return;
+        // --- YouTube Player API for Discography ---
+        function onDiscographyYouTubeIframeAPIReady() {
+            discographyYoutubePlayer = new YT.Player('discography-youtube-player', {
+                height: '360', // Standard 16:9 height for 640px width
+                width: '640', // Standard YouTube width
+                videoId: '', // Will be set dynamically
+                playerVars: {
+                    'playsinline': 1,
+                    'autoplay': 0,
+                    'controls': 0, // Hide YouTube controls
+                    'showinfo': 0,
+                    'rel': 0,
+                    'modestbranding': 1
+                },
+                events: {
+                    'onReady': (e) => {
+                        // Only play if it was intended to play
+                        if (isDiscographyYouTubePlaying) e.target.playVideo();
+                    },
+                    'onStateChange': onDiscographyPlayerStateChange
+                }
+            });
+        }
 
-            // Update UI for currently playing track
-            tracks.forEach(t => t.classList.remove('playing'));
+        function onDiscographyPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                discographyPlayPauseBtn.innerHTML = pauseIcon;
+                isDiscographyYouTubePlaying = true;
+                isDiscographyLocalAudioPlaying = false;
+                discographyVisualizerContainer.classList.add('hidden');
+                discographyNowPlayingCover.classList.add('hidden');
+                discographyYoutubePlayerContainer.classList.remove('hidden');
+                discographyPlayerCard.classList.add('youtube-active');
+                updateDiscographyYouTubeProgress();
+            } else {
+                discographyPlayPauseBtn.innerHTML = playIcon;
+                if (event.data == YT.PlayerState.ENDED) {
+                    isDiscographyYouTubePlaying = false;
+                    resetDiscographyPlayerUI();
+                }
+            }
+        }
+
+        function updateDiscographyYouTubeProgress() {
+            if (isDiscographyYouTubePlaying && discographyYoutubePlayer && typeof discographyYoutubePlayer.getCurrentTime === 'function') {
+                const currentTime = discographyYoutubePlayer.getCurrentTime();
+                const duration = discographyYoutubePlayer.getDuration();
+                const progressPercent = (currentTime / duration) * 100;
+
+                discographyProgressBar.value = progressPercent;
+                discographyProgressFill.style.width = `${progressPercent}%`;
+
+                discographyNowPlayingTime.textContent = formatTime(currentTime);
+                discographyNowPlayingDuration.textContent = formatTime(duration);
+            }
+            requestAnimationFrame(updateDiscographyYouTubeProgress);
+        }
+
+        // --- YouTube Player API for Playlists ---
+        function onPlaylistYouTubeIframeAPIReady() {
+            playlistYoutubePlayer = new YT.Player('playlist-youtube-player', {
+                height: '360', // Standard 16:9 height for 640px width
+                width: '640', // Standard YouTube width
+                videoId: '', // Will be set dynamically
+                playerVars: {
+                    'playsinline': 1,
+                    'autoplay': 0,
+                    'controls': 0, // Hide YouTube controls
+                    'showinfo': 0,
+                    'rel': 0,
+                    'modestbranding': 1,
+                    'listType': 'playlist',
+                    'list': '' // Will be set dynamically
+                },
+                events: {
+                    'onReady': (e) => {
+                        if (isPlaylistYouTubePlaying) e.target.playVideo();
+                    },
+                    'onStateChange': onPlaylistPlayerStateChange
+                }
+            });
+        }
+
+        function onPlaylistPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                playlistPlayPauseBtn.innerHTML = pauseIcon;
+                isPlaylistYouTubePlaying = true;
+                updatePlaylistYouTubeProgress();
+                // Update current video title
+                if (playlistYoutubePlayer && typeof playlistYoutubePlayer.getVideoData === 'function') {
+                    const videoData = playlistYoutubePlayer.getVideoData();
+                    playlistNowPlayingVideoTitle.textContent = videoData.title || 'Unknown Title';
+                }
+            } else {
+                playlistPlayPauseBtn.innerHTML = playIcon;
+                if (event.data == YT.PlayerState.ENDED) {
+                    // Automatically go to next video in playlist
+                    if (currentPlaylistId) {
+                        playlistYoutubePlayer.nextVideo();
+                    } else {
+                        isPlaylistYouTubePlaying = false;
+                        resetPlaylistPlayerUI();
+                    }
+                }
+            }
+        }
+
+        function updatePlaylistYouTubeProgress() {
+            if (isPlaylistYouTubePlaying && playlistYoutubePlayer && typeof playlistYoutubePlayer.getCurrentTime === 'function') {
+                const currentTime = playlistYoutubePlayer.getCurrentTime();
+                const duration = playlistYoutubePlayer.getDuration();
+                const progressPercent = (currentTime / duration) * 100;
+
+                playlistProgressBar.value = progressPercent;
+                playlistProgressFill.style.width = `${progressPercent}%`;
+
+                playlistNowPlayingTime.textContent = formatTime(currentTime);
+                playlistNowPlayingDuration.textContent = formatTime(duration);
+            }
+            requestAnimationFrame(updatePlaylistYouTubeProgress);
+        }
+
+        // --- Global Stop All Playback ---
+        function stopAllPlayback() {
+            // Stop Discography Player
+            discographyAudioPlayer.pause();
+            discographyAudioPlayer.src = "";
+            if (discographyYoutubePlayer && typeof discographyYoutubePlayer.stopVideo === 'function') {
+                discographyYoutubePlayer.stopVideo();
+            }
+            isDiscographyYouTubePlaying = false;
+            isDiscographyLocalAudioPlaying = false;
+            resetDiscographyPlayerUI();
+
+            // Stop Playlist Player
+            if (playlistYoutubePlayer && typeof playlistYoutubePlayer.stopVideo === 'function') {
+                playlistYoutubePlayer.stopVideo();
+            }
+            isPlaylistYouTubePlaying = false;
+            currentPlaylistId = null;
+            resetPlaylistPlayerUI();
+        }
+
+        // --- Reset UI Functions ---
+        function resetDiscographyPlayerUI() {
+            discographyTracks.forEach(t => t.classList.remove('playing'));
+            discographyNowPlayingTitle.textContent = 'No track selected';
+            discographyNowPlayingArtist.textContent = 'Jamal Belal';
+            discographyNowPlayingCover.src = '';
+            discographyNowPlayingCover.classList.add('hidden');
+            discographyProgressBar.value = 0;
+            discographyProgressFill.style.width = `0%`;
+            discographyNowPlayingTime.textContent = '0:00';
+            discographyNowPlayingDuration.textContent = '0:00';
+
+            discographyVisualizerContainer.classList.remove('hidden');
+            discographyYoutubePlayerContainer.classList.add('hidden');
+            discographyYoutubeOriginalLink.classList.add('hidden');
+            discographyPlayerCard.classList.remove('youtube-active');
+            discographyPlayPauseBtn.innerHTML = playIcon;
+        }
+
+        function resetPlaylistPlayerUI() {
+            playlistItems.forEach(p => p.classList.remove('playing'));
+            playlistPlayerCard.classList.remove('active');
+            playlistPlayerCard.style.display = 'none'; // Ensure it's hidden
+            playlistPlayerTitle.textContent = '';
+            playlistNowPlayingVideoTitle.textContent = '';
+            playlistNowPlayingVideoArtist.textContent = 'Jamal Belal';
+            playlistProgressBar.value = 0;
+            playlistProgressFill.style.width = `0%`;
+            playlistNowPlayingTime.textContent = '0:00';
+            playlistNowPlayingDuration.textContent = '0:00';
+            playlistYoutubeOriginalLink.classList.add('hidden');
+            playlistPlayPauseBtn.innerHTML = playIcon;
+        }
+
+        // --- Discography Track Handling ---
+        function loadDiscographyTrack(index) {
+            stopAllPlayback(); // Stop everything first
+
+            const track = discographyTracks[index];
+            if (!track) {
+                resetDiscographyPlayerUI();
+                return;
+            }
+
+            discographyTracks.forEach(t => t.classList.remove('playing'));
             track.classList.add('playing');
 
-            // Set audio source
             const src = track.getAttribute('data-src');
             const cover = track.getAttribute('data-cover');
             const title = track.getAttribute('data-title');
             const artist = track.getAttribute('data-artist');
+            const youtubeEmbedLink = track.getAttribute('data-youtube-link');
+            const youtubeVideoId = youtubeEmbedLink ? youtubeEmbedLink.split('/').pop().split('?')[0] : null;
 
-            nowPlayingTitle.textContent = title;
-            nowPlayingArtist.textContent = artist;
-            nowPlayingCover.src = cover;
-
-            audioPlayer.src = src;
-            audioPlayer.load(); // Load the new track
-
-            currentTrack = index;
-        }
-
-        function playCurrentTrack() {
-            if (currentTrack === -1) {
-                loadTrack(0); // Load the first track if none selected
-            }
-
-            // Initialize audio context on first user interaction
-            if (!audioContext || audioContext.state === 'suspended') {
-                initAudioContext();
-                audioContext.resume().then(() => {
-                    console.log('AudioContext resumed successfully');
-                    togglePlayPause();
-                });
+            discographyNowPlayingTitle.textContent = title;
+            discographyNowPlayingArtist.textContent = artist;
+            discographyNowPlayingCover.src = cover;
+            if (cover) {
+                discographyNowPlayingCover.classList.remove('hidden');
             } else {
-                togglePlayPause();
+                discographyNowPlayingCover.classList.add('hidden');
             }
-        }
 
-        function togglePlayPause() {
-            if (audioPlayer.paused) {
-                audioPlayer.play().then(() => {
-                    playPauseBtn.innerHTML = pauseIcon; // Change to pause icon
-                    updateVisualizer(); // Ensure visualizer is running
+            currentDiscographyTrackIndex = index;
+
+            if (youtubeEmbedLink) {
+                isDiscographyYouTubePlaying = true;
+                isDiscographyLocalAudioPlaying = false;
+                discographyVisualizerContainer.classList.add('hidden');
+                discographyNowPlayingCover.classList.add('hidden');
+                discographyYoutubePlayerContainer.classList.remove('hidden');
+                discographyPlayerCard.classList.add('youtube-active');
+
+                if (discographyYoutubePlayer) {
+                    discographyYoutubePlayer.loadVideoById(youtubeVideoId);
+                    discographyYoutubePlayer.playVideo();
+                } else {
+                    // If player not ready, set videoId and it will load on API ready
+                    discographyYoutubePlayer = new YT.Player('discography-youtube-player', {
+                        height: '360',
+                        width: '640',
+                        videoId: youtubeVideoId,
+                        playerVars: {
+                            'playsinline': 1,
+                            'autoplay': 1,
+                            'controls': 0, // Hide YouTube controls
+                            'showinfo': 0,
+                            'rel': 0,
+                            'modestbranding': 1
+                        },
+                        events: {
+                            'onReady': (e) => e.target.playVideo(),
+                            'onStateChange': onDiscographyPlayerStateChange
+                        }
+                    });
+                }
+                discographyYoutubeOriginalLink.href = `https://www.youtube.com/watch?v=${youtubeVideoId}`;
+                discographyYoutubeOriginalLink.classList.remove('hidden');
+            } else if (src) {
+                isDiscographyYouTubePlaying = false;
+                isDiscographyLocalAudioPlaying = true;
+                discographyYoutubePlayerContainer.classList.add('hidden');
+                discographyYoutubeOriginalLink.classList.add('hidden');
+                discographyVisualizerContainer.classList.remove('hidden');
+                discographyNowPlayingCover.classList.remove('hidden');
+                discographyPlayerCard.classList.remove('youtube-active');
+
+                discographyAudioPlayer.src = src;
+                discographyAudioPlayer.load();
+                initDiscographyAudioContext();
+                discographyAudioPlayer.play().then(() => {
+                    discographyPlayPauseBtn.innerHTML = pauseIcon;
+                    updateDiscographyVisualizer();
                 }).catch(e => console.error("Error playing audio:", e));
-            } else {
-                audioPlayer.pause();
-                playPauseBtn.innerHTML = playIcon; // Change to play icon
             }
         }
 
+        // --- Playlist Handling ---
+        function loadPlaylist(playlistId, playlistTitle, albumCardElement) {
+            stopAllPlayback(); // Stop everything first
 
-        function prevTrack() {
-            if (currentTrack <= 0) {
-                loadTrack(tracks.length - 1);
-            } else {
-                loadTrack(currentTrack - 1);
+            // Remove 'playing' class from all album cards
+            playlistItems.forEach(p => p.classList.remove('playing'));
+            // Add 'playing' class to the clicked album card
+            if (albumCardElement) {
+                albumCardElement.classList.add('playing');
             }
-            playCurrentTrack();
+
+            // Append the playlist player card directly after the clicked album card
+            if (albumCardElement) {
+                albumCardElement.after(playlistPlayerCard);
+            }
+            playlistPlayerCard.classList.add('active'); // Show the playlist player
+            playlistPlayerCard.style.display = 'flex'; // Ensure it's displayed
+
+            playlistPlayerTitle.textContent = playlistTitle;
+            playlistNowPlayingVideoArtist.textContent = 'Jamal Belal'; // Default artist for playlist videos
+
+            isPlaylistYouTubePlaying = true;
+            currentPlaylistId = playlistId;
+
+            if (playlistYoutubePlayer) {
+                playlistYoutubePlayer.loadPlaylist({
+                    listType: 'playlist',
+                    list: playlistId,
+                    index: 0, // Start from the first video in the playlist
+                    suggestedQuality: 'large'
+                });
+                playlistYoutubePlayer.playVideo();
+            } else {
+                playlistYoutubePlayer = new YT.Player('playlist-youtube-player', {
+                    height: '360',
+                    width: '640',
+                    playerVars: {
+                        'playsinline': 1,
+                        'autoplay': 1,
+                        'controls': 0, // Hide YouTube controls
+                        'showinfo': 0,
+                        'rel': 0,
+                        'modestbranding': 1,
+                        'listType': 'playlist',
+                        'list': playlistId,
+                        'index': 0
+                    },
+                    events: {
+                        'onReady': (e) => e.target.playVideo(),
+                        'onStateChange': onPlaylistPlayerStateChange
+                    }
+                });
+            }
+            playlistYoutubeOriginalLink.href = `https://www.youtube.com/playlist?list=${playlistId}`;
+            playlistYoutubeOriginalLink.classList.remove('hidden');
         }
 
-        function nextTrack() {
-            if (currentTrack >= tracks.length - 1) {
-                loadTrack(0);
+        // --- Toggle Play/Pause for Discography Player ---
+        function toggleDiscographyPlayPause() {
+            if (isDiscographyYouTubePlaying) {
+                if (discographyYoutubePlayer && typeof discographyYoutubePlayer.getPlayerState === 'function') {
+                    const playerState = discographyYoutubePlayer.getPlayerState();
+                    if (playerState == YT.PlayerState.PLAYING) {
+                        discographyYoutubePlayer.pauseVideo();
+                    } else {
+                        discographyYoutubePlayer.playVideo();
+                    }
+                }
+            } else if (isDiscographyLocalAudioPlaying) {
+                if (discographyAudioPlayer.paused) {
+                    discographyAudioPlayer.play().then(() => {
+                        discographyPlayPauseBtn.innerHTML = pauseIcon;
+                        updateDiscographyVisualizer();
+                    }).catch(e => console.error("Error playing audio:", e));
+                } else {
+                    discographyAudioPlayer.pause();
+                    discographyPlayPauseBtn.innerHTML = playIcon;
+                }
             } else {
-                loadTrack(currentTrack + 1);
+                // If nothing is playing, try to play the first track
+                if (currentDiscographyTrackIndex === -1 && discographyTracks.length > 0) {
+                    loadDiscographyTrack(0);
+                } else if (currentDiscographyTrackIndex !== -1) {
+                    // If a track is loaded but paused, play it
+                    playCurrentDiscographyTrack();
+                }
             }
-            playCurrentTrack();
         }
 
-        function updateProgress() {
-            if (!isNaN(audioPlayer.duration) && audioPlayer.duration > 0) {
-                const currentTime = audioPlayer.currentTime;
-                const duration = audioPlayer.duration;
+        function playCurrentDiscographyTrack() {
+            if (isDiscographyYouTubePlaying) {
+                if (discographyYoutubePlayer && typeof discographyYoutubePlayer.playVideo === 'function') {
+                    discographyYoutubePlayer.playVideo();
+                }
+            } else if (isDiscographyLocalAudioPlaying) {
+                discographyAudioPlayer.play();
+            } else {
+                if (currentDiscographyTrackIndex !== -1) {
+                    loadDiscographyTrack(currentDiscographyTrackIndex);
+                } else if (discographyTracks.length > 0) {
+                    loadDiscographyTrack(0);
+                }
+            }
+        }
+
+        // --- Toggle Play/Pause for Playlist Player ---
+        function togglePlaylistPlayPause() {
+            if (isPlaylistYouTubePlaying) {
+                if (playlistYoutubePlayer && typeof playlistYoutubePlayer.getPlayerState === 'function') {
+                    const playerState = playlistYoutubePlayer.getPlayerState();
+                    if (playerState == YT.PlayerState.PLAYING) {
+                        playlistYoutubePlayer.pauseVideo();
+                    } else {
+                        playlistYoutubePlayer.playVideo();
+                    }
+                }
+            } else {
+                // If no playlist is playing, try to play the first playlist
+                if (currentPlaylistId === null && playlistItems.length > 0) {
+                    const firstPlaylist = playlistItems[0];
+                    loadPlaylist(firstPlaylist.getAttribute('data-playlist-id'), firstPlaylist.getAttribute('data-playlist-title'), firstPlaylist);
+                } else if (currentPlaylistId !== null) {
+                    // If a playlist is loaded but paused, play it
+                    playCurrentPlaylist();
+                }
+            }
+        }
+
+        function playCurrentPlaylist() {
+            if (isPlaylistYouTubePlaying) {
+                if (playlistYoutubePlayer && typeof playlistYoutubePlayer.playVideo === 'function') {
+                    playlistYoutubePlayer.playVideo();
+                }
+            } else {
+                if (currentPlaylistId !== null) {
+                    // Re-load and play the current playlist
+                    const activePlaylistItem = document.querySelector(`.playlist-item.playing`);
+                    loadPlaylist(currentPlaylistId, playlistPlayerTitle.textContent, activePlaylistItem);
+                } else if (playlistItems.length > 0) {
+                    const firstPlaylist = playlistItems[0];
+                    loadPlaylist(firstPlaylist.getAttribute('data-playlist-id'), firstPlaylist.getAttribute('data-playlist-title'), firstPlaylist);
+                }
+            }
+        }
+
+        // --- Navigation for Discography Player ---
+        function prevDiscographyTrack() {
+            if (isDiscographyYouTubePlaying) {
+                // For single YouTube video, restart it
+                discographyYoutubePlayer.seekTo(0);
+                discographyYoutubePlayer.playVideo();
+            } else if (isDiscographyLocalAudioPlaying) {
+                if (currentDiscographyTrackIndex <= 0) {
+                    loadDiscographyTrack(discographyTracks.length - 1);
+                } else {
+                    loadDiscographyTrack(currentDiscographyTrackIndex - 1);
+                }
+            } else {
+                loadDiscographyTrack(discographyTracks.length - 1);
+            }
+        }
+
+        function nextDiscographyTrack() {
+            if (isDiscographyYouTubePlaying) {
+                // For single YouTube video, stop and try to play next local track
+                discographyYoutubePlayer.stopVideo();
+                isDiscographyYouTubePlaying = false;
+                if (currentDiscographyTrackIndex >= discographyTracks.length - 1) {
+                    loadDiscographyTrack(0);
+                } else {
+                    loadDiscographyTrack(currentDiscographyTrackIndex + 1);
+                }
+            } else if (isDiscographyLocalAudioPlaying) {
+                if (currentDiscographyTrackIndex >= discographyTracks.length - 1) {
+                    loadDiscographyTrack(0);
+                } else {
+                    loadDiscographyTrack(currentDiscographyTrackIndex + 1);
+                }
+            } else {
+                loadDiscographyTrack(0);
+            }
+        }
+
+        // --- Navigation for Playlist Player ---
+        function prevPlaylistTrack() {
+            if (playlistYoutubePlayer && currentPlaylistId) {
+                playlistYoutubePlayer.previousVideo();
+            }
+        }
+
+        function nextPlaylistTrack() {
+            if (playlistYoutubePlayer && currentPlaylistId) {
+                playlistYoutubePlayer.nextVideo();
+            }
+        }
+
+        // --- Progress Update Functions ---
+        function updateDiscographyProgress() {
+            if (isDiscographyYouTubePlaying) {
+                return;
+            }
+
+            if (!isNaN(discographyAudioPlayer.duration) && discographyAudioPlayer.duration > 0) {
+                const currentTime = discographyAudioPlayer.currentTime;
+                const duration = discographyAudioPlayer.duration;
                 const progressPercent = (currentTime / duration) * 100;
 
-                progressBar.value = progressPercent;
-                progressFill.style.width = `${progressPercent}%`;
+                discographyProgressBar.value = progressPercent;
+                discographyProgressFill.style.width = `${progressPercent}%`;
 
-                // Update time display
-                nowPlayingTime.textContent = formatTime(currentTime);
-                nowPlayingDuration.textContent = formatTime(duration);
+                discographyNowPlayingTime.textContent = formatTime(currentTime);
+                discographyNowPlayingDuration.textContent = formatTime(duration);
             } else {
-                // If duration is not available yet, keep progress at 0
-                progressBar.value = 0;
-                progressFill.style.width = `0%`;
-                nowPlayingTime.textContent = '0:00';
-                nowPlayingDuration.textContent = '0:00';
+                discographyProgressBar.value = 0;
+                discographyProgressFill.style.width = `0%`;
+                discographyNowPlayingTime.textContent = '0:00';
+                discographyNowPlayingDuration.textContent = '0:00';
             }
         }
 
@@ -1804,57 +3157,66 @@
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        function seek(e) {
-            if (!isNaN(audioPlayer.duration) && audioPlayer.duration > 0) {
-                const seekTime = (e.target.value / 100) * audioPlayer.duration;
-                audioPlayer.currentTime = seekTime;
+        // --- Seek Functions ---
+        function seekDiscography(e) {
+            const seekTimePercent = parseFloat(e.target.value);
+            if (isDiscographyYouTubePlaying) {
+                if (discographyYoutubePlayer && typeof discographyYoutubePlayer.seekTo === 'function') {
+                    const duration = discographyYoutubePlayer.getDuration();
+                    discographyYoutubePlayer.seekTo((seekTimePercent / 100) * duration, true);
+                }
+            } else if (isDiscographyLocalAudioPlaying) {
+                if (!isNaN(discographyAudioPlayer.duration) && discographyAudioPlayer.duration > 0) {
+                    const seekTime = (seekTimePercent / 100) * discographyAudioPlayer.duration;
+                    discographyAudioPlayer.currentTime = seekTime;
+                }
             }
         }
 
-        // Event listeners
-        playPauseBtn.addEventListener('click', playCurrentTrack);
-        prevBtn.addEventListener('click', prevTrack);
-        nextBtn.addEventListener('click', nextTrack);
-        progressBar.addEventListener('input', seek);
-        audioPlayer.addEventListener('timeupdate', updateProgress);
-        audioPlayer.addEventListener('ended', nextTrack);
-        audioPlayer.addEventListener('loadedmetadata', updateProgress); // Update duration when metadata loads
+        function seekPlaylist(e) {
+            const seekTimePercent = parseFloat(e.target.value);
+            if (isPlaylistYouTubePlaying) {
+                if (playlistYoutubePlayer && typeof playlistYoutubePlayer.seekTo === 'function') {
+                    const duration = playlistYoutubePlayer.getDuration();
+                    playlistYoutubePlayer.seekTo((seekTimePercent / 100) * duration, true);
+                }
+            }
+        }
 
-        // Track list click handlers
-        tracks.forEach((track, index) => {
+        // --- Event Listeners ---
+
+        // Discography Player Listeners
+        discographyPlayPauseBtn.addEventListener('click', toggleDiscographyPlayPause);
+        discographyPrevBtn.addEventListener('click', prevDiscographyTrack);
+        discographyNextBtn.addEventListener('click', nextDiscographyTrack);
+        discographyProgressBar.addEventListener('input', seekDiscography);
+        discographyAudioPlayer.addEventListener('timeupdate', updateDiscographyProgress);
+        discographyAudioPlayer.addEventListener('ended', nextDiscographyTrack);
+        discographyAudioPlayer.addEventListener('loadedmetadata', updateDiscographyProgress);
+
+        // Track list click handlers for Discography
+        discographyTracks.forEach((track, index) => {
             track.addEventListener('click', () => {
-                loadTrack(index);
-                playCurrentTrack();
+                loadDiscographyTrack(index);
             });
         });
 
-        // Play demo button
-        // playDemoBtn.addEventListener('click', () => { // Removed event listener as button is removed
-        //     loadTrack(0);
-        //     playCurrentTrack();
+        // Playlist Player Listeners
+        playlistPlayPauseBtn.addEventListener('click', togglePlaylistPlayPause);
+        playlistPrevBtn.addEventListener('click', prevPlaylistTrack);
+        playlistNextBtn.addEventListener('click', nextPlaylistTrack);
+        playlistProgressBar.addEventListener('input', seekPlaylist);
 
-        //     // Animate button on click
-        //     gsap.to(playDemoBtn, {
-        //         scale: 1.1,
-        //         duration: 0.2,
-        //         yoyo: true,
-        //         repeat: 1
-        //     });
-        // });
+        // Playlist item click handlers
+        playlistItems.forEach(playlistItem => {
+            playlistItem.addEventListener('click', () => {
+                const playlistId = playlistItem.getAttribute('data-playlist-id');
+                const playlistTitle = playlistItem.getAttribute('data-playlist-title');
+                loadPlaylist(playlistId, playlistTitle, playlistItem); // Pass the albumCardElement
+            });
+        });
 
-        // Scroll down indicator click handler
-        // scrollDownIndicator.addEventListener('click', () => { // Removed event listener as indicator is removed
-        //     gsap.to(window, {
-        //         duration: 1,
-        //         scrollTo: {
-        //             y: "#music",
-        //             offsetY: 50
-        //         },
-        //         ease: "power2.inOut"
-        //     });
-        // });
-
-        // GSAP animations for page elements
+        // --- GSAP Animations ---
 
         // Hero Section initial animation
         gsap.from(".hero-title", {
@@ -1877,15 +3239,6 @@
             delay: 0.6,
             ease: "power3.out"
         });
-        // Removed animation for hero buttons as they are removed
-        // gsap.from(".hero-section button", {
-        //     duration: 1,
-        //     opacity: 0,
-        //     y: 20,
-        //     stagger: 0.2,
-        //     delay: 0.9,
-        //     ease: "power2.out"
-        // });
 
         gsap.to(".pulse-circle", {
             duration: 3,
@@ -1963,8 +3316,8 @@
             });
         });
 
-        // Music Player elements animation
-        gsap.from(".player-card", {
+        // Music Player elements animation (Discography)
+        gsap.from("#discography-player-card", {
             scrollTrigger: {
                 trigger: "#music",
                 start: "top 70%",
