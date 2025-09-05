@@ -4,50 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamal Belal // Hard Techno Producer</title>
+    <title>Jamal Belal // Music Producer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap');
          :root {
-            --primary: #FF0055; /* Neon Red - Hard Techno Vibe */
-            --secondary: #00FFFF; /* Neon Cyan */
-            --accent: #00FF00; /* Neon Green */
-            --dark: #0a0a1a; /* Very Dark Blue */
-            --light: #f0f0f0; /* Off-White */
-            --space: #000011; /* Even Darker Space Blue for background */
-            --text-glow-start: var(--secondary);
-            --text-glow-end: var(--primary);
+            --primary: #6B46C1; /* Deep Purple */
+            --secondary: #805AD5; /* Medium Purple */
+            --accent: #D6BCFA; /* Light Purple */
+            --dark: #1A202C; /* Dark Gray */
+            --light: #F7FAFC; /* Off-White */
+            --space: #0A0A1A; /* Very Dark Blue for stars background */
+            --background-end: #1A202C; /* Dark Gray for gradient end */
         }
         
         body {
-            background-color: var(--dark);
+            background-color: var(--dark); /* Fallback for stars background */
             color: var(--light);
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.7;
             position: relative;
         }
         
         h1,
         h2,
         h3 {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
             line-height: 1.2;
             text-align: center;
+            color: var(--secondary);
         }
         
         .section-title {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 3rem;
             text-align: center;
-            color: var(--secondary);
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 85, 0.6); /* Enhanced glow */
+            color: var(--primary);
+            text-shadow: none;
         }
         
         .stars-background {
@@ -57,7 +57,7 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(to bottom, var(--space), var(--dark));
+            background: linear-gradient(to bottom, var(--space), var(--background-end)); /* Adjusted gradient */
             overflow: hidden;
         }
         
@@ -80,7 +80,7 @@
         
         .album-cover {
             transition: transform 0.3s ease, filter 0.3s ease;
-            filter: grayscale(100%) contrast(120%);
+            filter: grayscale(50%) brightness(0.8);
             cursor: pointer;
         }
         
@@ -93,7 +93,7 @@
         .audio-visualizer {
             width: 100%;
             height: 80px;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            background: rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: flex-end;
             padding: 10px 0;
@@ -118,62 +118,32 @@
             border-left: 3px solid transparent;
             border-radius: 10px;
             margin-bottom: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
         .track-item:hover {
-            background: rgba(255, 0, 85, 0.15); /* Primary color hover */
+            background: rgba(107, 70, 193, 0.1);
             border-left: 4px solid var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         .track-item.playing {
-            background: rgba(0, 255, 255, 0.25); /* Secondary color for playing */
+            background: rgba(128, 90, 213, 0.2);
             border-left: 4px solid var(--secondary);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-            transform: scale(1.01);
+            box-shadow: 0 0 10px rgba(128, 90, 213, 0.3);
+            transform: scale(1.005);
         }
         
         .pulse-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(0, 255, 255, 0.25); /* Cyan pulse */
-            animation: pulse 4s infinite ease-out;
-            z-index: -1;
-            opacity: 0;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0;
-            }
+            display: none;
         }
         
         .text-glow {
-            color: var(--secondary);
-            text-shadow: 0 0 15px var(--text-glow-start), 0 0 30px var(--text-glow-end);
-            transition: all 0.4s ease-in-out;
-            animation: text-glow-pulse 3s infinite alternate;
-        }
-        
-        @keyframes text-glow-pulse {
-            0%,
-            100% {
-                text-shadow: 0 0 15px var(--text-glow-start), 0 0 30px var(--text-glow-end);
-            }
-            50% {
-                text-shadow: 0 0 25px var(--text-glow-start), 0 0 50px var(--text-glow-end);
-            }
+            color: var(--light);
+            text-shadow: none;
+            animation: none;
         }
         
         .hero-section {
@@ -193,12 +163,12 @@
         .hero-content {
             z-index: 10;
             position: relative;
-            background: rgba(0, 0, 0, 0.6); /* Darker background */
-            backdrop-filter: blur(12px); /* More blur */
-            padding: 2rem; /* More padding */
-            border-radius: 20px; /* More rounded */
-            border: 2px solid rgba(255, 0, 85, 0.8); /* Primary color border */
-            box-shadow: 0 0 40px rgba(255, 0, 85, 0.6); /* Primary color shadow */
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(107, 70, 193, 0.6);
+            box-shadow: 0 0 25px rgba(107, 70, 193, 0.4);
             max-width: 800px;
             width: 100%;
             display: flex;
@@ -208,39 +178,41 @@
         }
         
         .hero-section h1 {
-            font-size: clamp(2.8rem, 6vw, 4.5rem); /* Slightly larger */
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
             line-height: 1.1;
             margin-bottom: 0.8rem;
+            color: var(--light);
         }
         
         .hero-section h1 span:last-child {
-            font-size: clamp(1.6rem, 3.5vw, 2.2rem); /* Slightly larger */
-            opacity: 0.9;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            opacity: 0.8;
             display: block;
             margin-top: 0.5rem;
+            color: var(--accent);
         }
         
         .hero-section p {
-            font-size: clamp(1rem, 2.2vw, 1.4rem); /* Slightly larger */
+            font-size: clamp(1rem, 2.2vw, 1.4rem);
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 2rem; /* More space */
+            margin-bottom: 2rem;
             line-height: 1.6;
-            opacity: 0.95;
+            opacity: 0.9;
         }
         
         .hero-section button {
-            padding: 1rem 2rem; /* Larger buttons */
-            font-size: 1.1rem; /* Larger font */
-            border-radius: 10px; /* More rounded */
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
             font-weight: 700;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.03em;
         }
         
         .hero-section button::before {
@@ -250,8 +222,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); /* Stronger shimmer */
-            transition: all 0.4s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.3s ease;
             z-index: -1;
         }
         
@@ -260,26 +232,26 @@
         }
         
         .hero-section button:hover {
-            transform: translateY(-8px) scale(1.05); /* More pronounced hover */
-            box-shadow: 0 12px 30px rgba(255, 0, 85, 0.8); /* Primary color shadow */
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(107, 70, 193, 0.6);
         }
         
         .hero-section .bg-purple-800 {
-            background-color: var(--primary);
-            border: 2px solid var(--primary);
+            background-color: var(--secondary);
+            border: 1px solid var(--secondary);
             color: var(--light);
         }
         
         .hero-section .bg-purple-800:hover {
-            background-color: var(--accent); /* Accent color on hover */
-            color: var(--dark);
-            border-color: var(--accent);
+            background-color: var(--primary);
+            color: var(--light);
+            border-color: var(--primary);
         }
         
         section {
             opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             padding-top: 4rem;
             padding-bottom: 4rem;
             position: relative;
@@ -295,12 +267,12 @@
         .album-card {
             position: relative;
             overflow: hidden;
-            border-radius: 20px; /* More rounded */
-            background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(10, 10, 26, 0.8)); /* Darker gradient */
-            border: 2px solid rgba(255, 0, 85, 0.6); /* Primary color border */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
-            padding: 2rem; /* More padding */
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(107, 70, 193, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -308,74 +280,74 @@
         }
         
         .album-card:hover {
-            transform: translateY(-10px) scale(1.04) rotateY(4deg); /* More pronounced lift and rotation */
-            box-shadow: 0 20px 45px rgba(255, 0, 85, 0.8); /* Intense primary glow */
-            border-color: var(--secondary); /* Secondary border on hover */
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(107, 70, 193, 0.5);
+            border-color: var(--secondary);
         }
         
         .album-card .album-cover {
-            border-radius: 18px; /* More rounded cover */
-            border: 2px solid rgba(0, 255, 255, 0.4); /* Subtle secondary border */
-            filter: grayscale(90%) contrast(120%); /* Stronger initial filter */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(128, 90, 213, 0.3);
+            filter: grayscale(50%) brightness(0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
         
         .album-card:hover .album-cover {
-            filter: none; /* Full color on hover */
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.7); /* Stronger secondary glow on hover */
+            filter: none;
+            box-shadow: 0 0 20px rgba(128, 90, 213, 0.5);
         }
         
         .album-card h3 {
-            font-size: clamp(1.6rem, 4.5vw, 2.2rem); /* Larger title */
-            color: var(--secondary); /* Secondary color title */
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.4); /* Secondary glow */
-            margin-bottom: 0.8rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--light);
+            text-shadow: none;
+            margin-bottom: 0.6rem;
         }
         
         .album-card p {
-            font-size: clamp(0.85rem, 2.2vw, 1rem); /* Larger description */
-            opacity: 0.85;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            opacity: 0.8;
         }
         
         .album-card button {
-            padding: 0.9rem 2rem; /* Larger button */
-            font-size: 1rem;
-            border-radius: 8px;
-            background-color: var(--primary); /* Primary color button */
-            border: 2px solid var(--primary);
+            padding: 0.8rem 1.8rem;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            background-color: var(--primary);
+            border: 1px solid var(--primary);
             color: var(--light);
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .album-card button:hover {
-            background-color: var(--accent); /* Accent color on hover */
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Accent glow */
-            transform: translateY(-2px);
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(128, 90, 213, 0.5);
+            transform: translateY(-1px);
         }
         
         .social-icon-btn {
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(255, 0, 85, 0.5); /* Primary color background */
-            border: 1px solid rgba(255, 0, 85, 0.7); /* Primary color border */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            background: rgba(107, 70, 193, 0.4);
+            border: 1px solid rgba(107, 70, 193, 0.6);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
         
         .social-icon-btn svg {
             color: var(--light);
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             transition: color 0.3s ease;
         }
         
@@ -386,7 +358,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--secondary); /* Secondary color for hover fill */
+            background: var(--secondary);
             border-radius: 50%;
             transform: scale(0);
             transition: transform 0.3s ease;
@@ -402,213 +374,216 @@
         }
         
         .social-icon-btn:active {
-            transform: scale(0.85);
+            transform: scale(0.9);
         }
         
         .player-card,
         .tracklist-card {
-            background: rgba(0, 0, 0, 0.7); /* Darker background */
-            backdrop-filter: blur(15px); /* More blur */
-            border: 2px solid rgba(255, 0, 85, 0.8); /* Primary color border */
-            box-shadow: 0 0 35px rgba(255, 0, 85, 0.4); /* Primary color shadow */
-            border-radius: 20px; /* More rounded */
-            padding: 2.5rem; /* More padding */
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(107, 70, 193, 0.6);
+            box-shadow: 0 0 25px rgba(107, 70, 193, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
         }
         
         .player-card img {
-            border-radius: 15px; /* More rounded */
-            border: 3px solid var(--secondary); /* Secondary color border */
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Secondary glow */
+            border-radius: 10px;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 0 15px rgba(128, 90, 213, 0.4);
         }
         
         .player-card h3 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Larger title */
-            color: var(--secondary); /* Secondary color */
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+            color: var(--light);
+            text-shadow: none;
         }
         
         .player-card p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem); /* Larger text */
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
         }
         
         .player-card button {
             background: none;
             border: none;
-            color: var(--secondary); /* Secondary color */
-            transition: color 0.3s ease, transform 0.2s ease;
-            padding: 0.5rem;
+            color: var(--secondary);
+            transition: color 0.2s ease, transform 0.1s ease;
+            padding: 0.4rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
         .player-card button:hover {
-            color: var(--accent); /* Accent color on hover */
-            transform: scale(1.15); /* More pronounced hover */
+            color: var(--primary);
+            transform: scale(1.1);
         }
         
         .player-card button:active {
-            transform: scale(0.9);
+            transform: scale(0.95);
         }
         
         .player-card button svg {
-            width: clamp(1.8rem, 6vw, 2.5rem); /* Larger icons */
-            height: clamp(1.8rem, 6vw, 2.5rem);
+            width: clamp(1.6rem, 5vw, 2.2rem);
+            height: clamp(1.6rem, 5vw, 2.2rem);
         }
         
         #play-pause svg {
-            width: clamp(3rem, 10vw, 4rem); /* Larger play/pause */
-            height: clamp(3rem, 10vw, 4rem);
+            width: clamp(2.5rem, 8vw, 3.5rem);
+            height: clamp(2.5rem, 8vw, 3.5rem);
         }
         
         .progress-bar {
-            height: 8px; /* Thicker progress bar */
-            background-color: rgba(255, 255, 255, 0.15); /* Lighter background */
-            border-radius: 4px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
         }
         
         .progress-fill {
-            background: linear-gradient(to right, var(--primary), var(--secondary)); /* Primary to Secondary gradient */
-            border-radius: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
         }
         
         .progress-bar::-webkit-slider-thumb {
-            width: 20px; /* Larger thumb */
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: var(--accent); /* Accent color thumb */
+            background: var(--accent);
             cursor: pointer;
-            border: 3px solid var(--primary); /* Primary color border */
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Accent glow */
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 8px rgba(214, 188, 250, 0.7);
             margin-top: -6px;
         }
         
         .progress-bar::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: var(--accent);
             cursor: pointer;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 8px rgba(214, 188, 250, 0.7);
         }
         
         .about-image-container img {
-            border-radius: 20px; /* More rounded */
-            border: 4px solid var(--primary); /* Primary color border */
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5); /* Primary color shadow */
+            border-radius: 15px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px rgba(107, 70, 193, 0.4);
         }
         
         .about-content-container h3 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Larger title */
-            margin-bottom: 1.2rem;
+            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+            margin-bottom: 1rem;
+            color: var(--light);
         }
         
         .about-content-container p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem); /* Larger text */
-            margin-bottom: 1.5rem;
+            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+            margin-bottom: 1.2rem;
         }
         
         .about-info-grid>div {
-            background: rgba(0, 0, 0, 0.6); /* Darker background */
-            border: 1px solid rgba(255, 0, 85, 0.7); /* Primary color border */
-            border-radius: 15px; /* More rounded */
-            padding: 1.5rem; /* More padding */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(107, 70, 193, 0.5);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .about-info-grid p {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
         
         .about-info-grid p.font-bold {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+            color: var(--accent);
         }
         
         .contact-info-container,
         .network-presence-container {
-            background: rgba(0, 0, 0, 0.7); /* Darker background */
-            backdrop-filter: blur(15px); /* More blur */
-            border: 2px solid rgba(0, 255, 255, 0.8); /* Secondary color border */
-            box-shadow: 0 0 35px rgba(0, 255, 255, 0.4); /* Secondary color shadow */
-            border-radius: 20px; /* More rounded */
-            padding: 2.5rem; /* More padding */
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(128, 90, 213, 0.6);
+            box-shadow: 0 0 25px rgba(128, 90, 213, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
         }
         
         .contact-info-container h3,
         .network-presence-container h3 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Larger title */
-            margin-bottom: 1.2rem;
+            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+            margin-bottom: 1rem;
+            color: var(--light);
         }
         
         .contact-info-container p,
         .network-presence-container p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem); /* Larger text */
+            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
         }
         
         .contact-info-container .space-y-4>div {
-            padding: 0.8rem 0;
+            padding: 0.6rem 0;
         }
         
         .contact-info-container .font-bold {
-            color: var(--secondary); /* Secondary color */
+            color: var(--accent);
         }
         
         .network-presence-container form input {
-            border-radius: 10px; /* More rounded */
-            background-color: rgba(255, 255, 255, 0.15); /* Lighter background */
-            border-color: var(--primary); /* Primary color border */
-            padding: 1rem 1.2rem; /* More padding */
-            font-size: 1rem;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            padding: 0.8rem 1rem;
+            font-size: 0.95rem;
         }
         
         .network-presence-container form button {
-            border-radius: 10px; /* More rounded */
-            padding: 1rem 1.8rem; /* More padding */
-            font-size: 1rem;
-            background-color: var(--primary); /* Primary color */
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+            background-color: var(--primary);
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .network-presence-container form button:hover {
-            background-color: var(--accent); /* Accent color on hover */
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Accent glow */
+            background-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(128, 90, 213, 0.5);
         }
         
         footer {
-            background-color: var(--space);
-            padding: 2rem; /* More padding */
-            border-top: 1px solid rgba(255, 0, 85, 0.3); /* Primary color border */
+            background-color: var(--background-end);
+            padding: 1.5rem;
+            border-top: 1px solid rgba(107, 70, 193, 0.2);
             position: relative;
             z-index: 2;
         }
         
         footer p {
-            font-size: clamp(0.8rem, 2vw, 0.9rem); /* Slightly larger */
-            opacity: 0.7;
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+            opacity: 0.6;
         }
         
         .now-playing-info {
             display: flex;
             align-items: center;
-            gap: 1.5rem; /* More space */
-            margin-bottom: 1.8rem; /* More space */
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
         }
         
         .player-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2.5rem; /* More space */
-            margin-top: 2rem; /* More space */
+            gap: 2rem;
+            margin-top: 1.5rem;
         }
         
         .tracklist-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.8rem; /* More space */
+            margin-bottom: 1.5rem;
         }
         
         .tracklist-header h3 {
@@ -616,48 +591,48 @@
         }
         
         .track-time {
-            font-size: 0.95rem; /* Slightly larger */
-            opacity: 0.8;
-            color: var(--secondary); /* Secondary color */
+            font-size: 0.9rem;
+            opacity: 0.7;
+            color: var(--accent);
             font-weight: bold;
         }
         
         .centered-heading {
             text-align: center;
-            color: var(--secondary);
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Secondary glow */
-            margin-bottom: 1.8rem; /* More space */
-            font-size: clamp(2rem, 5vw, 2.5rem); /* Larger */
+            color: var(--light);
+            text-shadow: none;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.8rem, 4.5vw, 2.2rem);
         }
         
         .contact-info-container .space-y-4>div,
         .network-presence-container .space-y-4>div {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
         
         .network-presence-container .social-icons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Larger icons */
-            gap: 1.2rem; /* More space */
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 1rem;
             justify-items: center;
-            margin-bottom: 2.5rem; /* More space */
+            margin-bottom: 2rem;
         }
         
         .social-icon-btn {
-            width: 60px;
-            height: 60px;
-            font-size: 1.8rem;
+            width: 50px;
+            height: 50px;
+            font-size: 1.6rem;
         }
         
         .social-icon-btn svg {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
         }
         
         .network-presence-container form {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
         
         .network-presence-container form input,
@@ -671,146 +646,146 @@
                 padding: 4rem 1rem;
             }
             .hero-content {
-                padding: 4rem !important;
-                max-width: 1100px;
+                padding: 3.5rem !important;
+                max-width: 1000px;
             }
             .hero-section h1 {
-                font-size: clamp(5rem, 10vw, 7rem) !important;
-                margin-bottom: 2rem;
+                font-size: clamp(4.5rem, 9vw, 6rem) !important;
+                margin-bottom: 1.5rem;
             }
             .hero-section h1 span:last-child {
-                font-size: clamp(3rem, 6vw, 4rem) !important;
-                margin-top: 1.5rem;
+                font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
+                margin-top: 1rem;
             }
             .hero-section p {
-                font-size: clamp(1.8rem, 3vw, 2.2rem) !important;
-                max-width: 1000px;
-                margin-bottom: 4rem;
-                line-height: 1.8;
+                font-size: clamp(1.6rem, 2.8vw, 2rem) !important;
+                max-width: 900px;
+                margin-bottom: 3rem;
+                line-height: 1.7;
             }
             .hero-section button {
-                padding: 1.8rem 3.5rem;
-                font-size: 1.8rem;
-                border-radius: 15px;
+                padding: 1.5rem 3rem;
+                font-size: 1.6rem;
+                border-radius: 12px;
             }
             .hero-nav-buttons a {
-                padding: 1.2rem 2.5rem !important;
-                font-size: 1.4rem !important;
-                border-radius: 12px;
+                padding: 1rem 2rem !important;
+                font-size: 1.2rem !important;
+                border-radius: 10px;
             }
             .flex-col-mobile {
                 flex-direction: row !important;
-                gap: 2.5rem;
-                margin-bottom: 3.5rem;
+                gap: 2rem;
+                margin-bottom: 3rem;
             }
             .hero-nav-buttons {
                 flex-direction: row !important;
-                gap: 1.8rem;
-                margin-bottom: 3.5rem;
+                gap: 1.5rem;
+                margin-bottom: 3rem;
             }
             .section-title {
-                font-size: clamp(4rem, 8vw, 6rem) !important;
-                margin-bottom: 5rem !important;
+                font-size: clamp(3.5rem, 7vw, 5rem) !important;
+                margin-bottom: 4rem !important;
             }
             .centered-heading {
-                font-size: clamp(3rem, 6vw, 4rem) !important;
-                margin-bottom: 2.5rem;
+                font-size: clamp(2.5rem, 5vw, 3.2rem) !important;
+                margin-bottom: 2rem;
             }
             .tracklist-card h3 {
-                font-size: clamp(2.5rem, 5vw, 3.2rem) !important;
+                font-size: clamp(2.2rem, 4.5vw, 2.8rem) !important;
             }
             .track-item {
-                padding: 1.5rem 2rem;
+                padding: 1.2rem 1.8rem;
             }
             .track-item h4 {
-                font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
+                font-size: clamp(1.2rem, 2.8vw, 1.6rem) !important;
             }
             .track-item p {
-                font-size: clamp(1.1rem, 2.5vw, 1.4rem) !important;
+                font-size: clamp(1rem, 2.2vw, 1.2rem) !important;
             }
             .track-time {
-                font-size: clamp(1.1rem, 2.5vw, 1.4rem) !important;
+                font-size: clamp(1rem, 2.2vw, 1.2rem) !important;
             }
             .now-playing-info img {
-                width: 200px !important;
-                height: 200px !important;
+                width: 180px !important;
+                height: 180px !important;
             }
             #now-playing-title {
-                font-size: clamp(2.5rem, 5vw, 3rem) !important;
+                font-size: clamp(2.2rem, 4.5vw, 2.8rem) !important;
             }
             #now-playing-artist {
-                font-size: clamp(1.5rem, 3vw, 1.8rem) !important;
+                font-size: clamp(1.3rem, 2.8vw, 1.6rem) !important;
             }
             .player-controls button svg {
-                width: clamp(2.5rem, 5vw, 3rem) !important;
-                height: clamp(2.5rem, 5vw, 3rem) !important;
+                width: clamp(2.2rem, 4.5vw, 2.8rem) !important;
+                height: clamp(2.2rem, 4.5vw, 2.8rem) !important;
             }
             #play-pause svg {
-                width: clamp(3.5rem, 8vw, 4.5rem) !important;
-                height: clamp(3.5rem, 8vw, 4.5rem) !important;
+                width: clamp(3rem, 7vw, 4rem) !important;
+                height: clamp(3rem, 7vw, 4rem) !important;
             }
             .audio-visualizer {
-                height: 120px;
+                height: 100px;
             }
             .visual-bar {
-                height: 25px;
+                height: 20px;
             }
             .progress-bar {
-                height: 10px;
+                height: 8px;
             }
             .album-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 columns for large screens */
-                gap: 2.5rem;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
             }
             .album-card {
-                max-width: none; /* Remove max-width for better grid flow */
+                max-width: none;
             }
             .about-info-grid {
-                grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
-                gap: 1.8rem;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
             }
             .social-icon-btn {
-                width: 80px;
-                height: 80px;
+                width: 70px;
+                height: 70px;
             }
             .social-icon-btn svg {
-                width: 40px;
-                height: 40px;
+                width: 36px;
+                height: 36px;
             }
             .network-presence-container form input {
-                padding: 1.5rem;
-                font-size: 1.2rem;
+                padding: 1.2rem;
+                font-size: 1.1rem;
             }
             .network-presence-container form button {
-                padding: 1.5rem 2.5rem;
-                font-size: 1.2rem;
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
             }
         }
         
         @media (max-width: 768px) {
             .hero-section {
-                min-height: 75vh;
+                min-height: 70vh;
                 padding: 1rem 0.5rem;
             }
             .hero-content {
-                padding: 1.5rem !important;
+                padding: 1.8rem !important;
                 margin: 0 0.8rem;
-                border-radius: 15px;
+                border-radius: 12px;
             }
             .section-title {
-                font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
-                margin-bottom: 2.5rem !important;
+                font-size: clamp(2rem, 5vw, 2.5rem) !important;
+                margin-bottom: 2rem !important;
             }
             .hero-section h1 {
-                font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
+                font-size: clamp(2rem, 5vw, 2.5rem) !important;
                 margin-bottom: 0.6rem;
             }
             .hero-section h1 span:last-child {
-                font-size: clamp(1.4rem, 3.5vw, 1.6rem) !important;
+                font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
                 margin-top: 0.4rem;
             }
             .hero-section p {
-                font-size: clamp(0.95rem, 2.5vw, 1.1rem) !important;
+                font-size: clamp(0.9rem, 2.2vw, 1.05rem) !important;
                 padding: 0 0.8rem;
                 margin-bottom: 1.5rem;
                 line-height: 1.5;
@@ -833,7 +808,7 @@
             .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr !important;
-                gap: 2.5rem !important;
+                gap: 2rem !important;
             }
             .player-card,
             .tracklist-card,
@@ -841,85 +816,85 @@
             .about-content-container,
             .contact-info-container,
             .network-presence-container {
-                padding: 2rem !important;
+                padding: 1.8rem !important;
             }
             .about-image-container img {
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
             .player-card {
                 order: 2;
             }
             .tracklist-card {
                 order: 1;
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
             .tracklist-card h3 {
                 text-align: center;
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
             .now-playing-info {
                 flex-direction: column;
                 text-align: center;
-                gap: 1.2rem;
+                gap: 1rem;
             }
             .now-playing-info img {
                 margin: 0 auto;
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
             }
             #now-playing-title {
-                font-size: clamp(1.8rem, 4vw, 2rem);
+                font-size: clamp(1.6rem, 4vw, 1.8rem);
             }
             .track-item {
-                padding: 12px 15px;
+                padding: 10px 15px;
             }
             .track-item h4 {
-                font-size: clamp(1rem, 2.5vw, 1.1rem);
+                font-size: clamp(0.95rem, 2.5vw, 1.05rem);
             }
             .track-item p {
-                font-size: clamp(0.8rem, 2vw, 0.9rem);
+                font-size: clamp(0.75rem, 2vw, 0.85rem);
             }
             .centered-heading {
-                font-size: clamp(1.8rem, 4vw, 2rem);
-                margin-bottom: 1.5rem;
+                font-size: clamp(1.6rem, 4vw, 1.8rem);
+                margin-bottom: 1.2rem;
             }
             .network-presence-container .social-icons-grid {
-                grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-                gap: 1rem;
+                grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+                gap: 0.8rem;
             }
             .social-icon-btn {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
             }
             .social-icon-btn svg {
-                width: 28px;
-                height: 28px;
+                width: 24px;
+                height: 24px;
             }
         }
         
         @media (max-width: 480px) {
             .hero-section {
-                min-height: 70vh;
+                min-height: 65vh;
                 padding: 0.8rem 0.4rem;
             }
             .hero-content {
-                padding: 1.2rem !important;
+                padding: 1.5rem !important;
                 margin: 0 0.6rem;
             }
             .section-title {
-                font-size: clamp(2rem, 5vw, 2.2rem) !important;
-                margin-bottom: 2rem !important;
+                font-size: clamp(1.8rem, 4.5vw, 2.2rem) !important;
+                margin-bottom: 1.8rem !important;
             }
             .hero-section h1 {
-                font-size: clamp(2rem, 5vw, 2.2rem) !important;
+                font-size: clamp(1.8rem, 4.5vw, 2.2rem) !important;
                 margin-bottom: 0.5rem;
             }
             .hero-section h1 span:last-child {
-                font-size: clamp(1.2rem, 3vw, 1.4rem) !important;
+                font-size: clamp(1.1rem, 2.8vw, 1.3rem) !important;
                 margin-top: 0.3rem;
             }
             .hero-section p {
-                font-size: clamp(0.9rem, 2.2vw, 1rem) !important;
+                font-size: clamp(0.85rem, 2vw, 0.95rem) !important;
                 line-height: 1.4 !important;
                 padding: 0 0.6rem;
                 margin-bottom: 1.2rem;
@@ -937,88 +912,40 @@
                 font-size: 0.8rem;
             }
             .album-card h3 {
-                font-size: clamp(1.4rem, 3.5vw, 1.8rem) !important;
+                font-size: clamp(1.3rem, 3.5vw, 1.6rem) !important;
             }
             .audio-visualizer {
-                height: 70px;
+                height: 60px;
             }
             .visual-bar {
-                height: 14px;
+                height: 12px;
             }
             .player-card,
             .tracklist-card {
                 padding: 1.5rem !important;
             }
             .now-playing-info img {
-                width: 100px !important;
-                height: 100px !important;
+                width: 80px !important;
+                height: 80px !important;
             }
             #now-playing-title {
-                font-size: clamp(1.5rem, 3.5vw, 1.8rem) !important;
+                font-size: clamp(1.4rem, 3.5vw, 1.6rem) !important;
             }
             .player-controls button svg {
-                width: clamp(1.5rem, 5vw, 2rem);
-                height: clamp(1.5rem, 5vw, 2rem);
+                width: clamp(1.4rem, 4.5vw, 1.8rem);
+                height: clamp(1.4rem, 4.5vw, 1.8rem);
             }
             #play-pause svg {
-                width: clamp(2.5rem, 8vw, 3.5rem);
-                height: clamp(2.5rem, 8vw, 3.5rem);
+                width: clamp(2.2rem, 7vw, 3rem);
+                height: clamp(2.2rem, 7vw, 3rem);
             }
             .centered-heading {
-                font-size: clamp(1.5rem, 3.5vw, 1.8rem);
-                margin-bottom: 1.2rem;
+                font-size: clamp(1.4rem, 3.5vw, 1.6rem);
+                margin-bottom: 1rem;
             }
             .network-presence-container .social-icons-grid {
-                grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-                gap: 0.8rem;
-            }
-            .social-icon-btn {
-                width: 40px;
-                height: 40px;
-            }
-            .social-icon-btn svg {
-                width: 24px;
-                height: 24px;
-            }
-        }
-        
-        @media (max-width: 375px) {
-            .hero-section {
-                min-height: 65vh;
-                padding: 0.6rem 0.3rem;
-            }
-            .hero-content {
-                padding: 1rem !important;
-                margin: 0 0.4rem;
-            }
-            .hero-section h1 {
-                font-size: clamp(1.8rem, 5vw, 2rem) !important;
-            }
-            .hero-section h1 span:last-child {
-                font-size: clamp(1rem, 2.5vw, 1.2rem) !important;
-            }
-            .hero-section p {
-                font-size: clamp(0.85rem, 2vw, 0.9rem) !important;
-            }
-            .hero-section button {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
-            .hero-nav-buttons a {
-                padding: 0.4rem 0.7rem;
-                font-size: 0.75rem;
-            }
-            .section-title {
-                font-size: clamp(1.8rem, 5vw, 2rem) !important;
-            }
-            .track-item h4 {
-                font-size: clamp(0.9rem, 2.2vw, 1rem);
-            }
-            .track-item p {
-                font-size: clamp(0.75rem, 1.8vw, 0.85rem);
-            }
-            .album-card h3 {
-                font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+                grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+                gap: 0.6rem;
             }
             .social-icon-btn {
                 width: 35px;
@@ -1030,30 +957,51 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .hero-section .pulse-circle:nth-child(1) {
-                width: 150px;
-                height: 150px;
-                left: 8%;
-                top: 18%;
-            }
-            .hero-section .pulse-circle:nth-child(2) {
-                width: 220px;
-                height: 220px;
-                right: 5%;
-                bottom: 12%;
-            }
-            .hero-section .pulse-circle:nth-child(3) {
-                width: 130px;
-                height: 130px;
-                left: 25%;
-                bottom: 5%;
-            }
-            .hero-section .pulse-circle {
-                animation: pulse 4.5s infinite ease-out;
+        @media (max-width: 375px) {
+            .hero-section {
+                min-height: 60vh;
+                padding: 0.6rem 0.3rem;
             }
             .hero-content {
-                box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
+                padding: 1.2rem !important;
+                margin: 0 0.4rem;
+            }
+            .hero-section h1 {
+                font-size: clamp(1.6rem, 4vw, 1.8rem) !important;
+            }
+            .hero-section h1 span:last-child {
+                font-size: clamp(0.9rem, 2.2vw, 1.1rem) !important;
+            }
+            .hero-section p {
+                font-size: clamp(0.8rem, 1.8vw, 0.85rem) !important;
+            }
+            .hero-section button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .hero-nav-buttons a {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.75rem;
+            }
+            .section-title {
+                font-size: clamp(1.6rem, 4vw, 1.8rem) !important;
+            }
+            .track-item h4 {
+                font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+            }
+            .track-item p {
+                font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            }
+            .album-card h3 {
+                font-size: clamp(1.1rem, 2.8vw, 1.4rem) !important;
+            }
+            .social-icon-btn {
+                width: 30px;
+                height: 30px;
+            }
+            .social-icon-btn svg {
+                width: 18px;
+                height: 18px;
             }
         }
         
@@ -1064,10 +1012,10 @@
             height: 0;
             overflow: hidden;
             background-color: black;
-            border-radius: 15px; /* More rounded */
-            border: 3px solid var(--secondary); /* Secondary color border */
-            margin-bottom: 1.8rem; /* More space */
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6); /* Secondary glow */
+            border-radius: 12px;
+            border: 2px solid var(--secondary);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(128, 90, 213, 0.4);
         }
         
         .youtube-player-container iframe {
@@ -1081,25 +1029,25 @@
         .visualizer-container {
             position: relative;
             width: 100%;
-            height: 100px; /* Taller */
-            margin-bottom: 1.8rem; /* More space */
+            height: 90px;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: flex-end;
-            padding: 15px 0; /* More padding */
-            border-radius: 10px;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            padding: 12px 0;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.4);
             overflow: hidden;
         }
         
         .visual-bar {
             flex: 1;
-            height: 20px; /* Taller bars */
-            margin: 0 2px; /* More space */
+            height: 18px;
+            margin: 0 1.8px;
             background: linear-gradient(to top, var(--primary), var(--secondary));
             transform-origin: bottom;
             transform: scaleY(0.1);
             transition: transform 0.1s ease-out;
-            border-radius: 3px;
+            border-radius: 2.5px;
         }
         
         .player-controls button {
@@ -1107,7 +1055,7 @@
         }
         
         .player-controls button:hover {
-            transform: scale(1.15); /* More pronounced */
+            transform: scale(1.1);
             color: var(--accent);
         }
         
@@ -1118,10 +1066,10 @@
         .progress-bar-container {
             position: relative;
             width: 100%;
-            height: 8px; /* Thicker */
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            margin-bottom: 1.8rem; /* More space */
+            height: 7px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 3.5px;
+            margin-bottom: 1.5rem;
         }
         
         .progress-bar {
@@ -1140,24 +1088,24 @@
         .progress-bar::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px; /* Larger thumb */
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: var(--accent); /* Accent color */
+            background: var(--accent);
             cursor: pointer;
-            border: 3px solid var(--primary); /* Primary color border */
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Accent glow */
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 8px rgba(214, 188, 250, 0.7);
             margin-top: -6px;
         }
         
         .progress-bar::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: var(--accent);
             cursor: pointer;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 8px rgba(214, 188, 250, 0.7);
         }
         
         .progress-fill {
@@ -1166,7 +1114,7 @@
             left: 0;
             height: 100%;
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 4px;
+            border-radius: 3.5px;
             z-index: 1;
         }
         
@@ -1189,39 +1137,39 @@
         
         @media (max-width: 768px) {
             .youtube-player-container {
-                margin-bottom: 1.2rem;
+                margin-bottom: 1rem;
             }
             .visualizer-container {
-                height: 80px;
-                margin-bottom: 1.2rem;
+                height: 70px;
+                margin-bottom: 1rem;
             }
             .visual-bar {
-                height: 15px;
+                height: 14px;
             }
             .progress-bar-container {
-                height: 6px;
-                margin-bottom: 1.2rem;
+                height: 5px;
+                margin-bottom: 1rem;
             }
             .progress-bar::-webkit-slider-thumb,
             .progress-bar::-moz-range-thumb {
-                width: 16px;
-                height: 16px;
-                margin-top: -5px;
+                width: 14px;
+                height: 14px;
+                margin-top: -4.5px;
             }
         }
         
         .playlist-player-card {
-            background: rgba(0, 0, 0, 0.7); /* Darker background */
-            backdrop-filter: blur(15px); /* More blur */
-            border: 2px solid var(--secondary); /* Secondary color border */
-            box-shadow: 0 0 35px rgba(0, 255, 255, 0.4); /* Secondary glow */
-            border-radius: 20px; /* More rounded */
-            padding: 2.5rem; /* More padding */
-            margin-top: 3.5rem; /* More space */
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--secondary);
+            box-shadow: 0 0 25px rgba(128, 90, 213, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
             display: none;
             flex-direction: column;
             align-items: center;
-            max-width: 900px; /* Wider */
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1231,33 +1179,33 @@
         }
         
         .playlist-player-card .youtube-player-container {
-            margin-bottom: 1.5rem;
-            border: 3px solid var(--accent); /* Accent color border */
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); /* Accent glow */
+            margin-bottom: 1.2rem;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px rgba(214, 188, 250, 0.5);
         }
         
         .playlist-player-card .now-playing-info {
             flex-direction: column;
             text-align: center;
-            gap: 0.8rem; /* More space */
-            margin-bottom: 1.5rem;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
             width: 100%;
         }
         
         .playlist-player-card .now-playing-info h3 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Larger title */
-            margin-bottom: 0.3rem;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            margin-bottom: 0.2rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
-            color: var(--accent); /* Accent color title */
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+            color: var(--accent);
+            text-shadow: none;
         }
         
         .playlist-player-card .now-playing-info p {
-            font-size: clamp(1rem, 2.2vw, 1.2rem); /* Larger text */
-            opacity: 0.8;
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            opacity: 0.7;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1265,59 +1213,59 @@
         }
         
         .playlist-player-card .player-controls {
-            gap: 2rem; /* More space */
-            margin-top: 1.5rem;
+            gap: 1.8rem;
+            margin-top: 1.2rem;
         }
         
         .playlist-player-card .player-controls button {
-            color: var(--accent); /* Accent color controls */
+            color: var(--accent);
         }
         
         .playlist-player-card .player-controls button:hover {
-            color: var(--secondary); /* Secondary color on hover */
+            color: var(--secondary);
         }
         
         .playlist-player-card .progress-bar-container {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .playlist-player-card .progress-fill {
-            background: linear-gradient(to right, var(--accent), var(--secondary)); /* Accent to Secondary fill */
+            background: linear-gradient(to right, var(--accent), var(--secondary));
         }
         
         .playlist-player-card .progress-bar::-webkit-slider-thumb {
-            background: var(--secondary); /* Secondary color thumb */
-            border-color: var(--accent); /* Accent color border */
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7); /* Secondary glow */
+            background: var(--secondary);
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(128, 90, 213, 0.7);
         }
         
         .playlist-player-card .progress-bar::-moz-range-thumb {
             background: var(--secondary);
             border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            box-shadow: 0 0 8px rgba(128, 90, 213, 0.7);
         }
         
         @media (max-width: 768px) {
             .playlist-player-card {
-                padding: 2rem;
-                margin-top: 2.5rem;
+                padding: 1.8rem;
+                margin-top: 2rem;
             }
             .playlist-player-card .now-playing-info h3 {
-                font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+                font-size: clamp(1.4rem, 3.5vw, 1.6rem);
             }
             .playlist-player-card .now-playing-info p {
-                font-size: clamp(0.85rem, 2vw, 1rem);
+                font-size: clamp(0.8rem, 2vw, 0.95rem);
             }
             .playlist-player-card .player-controls {
-                gap: 1.5rem;
+                gap: 1.2rem;
             }
             .playlist-player-card .player-controls button svg {
-                width: clamp(1.5rem, 5vw, 2rem);
-                height: clamp(1.5rem, 5vw, 2rem);
+                width: clamp(1.4rem, 4.5vw, 1.8rem);
+                height: clamp(1.4rem, 4.5vw, 1.8rem);
             }
             .playlist-player-card #play-pause svg {
-                width: clamp(2.5rem, 8vw, 3.5rem);
-                height: clamp(2.5rem, 8vw, 3.5rem);
+                width: clamp(2.2rem, 7vw, 3rem);
+                height: clamp(2.2rem, 7vw, 3rem);
             }
         }
     </style>
@@ -1328,20 +1276,17 @@
 
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
-        <div class="absolute inset-0">
-            <div class="pulse-circle"></div>
-            <div class="pulse-circle"></div>
-            <div class="pulse-circle"></div>
-        </div>
+        <!-- Removed pulse circles -->
 
         <div class="hero-content container mx-auto px-4">
             <h1 class="font-black hero-title">
-                <span class="block text-glow">Jamal Belal</span> <br>
-                <span class="block opacity-80 hero-subtitle">Hard Techno Producer</span>
+                <span class="block">Jamal Belal</span> <br>
+                <span class="block opacity-80 hero-subtitle">Music Producer</span>
             </h1>
 
             <p class="max-w-2xl mx-auto leading-relaxed hero-text px-4">
-                Pushing sonic boundaries with industrial techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
+                Pushing sonic boundaries with industrial techno, dubstep, and electronic music since 2015.
+                Creating unique soundscapes with powerful basslines and intricate rhythms.
             </p>
 
             <!-- Navigation Buttons -->
@@ -1350,7 +1295,7 @@
                     Music
                 </a>
                 <a href="#albums" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all text-sm">
-                    Albums
+                    Playlists
                 </a>
                 <a href="#about" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all text-sm">
                     About
@@ -1364,13 +1309,13 @@
 
     <!-- Music Player (Discography) -->
     <section class="min-h-screen py-20 px-4 relative overflow-hidden" id="music">
-        <h2 class="text-4xl md:text-6xl font-bold mb-12 md:mb-20 text-center section-title">System Archive</h2>
+        <h2 class="text-4xl md:text-6xl font-bold mb-12 md:mb-20 text-center section-title">Discography</h2>
 
         <div class="container mx-auto grid md:grid-cols-2 gap-8 md:gap-12 music-player-grid">
             <!-- Tracklist -->
             <div class="tracklist-card">
                 <div class="tracklist-header">
-                    <h3 class="text-2xl font-bold centered-heading">Discography</h3>
+                    <h3 class="text-2xl font-bold centered-heading">Tracks</h3>
                 </div>
 
                 <div class="space-y-2">
@@ -1488,7 +1433,7 @@
                     </button>
                 </div>
                 <div class="flex justify-center mt-4">
-                    <a id="discography-youtube-original-link" href="#" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-200 transition-colors hidden">
+                    <a id="discography-youtube-original-link" href="#" target="_blank" class="text-sm text-purple-300 hover:text-purple-200 transition-colors hidden">
                         Watch on YouTube
                     </a>
                 </div>
@@ -1499,7 +1444,7 @@
     <!-- Albums Section -->
     <section class="min-h-screen py-20 px-4" id="albums">
         <div class="container mx-auto">
-            <h2 class="text-4xl md:text-6xl font-bold mb-12 md:mb-20 text-center section-title">Station Playlists</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 md:mb-20 text-center section-title">Playlists</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 album-grid">
                 <div class="album-card playlist-item" data-playlist-id="PLmbD41oTv-4Rwy0N2jy25YoXCPWVX_I5e" data-playlist-title="Official Melodic Techno">
@@ -1580,24 +1525,24 @@
                 </div>
 
                 <div class="player-controls">
-                    <button id="playlist-prev-track" class="text-3xl hover:text-cyan-400 transition-colors">
+                    <button id="playlist-prev-track" class="text-3xl hover:text-purple-400 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path d="M18.75 8.25V6.75A2.25 2.25 0 0016.5 4.5h-1.5a2.25 2.25 0 00-2.25 2.25v1.5m-4.5 0V6.75A2.25 2.25 0 006.75 4.5H5.25A2.25 2.25 0 003 6.75v1.5m15 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
                         </svg>
                     </button>
-                    <button id="playlist-play-pause" class="text-5xl hover:text-cyan-400 transition-colors">
+                    <button id="playlist-play-pause" class="text-5xl hover:text-purple-400 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" />
                         </svg>
                     </button>
-                    <button id="playlist-next-track" class="text-3xl hover:text-cyan-400 transition-colors">
+                    <button id="playlist-next-track" class="text-3xl hover:text-purple-400 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path d="M5.25 8.25V6.75A2.25 2.25 0 017.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m4.5 0V6.75A2.25 2.25 0 0116.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m-4.5 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
                         </svg>
                     </button>
                 </div>
                 <div class="flex justify-center mt-4">
-                    <a id="playlist-youtube-original-link" href="#" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-200 transition-colors hidden">
+                    <a id="playlist-youtube-original-link" href="#" target="_blank" class="text-sm text-purple-300 hover:text-purple-200 transition-colors hidden">
                         Watch Playlist on YouTube
                     </a>
                 </div>
@@ -1608,7 +1553,7 @@
     <!-- About Section -->
     <section class="min-h-screen py-20 px-4" id="about">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">System Profile</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">About Jamal Belal</h2>
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center about-grid">
                 <div class="about-image-container">
@@ -1616,7 +1561,7 @@
                 </div>
 
                 <div class="about-content-container">
-                    <h3 class="text-2xl font-bold centered-heading">Jamal Belal</h3>
+                    <h3 class="text-2xl font-bold centered-heading">Biography</h3>
                     <p class="mb-4 leading-relaxed">
                         Jamal Belal is a Syrian-Turkish music producer and composer specializing in Hard Techno, Dubstep, and Electronic Music. With a background in music production since the age of 15, he has developed a unique sound that combines industrial energy with precise
                         rhythms.
@@ -1625,7 +1570,7 @@
                         Born on July 27, 1995, with Damascus and Adana origins, he currently resides in Istanbul, Turkey. He holds a degree in Music Production from the Royal Schools of Music and has produced over 12 albums and 1500 royalty-free music tracks.
                     </p>
                     <p class="leading-relaxed">
-                        His music has been featured in various media, including the Arabic series "Black Day," and he continues to push boundaries in the hard techno scene with his relentless productions.
+                        His music has been featured in various media, including the Arabic series "Black Day," and he continues to push boundaries in the electronic music scene with his relentless productions.
                     </p>
 
                     <div class="mt-8 grid grid-cols-2 gap-4 about-info-grid">
@@ -1639,7 +1584,7 @@
                         </div>
                         <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
                             <p class="text-sm opacity-70 mb-1">Music Genres</p>
-                            <p class="font-bold">Industrial Hard Techno</p>
+                            <p class="font-bold">Industrial Hard Techno, Dubstep, Electronic</p>
                         </div>
                         <div class="bg-black bg-opacity-50 p-4 rounded-lg border border-purple-900">
                             <p class="text-sm opacity-70 mb-1">Languages</p>
@@ -1654,7 +1599,7 @@
     <!-- Contact Section -->
     <section class="py-20 px-4" id="contact">
         <div class="container mx-auto max-w-4xl">
-            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">System Link</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center section-title">Contact & Connect</h2>
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 contact-grid">
                 <div class="contact-info-container">
@@ -1681,7 +1626,7 @@
                 </div>
 
                 <div class="network-presence-container">
-                    <h3 class="text-2xl font-bold centered-heading">Network Presence</h3>
+                    <h3 class="text-2xl font-bold centered-heading">Connect Online</h3>
 
                     <div class="social-icons-grid mb-8">
                         <a href="https://www.instagram.com/jamalbelal.music/" target="_blank" class="social-icon-btn">
@@ -1737,7 +1682,7 @@
     </section>
 
     <footer class="py-8 px-8 text-center">
-        <p class="text-sm opacity-70">© 2023 Jamal Belal Productions. All systems operational.</p>
+        <p class="text-sm opacity-70">© 2023 Jamal Belal Productions. All rights reserved.</p>
     </footer>
 
     <script src="https://www.youtube.com/iframe_api"></script>
@@ -1821,9 +1766,11 @@
         // SVG icons for player controls
         const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.38 2.872-1.667l11.55 6.416c1.343.713 1.343 2.503 0 3.216l-11.55 6.416c-1.343.713-2.872-.24-2.872-1.667V5.653z" clip-rule="evenodd" /></svg>`;
         const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" /></svg>`;
-        const prevIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.75 8.25V6.75A2.25 2.25 0 0016.5 4.5h-1.5a2.25 2.25 0 00-2.25 2.25v1.5m-4.5 0V6.75A2.25 2.25 0 006.75 4.5H5.25A2.25 2.25 0 003 6.75v1.5m15 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+        const prevIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M18.75 8.25V6.75A2.25 2.25 0 0016.5 4.5h-1.5a2.25 2.25 0 00-2.25 2.25v1.5m-4.5 0V6.75A2.25 2.25 0 006.75 4.5H5.25A2.25 2.25 0 003 6.75v1.5m15 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h-4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
                         </svg>`;
-        const nextIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5.25 8.25V6.75A2.25 2.25 0 017.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m4.5 0V6.75A2.25 2.25 0 0116.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m-4.5 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
+        const nextIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M5.25 8.25V6.75A2.25 2.25 0 017.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m4.5 0V6.75A2.25 2.25 0 0116.5 4.5h1.5a2.25 2.25 0 012.25 2.25v1.5m-4.5 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5m18 0v4.5A2.25 2.25 0 0118.75 15h-1.5a2.25 2.25 0 01-2.25-2.25V8.25m-9 0v4.5A2.25 2.25 0 016.75 15H5.25A2.25 2.25 0 013 12.75V8.25m18 0h4.5m-9 0H3m18 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25v1.5m-9 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6.75v1.5" />
                         </svg>`;
 
         // Set initial icons for both players
@@ -2413,54 +2360,47 @@
 
         // Hero Section initial animation
         gsap.from(".hero-title", {
-            duration: 1.2,
-            opacity: 0,
-            y: -50,
-            ease: "power3.out"
-        });
-        gsap.from(".hero-subtitle", {
-            duration: 1.2,
+            duration: 1,
             opacity: 0,
             y: -30,
-            delay: 0.3,
-            ease: "power3.out"
+            ease: "power2.out"
+        });
+        gsap.from(".hero-subtitle", {
+            duration: 1,
+            opacity: 0,
+            y: -20,
+            delay: 0.2,
+            ease: "power2.out"
         });
         gsap.from(".hero-text", {
-            duration: 1.2,
+            duration: 1,
             opacity: 0,
-            y: 30,
-            delay: 0.6,
-            ease: "power3.out"
+            y: 20,
+            delay: 0.4,
+            ease: "power2.out"
         });
 
-        gsap.to(".pulse-circle", {
-            duration: 3,
-            scale: 1.5,
-            opacity: 0,
-            repeat: -1,
-            ease: "none"
-        });
+        // Removed pulse circle animation
 
         // Album hover animations
         document.querySelectorAll('.album-card').forEach(card => {
             const cover = card.querySelector('.album-cover');
             gsap.set(cover, {
-                filter: "grayscale(80%) contrast(110%)"
+                filter: "grayscale(50%) brightness(0.8)"
             });
 
             card.addEventListener('mouseenter', () => {
                 gsap.to(card, {
                     y: -5,
                     scale: 1.02,
-                    rotateY: 5,
-                    boxShadow: "0 10px 25px rgba(255, 0, 85, 0.6)", /* Primary color shadow */
+                    boxShadow: "0 10px 25px rgba(107, 70, 193, 0.5)",
                     borderColor: "var(--primary)",
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "power2.out"
                 });
                 gsap.to(cover, {
                     filter: "none",
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "power2.out"
                 });
             });
@@ -2469,15 +2409,14 @@
                 gsap.to(card, {
                     y: 0,
                     scale: 1,
-                    rotateY: 0,
-                    boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
-                    borderColor: "rgba(255, 0, 85, 0.3)", /* Primary color border */
-                    duration: 0.3,
+                    boxShadow: "0 5px 15px rgba(0, 0, 0, 0.2)",
+                    borderColor: "rgba(107, 70, 193, 0.4)",
+                    duration: 0.2,
                     ease: "power2.out"
                 });
                 gsap.to(cover, {
-                    filter: "grayscale(80%) contrast(110%)",
-                    duration: 0.3,
+                    filter: "grayscale(50%) brightness(0.8)",
+                    duration: 0.2,
                     ease: "power2.out"
                 });
             });
@@ -2503,9 +2442,9 @@
                     toggleActions: "play none none reverse",
                 },
                 opacity: 0,
-                y: -50,
-                duration: 1,
-                ease: "power3.out"
+                y: -30,
+                duration: 0.8,
+                ease: "power2.out"
             });
         });
 
@@ -2517,9 +2456,9 @@
                 toggleActions: "play none none reverse",
             },
             opacity: 0,
-            x: -100,
-            duration: 1,
-            ease: "power3.out"
+            x: -80,
+            duration: 0.9,
+            ease: "power2.out"
         });
 
         gsap.from(".tracklist-card", {
@@ -2529,10 +2468,10 @@
                 toggleActions: "play none none reverse",
             },
             opacity: 0,
-            x: 100,
-            duration: 1,
-            delay: 0.2,
-            ease: "power3.out"
+            x: 80,
+            duration: 0.9,
+            delay: 0.1,
+            ease: "power2.out"
         });
 
         // Album cards animation on scroll
@@ -2544,9 +2483,9 @@
                     toggleActions: "play none none reverse",
                 },
                 opacity: 0,
-                y: 50,
-                duration: 0.8,
-                delay: i * 0.1,
+                y: 40,
+                duration: 0.7,
+                delay: i * 0.08,
                 ease: "power2.out"
             });
         });
@@ -2559,9 +2498,9 @@
                 toggleActions: "play none none reverse",
             },
             opacity: 0,
-            x: -100,
-            duration: 1,
-            ease: "power3.out"
+            x: -80,
+            duration: 0.9,
+            ease: "power2.out"
         });
 
         gsap.from(".about-content-container", {
@@ -2571,10 +2510,10 @@
                 toggleActions: "play none none reverse",
             },
             opacity: 0,
-            x: 100,
-            duration: 1,
-            delay: 0.2,
-            ease: "power3.out"
+            x: 80,
+            duration: 0.9,
+            delay: 0.1,
+            ease: "power2.out"
         });
 
         gsap.from(".about-info-grid > div", {
@@ -2584,10 +2523,10 @@
                 toggleActions: "play none none reverse",
             },
             opacity: 0,
-            y: 20,
-            stagger: 0.1,
-            duration: 0.6,
-            ease: "power2.out"
+            y: 15,
+            stagger: 0.08,
+            duration: 0.5,
+            ease: "power1.out"
         });
 
 
@@ -2599,9 +2538,9 @@
                 toggleActions: "play none none reverse",
             },
             opacity: 0,
-            x: -100,
-            duration: 1,
-            ease: "power3.out"
+            x: -80,
+            duration: 0.9,
+            ease: "power2.out"
         });
 
         gsap.from(".network-presence-container", {
@@ -2611,10 +2550,10 @@
                 toggleActions: "play none none reverse",
             },
             opacity: 0,
-            x: 100,
-            duration: 1,
-            delay: 0.2,
-            ease: "power3.out"
+            x: 80,
+            duration: 0.9,
+            delay: 0.1,
+            ease: "power2.out"
         });
 
 
@@ -2623,23 +2562,23 @@
             btn.addEventListener('mouseenter', () => {
                 gsap.to(btn.querySelector('svg'), {
                     color: 'var(--dark)',
-                    duration: 0.3
+                    duration: 0.2
                 });
                 gsap.to(btn, {
-                    scale: 1.1,
-                    duration: 0.3,
-                    ease: "back.out(1.7)"
+                    scale: 1.08,
+                    duration: 0.2,
+                    ease: "back.out(1.5)"
                 });
             });
             btn.addEventListener('mouseleave', () => {
                 gsap.to(btn.querySelector('svg'), {
                     color: 'currentColor',
-                    duration: 0.3
+                    duration: 0.2
                 });
                 gsap.to(btn, {
                     scale: 1,
-                    duration: 0.3,
-                    ease: "power2.out"
+                    duration: 0.2,
+                    ease: "power1.out"
                 });
             });
         });
