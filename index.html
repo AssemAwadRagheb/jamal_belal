@@ -11,27 +11,21 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
          :root {
-            --primary: #6a0dad;
-            /* Deep Purple */
-            --secondary: #00ffff;
-            /* Cyan */
-            --accent: #ff00ff;
-            /* Magenta */
-            --dark: #0a0a1a;
-            /* Very Dark Blue */
-            --light: #f0f0f0;
-            /* Off-White */
-            --space: #000022;
-            /* Darker Space Blue */
-            --text-glow-start: #00ffff;
-            --text-glow-end: #6a0dad;
+            --primary: #FF0055; /* Neon Red - Hard Techno Vibe */
+            --secondary: #00FFFF; /* Neon Cyan */
+            --accent: #00FF00; /* Neon Green */
+            --dark: #0a0a1a; /* Very Dark Blue */
+            --light: #f0f0f0; /* Off-White */
+            --space: #000011; /* Even Darker Space Blue for background */
+            --text-glow-start: var(--secondary);
+            --text-glow-end: var(--primary);
         }
         
         body {
             background-color: var(--dark);
             color: var(--light);
             font-family: 'Rajdhani', sans-serif;
-            overflow-x: hidden; /* Ensure no horizontal scroll */
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -53,7 +47,7 @@
             margin-bottom: 3rem;
             text-align: center;
             color: var(--secondary);
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 85, 0.6); /* Enhanced glow */
         }
         
         .stars-background {
@@ -120,28 +114,33 @@
         .track-item {
             cursor: pointer;
             transition: all 0.3s ease;
-            padding: 12px 20px;
+            padding: 15px 20px;
             border-left: 3px solid transparent;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .track-item:hover {
-            background: rgba(106, 13, 173, 0.15);
-            border-left: 3px solid var(--primary);
+            background: rgba(255, 0, 85, 0.15); /* Primary color hover */
+            border-left: 4px solid var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
         
         .track-item.playing {
-            background: rgba(106, 13, 173, 0.25);
-            border-left: 3px solid var(--secondary);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            background: rgba(0, 255, 255, 0.25); /* Secondary color for playing */
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            transform: scale(1.01);
         }
         
         .pulse-circle {
             position: absolute;
             border-radius: 50%;
-            background: rgba(106, 13, 173, 0.3);
-            animation: pulse 3s infinite;
+            background: rgba(0, 255, 255, 0.25); /* Cyan pulse */
+            animation: pulse 4s infinite ease-out;
             z-index: -1;
             opacity: 0;
         }
@@ -160,23 +159,9 @@
             }
         }
         
-        @keyframes scroll-icon {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(8px);
-            }
-        }
-        
-        .animate-scroll-icon {
-            animation: scroll-icon 1.5s infinite ease-in-out;
-        }
-        
         .text-glow {
             color: var(--secondary);
-            text-shadow: 0 0 10px var(--text-glow-start), 0 0 20px var(--text-glow-end);
+            text-shadow: 0 0 15px var(--text-glow-start), 0 0 30px var(--text-glow-end);
             transition: all 0.4s ease-in-out;
             animation: text-glow-pulse 3s infinite alternate;
         }
@@ -184,13 +169,12 @@
         @keyframes text-glow-pulse {
             0%,
             100% {
-                text-shadow: 0 0 10px var(--text-glow-start), 0 0 20px var(--text-glow-end);
+                text-shadow: 0 0 15px var(--text-glow-start), 0 0 30px var(--text-glow-end);
             }
             50% {
-                text-shadow: 0 0 20px var(--text-glow-start), 0 0 40px var(--text-glow-end);
+                text-shadow: 0 0 25px var(--text-glow-start), 0 0 50px var(--text-glow-end);
             }
         }
-        /* Custom styles for Hero Section */
         
         .hero-section {
             background: transparent;
@@ -209,12 +193,12 @@
         .hero-content {
             z-index: 10;
             position: relative;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(106, 13, 173, 0.6);
-            box-shadow: 0 0 30px rgba(106, 13, 173, 0.5);
+            background: rgba(0, 0, 0, 0.6); /* Darker background */
+            backdrop-filter: blur(12px); /* More blur */
+            padding: 2rem; /* More padding */
+            border-radius: 20px; /* More rounded */
+            border: 2px solid rgba(255, 0, 85, 0.8); /* Primary color border */
+            box-shadow: 0 0 40px rgba(255, 0, 85, 0.6); /* Primary color shadow */
             max-width: 800px;
             width: 100%;
             display: flex;
@@ -223,62 +207,33 @@
             align-items: center;
         }
         
-        .hero-section .pulse-circle {
-            background: rgba(0, 255, 255, 0.25);
-            animation: pulse 4s infinite ease-out;
-        }
-        
-        .hero-section .pulse-circle:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            left: 10%;
-            top: 20%;
-            animation-delay: 0s;
-        }
-        
-        .hero-section .pulse-circle:nth-child(2) {
-            width: 300px;
-            height: 300px;
-            right: 5%;
-            bottom: 10%;
-            animation-delay: 1.5s;
-        }
-        
-        .hero-section .pulse-circle:nth-child(3) {
-            width: 180px;
-            height: 180px;
-            left: 30%;
-            bottom: 5%;
-            animation-delay: 0.7s;
-        }
-        
         .hero-section h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.8rem, 6vw, 4.5rem); /* Slightly larger */
             line-height: 1.1;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
         }
         
         .hero-section h1 span:last-child {
-            font-size: clamp(1.4rem, 3.5vw, 2rem);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem); /* Slightly larger */
             opacity: 0.9;
             display: block;
-            margin-top: 0.4rem;
+            margin-top: 0.5rem;
         }
         
         .hero-section p {
-            font-size: clamp(0.95rem, 2.2vw, 1.3rem);
+            font-size: clamp(1rem, 2.2vw, 1.4rem); /* Slightly larger */
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem; /* More space */
             line-height: 1.6;
             opacity: 0.95;
         }
         
         .hero-section button {
-            padding: 0.8rem 1.8rem;
-            font-size: 1rem;
-            border-radius: 8px;
+            padding: 1rem 2rem; /* Larger buttons */
+            font-size: 1.1rem; /* Larger font */
+            border-radius: 10px; /* More rounded */
             cursor: pointer;
             transition: all 0.4s ease;
             position: relative;
@@ -295,7 +250,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); /* Stronger shimmer */
             transition: all 0.4s ease;
             z-index: -1;
         }
@@ -305,51 +260,21 @@
         }
         
         .hero-section button:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.7);
+            transform: translateY(-8px) scale(1.05); /* More pronounced hover */
+            box-shadow: 0 12px 30px rgba(255, 0, 85, 0.8); /* Primary color shadow */
         }
         
-        .hero-section #play-sample {
-            border-color: var(--secondary);
-            color: var(--secondary);
-            background-color: rgba(0, 255, 255, 0.15);
-        }
-        
-        .hero-section #play-sample:hover {
-            background-color: var(--secondary);
-            color: var(--dark);
-        }
-        
-        .hero-section .bg-purple-600 {
+        .hero-section .bg-purple-800 {
             background-color: var(--primary);
             border: 2px solid var(--primary);
+            color: var(--light);
         }
         
-        .hero-section .bg-purple-600:hover {
-            background-color: var(--accent);
+        .hero-section .bg-purple-800:hover {
+            background-color: var(--accent); /* Accent color on hover */
             color: var(--dark);
             border-color: var(--accent);
         }
-        
-        .scroll-indicator {
-            margin-top: 1.8rem;
-            opacity: 0.9;
-            cursor: pointer;
-        }
-        
-        .scroll-indicator .w-6 {
-            width: 2rem;
-            height: 4rem;
-            border-width: 3px;
-            border-color: var(--secondary);
-        }
-        
-        .scroll-indicator .w-3 {
-            width: 0.8rem;
-            height: 0.8rem;
-            background-color: var(--secondary);
-        }
-        /* General Section Styling for ScrollTrigger */
         
         section {
             opacity: 0;
@@ -366,17 +291,16 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Album Card Hover Effect */
         
         .album-card {
             position: relative;
             overflow: hidden;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(106, 13, 173, 0.4);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.4s ease;
-            padding: 1.5rem;
+            border-radius: 20px; /* More rounded */
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(10, 10, 26, 0.8)); /* Darker gradient */
+            border: 2px solid rgba(255, 0, 85, 0.6); /* Primary color border */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+            padding: 2rem; /* More padding */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -384,45 +308,54 @@
         }
         
         .album-card:hover {
-            transform: translateY(-8px) scale(1.03) rotateY(3deg);
-            box-shadow: 0 15px 35px rgba(106, 13, 173, 0.7);
-            border-color: var(--primary);
+            transform: translateY(-10px) scale(1.04) rotateY(4deg); /* More pronounced lift and rotation */
+            box-shadow: 0 20px 45px rgba(255, 0, 85, 0.8); /* Intense primary glow */
+            border-color: var(--secondary); /* Secondary border on hover */
         }
         
         .album-card .album-cover {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-            border-radius: 12px;
-            filter: grayscale(85%) contrast(115%);
-            margin-bottom: 1.2rem;
+            border-radius: 18px; /* More rounded cover */
+            border: 2px solid rgba(0, 255, 255, 0.4); /* Subtle secondary border */
+            filter: grayscale(90%) contrast(120%); /* Stronger initial filter */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
         
         .album-card:hover .album-cover {
-            filter: none;
+            filter: none; /* Full color on hover */
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.7); /* Stronger secondary glow on hover */
         }
         
         .album-card h3 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.6rem, 4.5vw, 2.2rem); /* Larger title */
+            color: var(--secondary); /* Secondary color title */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.4); /* Secondary glow */
+            margin-bottom: 0.8rem;
         }
         
         .album-card p {
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            margin-bottom: 1rem;
+            font-size: clamp(0.85rem, 2.2vw, 1rem); /* Larger description */
+            opacity: 0.85;
         }
         
         .album-card button {
-            padding: 0.8rem 1.8rem;
-            font-size: 0.95rem;
-            border-radius: 6px;
-            background-color: rgba(106, 13, 173, 0.6);
-            border: 1px solid var(--primary);
+            padding: 0.9rem 2rem; /* Larger button */
+            font-size: 1rem;
+            border-radius: 8px;
+            background-color: var(--primary); /* Primary color button */
+            border: 2px solid var(--primary);
+            color: var(--light);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
         .album-card button:hover {
-            background-color: var(--primary);
-            box-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
+            background-color: var(--accent); /* Accent color on hover */
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Accent glow */
+            transform: translateY(-2px);
         }
-        /* Social Icons Hover */
         
         .social-icon-btn {
             position: relative;
@@ -434,8 +367,8 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(106, 13, 173, 0.5);
-            border: 1px solid rgba(106, 13, 173, 0.7);
+            background: rgba(255, 0, 85, 0.5); /* Primary color background */
+            border: 1px solid rgba(255, 0, 85, 0.7); /* Primary color border */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
         
@@ -453,7 +386,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--secondary);
+            background: var(--secondary); /* Secondary color for hover fill */
             border-radius: 50%;
             transform: scale(0);
             transition: transform 0.3s ease;
@@ -471,35 +404,37 @@
         .social-icon-btn:active {
             transform: scale(0.85);
         }
-        /* Player Card & Tracklist Card */
         
         .player-card,
         .tracklist-card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(106, 13, 173, 0.7);
-            box-shadow: 0 0 25px rgba(106, 13, 173, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7); /* Darker background */
+            backdrop-filter: blur(15px); /* More blur */
+            border: 2px solid rgba(255, 0, 85, 0.8); /* Primary color border */
+            box-shadow: 0 0 35px rgba(255, 0, 85, 0.4); /* Primary color shadow */
+            border-radius: 20px; /* More rounded */
+            padding: 2.5rem; /* More padding */
         }
         
         .player-card img {
-            border-radius: 10px;
-            border: 2px solid var(--secondary);
+            border-radius: 15px; /* More rounded */
+            border: 3px solid var(--secondary); /* Secondary color border */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Secondary glow */
         }
         
         .player-card h3 {
-            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Larger title */
+            color: var(--secondary); /* Secondary color */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
         
         .player-card p {
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-size: clamp(1rem, 2.5vw, 1.2rem); /* Larger text */
         }
         
         .player-card button {
             background: none;
             border: none;
-            color: var(--secondary);
+            color: var(--secondary); /* Secondary color */
             transition: color 0.3s ease, transform 0.2s ease;
             padding: 0.5rem;
             display: flex;
@@ -508,8 +443,8 @@
         }
         
         .player-card button:hover {
-            color: var(--accent);
-            transform: scale(1.1);
+            color: var(--accent); /* Accent color on hover */
+            transform: scale(1.15); /* More pronounced hover */
         }
         
         .player-card button:active {
@@ -517,144 +452,163 @@
         }
         
         .player-card button svg {
-            width: clamp(1.5rem, 6vw, 2rem);
-            height: clamp(1.5rem, 6vw, 2rem);
+            width: clamp(1.8rem, 6vw, 2.5rem); /* Larger icons */
+            height: clamp(1.8rem, 6vw, 2.5rem);
         }
         
         #play-pause svg {
-            width: clamp(2.5rem, 10vw, 3rem);
-            height: clamp(2.5rem, 10vw, 3rem);
+            width: clamp(3rem, 10vw, 4rem); /* Larger play/pause */
+            height: clamp(3rem, 10vw, 4rem);
         }
         
         .progress-bar {
-            height: 6px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
+            height: 8px; /* Thicker progress bar */
+            background-color: rgba(255, 255, 255, 0.15); /* Lighter background */
+            border-radius: 4px;
         }
         
         .progress-fill {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary)); /* Primary to Secondary gradient */
+            border-radius: 4px;
         }
-        /* About Section */
+        
+        .progress-bar::-webkit-slider-thumb {
+            width: 20px; /* Larger thumb */
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent); /* Accent color thumb */
+            cursor: pointer;
+            border: 3px solid var(--primary); /* Primary color border */
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Accent glow */
+            margin-top: -6px;
+        }
+        
+        .progress-bar::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+        }
         
         .about-image-container img {
-            border-radius: 15px;
-            border: 4px solid var(--primary);
-            box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+            border-radius: 20px; /* More rounded */
+            border: 4px solid var(--primary); /* Primary color border */
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5); /* Primary color shadow */
         }
         
         .about-content-container h3 {
-            font-size: clamp(1.8rem, 5vw, 2.2rem);
-            margin-bottom: 1rem;
-        }
-        
-        .about-content-container p {
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Larger title */
             margin-bottom: 1.2rem;
         }
         
+        .about-content-container p {
+            font-size: clamp(1rem, 2.5vw, 1.1rem); /* Larger text */
+            margin-bottom: 1.5rem;
+        }
+        
         .about-info-grid>div {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(106, 13, 173, 0.6);
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.6); /* Darker background */
+            border: 1px solid rgba(255, 0, 85, 0.7); /* Primary color border */
+            border-radius: 15px; /* More rounded */
+            padding: 1.5rem; /* More padding */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
         
         .about-info-grid p {
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
         
         .about-info-grid p.font-bold {
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
         }
-        /* Contact Section */
         
         .contact-info-container,
         .network-presence-container {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(106, 13, 173, 0.7);
-            box-shadow: 0 0 25px rgba(106, 13, 173, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7); /* Darker background */
+            backdrop-filter: blur(15px); /* More blur */
+            border: 2px solid rgba(0, 255, 255, 0.8); /* Secondary color border */
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.4); /* Secondary color shadow */
+            border-radius: 20px; /* More rounded */
+            padding: 2.5rem; /* More padding */
         }
         
         .contact-info-container h3,
         .network-presence-container h3 {
-            font-size: clamp(1.8rem, 5vw, 2.2rem);
-            margin-bottom: 1rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem); /* Larger title */
+            margin-bottom: 1.2rem;
         }
         
         .contact-info-container p,
         .network-presence-container p {
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            font-size: clamp(1rem, 2.5vw, 1.1rem); /* Larger text */
         }
         
         .contact-info-container .space-y-4>div {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
         }
         
         .contact-info-container .font-bold {
-            color: var(--secondary);
+            color: var(--secondary); /* Secondary color */
         }
         
         .network-presence-container form input {
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: var(--primary);
-            padding: 0.8rem 1rem;
-            font-size: 0.95rem;
+            border-radius: 10px; /* More rounded */
+            background-color: rgba(255, 255, 255, 0.15); /* Lighter background */
+            border-color: var(--primary); /* Primary color border */
+            padding: 1rem 1.2rem; /* More padding */
+            font-size: 1rem;
         }
         
         .network-presence-container form button {
-            border-radius: 8px;
-            padding: 0.8rem 1.5rem;
-            font-size: 0.95rem;
-            background-color: var(--primary);
-            transition: background-color 0.3s ease;
+            border-radius: 10px; /* More rounded */
+            padding: 1rem 1.8rem; /* More padding */
+            font-size: 1rem;
+            background-color: var(--primary); /* Primary color */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
         .network-presence-container form button:hover {
-            background-color: var(--accent);
+            background-color: var(--accent); /* Accent color on hover */
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Accent glow */
         }
-        /* Footer */
         
         footer {
             background-color: var(--space);
-            padding: 1.5rem;
-            border-top: 1px solid rgba(106, 13, 173, 0.3);
+            padding: 2rem; /* More padding */
+            border-top: 1px solid rgba(255, 0, 85, 0.3); /* Primary color border */
             position: relative;
             z-index: 2;
         }
         
         footer p {
-            font-size: clamp(0.75rem, 2vw, 0.85rem);
-            opacity: 0.6;
+            font-size: clamp(0.8rem, 2vw, 0.9rem); /* Slightly larger */
+            opacity: 0.7;
         }
-        /* Mobile-specific improvements */
         
         .now-playing-info {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.5rem; /* More space */
+            margin-bottom: 1.8rem; /* More space */
         }
         
         .player-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
+            gap: 2.5rem; /* More space */
+            margin-top: 2rem; /* More space */
         }
         
         .tracklist-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem; /* More space */
         }
         
         .tracklist-header h3 {
@@ -662,321 +616,224 @@
         }
         
         .track-time {
-            font-size: 0.85rem;
+            font-size: 0.95rem; /* Slightly larger */
             opacity: 0.8;
+            color: var(--secondary); /* Secondary color */
+            font-weight: bold;
         }
-        /* Custom additions for spacing and centering */
         
         .centered-heading {
             text-align: center;
             color: var(--secondary);
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
-            margin-bottom: 1.5rem;
-            font-size: clamp(1.8rem, 5vw, 2rem);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Secondary glow */
+            margin-bottom: 1.8rem; /* More space */
+            font-size: clamp(2rem, 5vw, 2.5rem); /* Larger */
         }
         
         .contact-info-container .space-y-4>div,
         .network-presence-container .space-y-4>div {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
         
         .network-presence-container .social-icons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Larger icons */
+            gap: 1.2rem; /* More space */
             justify-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; /* More space */
         }
         
         .social-icon-btn {
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
+            width: 60px;
+            height: 60px;
+            font-size: 1.8rem;
         }
         
         .social-icon-btn svg {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
         }
         
         .network-presence-container form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
         }
         
         .network-presence-container form input,
         .network-presence-container form button {
             width: 100%;
         }
-        /* TV-Specific Styles */
         
         @media (min-width: 1200px) and (min-height: 800px) {
             .hero-section {
                 min-height: 100vh;
-                padding: 3rem 1rem;
-                justify-content: center;
+                padding: 4rem 1rem;
             }
             .hero-content {
-                padding: 3rem !important;
-                max-width: 1000px;
+                padding: 4rem !important;
+                max-width: 1100px;
             }
             .hero-section h1 {
-                font-size: clamp(4rem, 10vw, 6rem) !important;
-                margin-bottom: 1.5rem;
+                font-size: clamp(5rem, 10vw, 7rem) !important;
+                margin-bottom: 2rem;
             }
             .hero-section h1 span:last-child {
-                font-size: clamp(2.5rem, 6vw, 3.5rem) !important;
-                margin-top: 1rem;
+                font-size: clamp(3rem, 6vw, 4rem) !important;
+                margin-top: 1.5rem;
             }
             .hero-section p {
-                font-size: clamp(1.5rem, 3vw, 2rem) !important;
-                max-width: 900px;
-                margin-bottom: 3rem;
+                font-size: clamp(1.8rem, 3vw, 2.2rem) !important;
+                max-width: 1000px;
+                margin-bottom: 4rem;
                 line-height: 1.8;
             }
             .hero-section button {
-                padding: 1.5rem 3rem;
-                font-size: 1.5rem;
-                border-radius: 12px;
+                padding: 1.8rem 3.5rem;
+                font-size: 1.8rem;
+                border-radius: 15px;
             }
             .hero-nav-buttons a {
-                padding: 1rem 2rem !important;
-                font-size: 1.2rem !important;
-                border-radius: 10px;
+                padding: 1.2rem 2.5rem !important;
+                font-size: 1.4rem !important;
+                border-radius: 12px;
             }
             .flex-col-mobile {
                 flex-direction: row !important;
-                gap: 2rem;
-                margin-bottom: 3rem;
+                gap: 2.5rem;
+                margin-bottom: 3.5rem;
             }
             .hero-nav-buttons {
                 flex-direction: row !important;
-                gap: 1.5rem;
-                margin-bottom: 3rem;
-            }
-            .scroll-indicator {
-                margin-top: 4rem;
-            }
-            .scroll-indicator .w-6 {
-                width: 3rem;
-                height: 6rem;
-                border-width: 5px;
-            }
-            .scroll-indicator .w-3 {
-                width: 1.2rem;
-                height: 1.2rem;
-            }
-            /* Center all content for TV */
-            .container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            .music-player-grid,
-            .album-grid,
-            .about-grid,
-            .contact-grid {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-            .player-card,
-            .tracklist-card,
-            .album-card,
-            .about-content-container,
-            .contact-info-container,
-            .network-presence-container {
-                width: 90%;
-                max-width: 1000px;
-                margin: 0 auto;
-            }
-            .album-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-                justify-items: center;
-            }
-            .album-card {
-                width: 100%;
-                max-width: 450px;
-            }
-            .about-grid {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .about-image-container,
-            .about-content-container {
-                width: 100%;
-                max-width: 800px;
-                text-align: center;
-            }
-            .about-info-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                width: 100%;
-            }
-            .contact-grid {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 3rem;
-            }
-            .contact-info-container,
-            .network-presence-container {
-                width: 100%;
-                max-width: 800px;
-            }
-            .network-presence-container .social-icons-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-            }
-            .social-icon-btn {
-                width: 70px;
-                height: 70px;
-            }
-            .social-icon-btn svg {
-                width: 35px;
-                height: 35px;
-            }
-            .network-presence-container form {
-                flex-direction: row;
-                align-items: center;
-            }
-            .network-presence-container form input {
-                flex: 1;
-                padding: 1.2rem;
-                font-size: 1.1rem;
-            }
-            .network-presence-container form button {
-                padding: 1.2rem 2rem;
-                font-size: 1.1rem;
+                gap: 1.8rem;
+                margin-bottom: 3.5rem;
             }
             .section-title {
-                font-size: clamp(3.5rem, 8vw, 5rem) !important;
-                margin-bottom: 4rem !important;
+                font-size: clamp(4rem, 8vw, 6rem) !important;
+                margin-bottom: 5rem !important;
             }
             .centered-heading {
-                font-size: clamp(2.5rem, 6vw, 3.5rem) !important;
-                margin-bottom: 2rem;
+                font-size: clamp(3rem, 6vw, 4rem) !important;
+                margin-bottom: 2.5rem;
             }
             .tracklist-card h3 {
-                font-size: clamp(2rem, 5vw, 2.8rem) !important;
+                font-size: clamp(2.5rem, 5vw, 3.2rem) !important;
             }
             .track-item {
-                padding: 1.2rem 1.5rem;
+                padding: 1.5rem 2rem;
             }
             .track-item h4 {
-                font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+                font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
             }
             .track-item p {
-                font-size: clamp(1rem, 2.5vw, 1.2rem) !important;
+                font-size: clamp(1.1rem, 2.5vw, 1.4rem) !important;
             }
             .track-time {
-                font-size: clamp(1rem, 2.5vw, 1.2rem) !important;
+                font-size: clamp(1.1rem, 2.5vw, 1.4rem) !important;
             }
             .now-playing-info img {
-                width: 180px !important;
-                height: 180px !important;
+                width: 200px !important;
+                height: 200px !important;
             }
             #now-playing-title {
-                font-size: clamp(2rem, 5vw, 2.5rem) !important;
+                font-size: clamp(2.5rem, 5vw, 3rem) !important;
             }
             #now-playing-artist {
-                font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+                font-size: clamp(1.5rem, 3vw, 1.8rem) !important;
             }
             .player-controls button svg {
-                width: clamp(2rem, 5vw, 2.5rem) !important;
-                height: clamp(2rem, 5vw, 2.5rem) !important;
+                width: clamp(2.5rem, 5vw, 3rem) !important;
+                height: clamp(2.5rem, 5vw, 3rem) !important;
             }
             #play-pause svg {
-                width: clamp(3rem, 8vw, 4rem) !important;
-                height: clamp(3rem, 8vw, 4rem) !important;
+                width: clamp(3.5rem, 8vw, 4.5rem) !important;
+                height: clamp(3.5rem, 8vw, 4.5rem) !important;
             }
             .audio-visualizer {
-                height: 100px;
+                height: 120px;
             }
             .visual-bar {
-                height: 20px;
+                height: 25px;
             }
             .progress-bar {
-                height: 8px;
+                height: 10px;
+            }
+            .album-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns for large screens */
+                gap: 2.5rem;
+            }
+            .album-card {
+                max-width: none; /* Remove max-width for better grid flow */
+            }
+            .about-info-grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+                gap: 1.8rem;
+            }
+            .social-icon-btn {
+                width: 80px;
+                height: 80px;
+            }
+            .social-icon-btn svg {
+                width: 40px;
+                height: 40px;
+            }
+            .network-presence-container form input {
+                padding: 1.5rem;
+                font-size: 1.2rem;
+            }
+            .network-presence-container form button {
+                padding: 1.5rem 2.5rem;
+                font-size: 1.2rem;
             }
         }
-        /* Responsive design */
         
         @media (max-width: 768px) {
             .hero-section {
                 min-height: 75vh;
                 padding: 1rem 0.5rem;
-                justify-content: center;
             }
             .hero-content {
-                padding: 1.2rem !important;
-                margin: 0 0.5rem;
-                border-radius: 12px;
+                padding: 1.5rem !important;
+                margin: 0 0.8rem;
+                border-radius: 15px;
             }
             .section-title {
-                font-size: clamp(2rem, 6vw, 2.5rem) !important;
-                margin-bottom: 2rem !important;
+                font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
+                margin-bottom: 2.5rem !important;
             }
             .hero-section h1 {
-                font-size: clamp(2rem, 6vw, 2.4rem) !important;
-                margin-bottom: 0.5rem;
+                font-size: clamp(2.2rem, 6vw, 2.8rem) !important;
+                margin-bottom: 0.6rem;
             }
             .hero-section h1 span:last-child {
-                font-size: clamp(1.2rem, 3.5vw, 1.4rem) !important;
-                margin-top: 0.3rem;
+                font-size: clamp(1.4rem, 3.5vw, 1.6rem) !important;
+                margin-top: 0.4rem;
             }
             .hero-section p {
-                font-size: clamp(0.9rem, 2.5vw, 1rem) !important;
-                padding: 0 0.5rem;
-                margin-bottom: 1.2rem;
+                font-size: clamp(0.95rem, 2.5vw, 1.1rem) !important;
+                padding: 0 0.8rem;
+                margin-bottom: 1.5rem;
                 line-height: 1.5;
             }
             .hero-section button {
-                padding: 0.7rem 1.4rem;
-                font-size: 0.9rem;
-            }
-            .flex-col-mobile {
-                flex-direction: row !important;
-                gap: 1rem;
-                margin-bottom: 1.2rem;
+                padding: 0.8rem 1.6rem;
+                font-size: 1rem;
             }
             .hero-nav-buttons {
-                flex-direction: row !important;
-                flex-wrap: wrap;
-                gap: 0.6rem;
-                margin-bottom: 1.2rem;
-                justify-content: center;
+                gap: 0.8rem;
+                margin-bottom: 1.5rem;
             }
             .hero-nav-buttons a {
-                font-size: 0.8rem;
-                padding: 0.5rem 0.8rem;
-                border-radius: 6px;
-            }
-            .scroll-indicator {
-                margin-top: 1.2rem;
-            }
-            .scroll-indicator .w-6 {
-                width: 1.6rem;
-                height: 3rem;
-                border-width: 2px;
-            }
-            .scroll-indicator .w-3 {
-                width: 0.6rem;
-                height: 0.6rem;
+                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+                border-radius: 8px;
             }
             .music-player-grid,
             .album-grid,
             .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr !important;
-                gap: 2rem !important;
+                gap: 2.5rem !important;
             }
             .player-card,
             .tracklist-card,
@@ -984,52 +841,132 @@
             .about-content-container,
             .contact-info-container,
             .network-presence-container {
-                padding: 1.5rem !important;
+                padding: 2rem !important;
             }
             .about-image-container img {
-                margin-bottom: 1.5rem;
+                margin-bottom: 2rem;
             }
-            /* Mobile-specific order for player */
             .player-card {
                 order: 2;
             }
             .tracklist-card {
                 order: 1;
-                margin-bottom: 1.5rem;
+                margin-bottom: 2rem;
             }
             .tracklist-card h3 {
                 text-align: center;
-                margin-bottom: 1.5rem;
+                margin-bottom: 2rem;
             }
             .now-playing-info {
                 flex-direction: column;
                 text-align: center;
-                gap: 1rem;
+                gap: 1.2rem;
             }
             .now-playing-info img {
                 margin: 0 auto;
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
             #now-playing-title {
-                font-size: clamp(1.5rem, 4vw, 1.8rem);
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 100%;
+                font-size: clamp(1.8rem, 4vw, 2rem);
             }
             .track-item {
-                padding: 10px 15px;
+                padding: 12px 15px;
             }
             .track-item h4 {
-                font-size: clamp(0.9rem, 2.5vw, 1rem);
+                font-size: clamp(1rem, 2.5vw, 1.1rem);
             }
             .track-item p {
-                font-size: clamp(0.7rem, 2vw, 0.8rem);
+                font-size: clamp(0.8rem, 2vw, 0.9rem);
             }
             .centered-heading {
-                font-size: clamp(1.5rem, 4vw, 1.8rem);
-                margin-bottom: 1rem;
+                font-size: clamp(1.8rem, 4vw, 2rem);
+                margin-bottom: 1.5rem;
+            }
+            .network-presence-container .social-icons-grid {
+                grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+                gap: 1rem;
+            }
+            .social-icon-btn {
+                width: 50px;
+                height: 50px;
+            }
+            .social-icon-btn svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 70vh;
+                padding: 0.8rem 0.4rem;
+            }
+            .hero-content {
+                padding: 1.2rem !important;
+                margin: 0 0.6rem;
+            }
+            .section-title {
+                font-size: clamp(2rem, 5vw, 2.2rem) !important;
+                margin-bottom: 2rem !important;
+            }
+            .hero-section h1 {
+                font-size: clamp(2rem, 5vw, 2.2rem) !important;
+                margin-bottom: 0.5rem;
+            }
+            .hero-section h1 span:last-child {
+                font-size: clamp(1.2rem, 3vw, 1.4rem) !important;
+                margin-top: 0.3rem;
+            }
+            .hero-section p {
+                font-size: clamp(0.9rem, 2.2vw, 1rem) !important;
+                line-height: 1.4 !important;
+                padding: 0 0.6rem;
+                margin-bottom: 1.2rem;
+            }
+            .hero-section button {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.9rem;
+            }
+            .hero-nav-buttons {
+                gap: 0.6rem;
+                margin-bottom: 1.2rem;
+            }
+            .hero-nav-buttons a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            .album-card h3 {
+                font-size: clamp(1.4rem, 3.5vw, 1.8rem) !important;
+            }
+            .audio-visualizer {
+                height: 70px;
+            }
+            .visual-bar {
+                height: 14px;
+            }
+            .player-card,
+            .tracklist-card {
+                padding: 1.5rem !important;
+            }
+            .now-playing-info img {
+                width: 100px !important;
+                height: 100px !important;
+            }
+            #now-playing-title {
+                font-size: clamp(1.5rem, 3.5vw, 1.8rem) !important;
+            }
+            .player-controls button svg {
+                width: clamp(1.5rem, 5vw, 2rem);
+                height: clamp(1.5rem, 5vw, 2rem);
+            }
+            #play-pause svg {
+                width: clamp(2.5rem, 8vw, 3.5rem);
+                height: clamp(2.5rem, 8vw, 3.5rem);
+            }
+            .centered-heading {
+                font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+                margin-bottom: 1.2rem;
             }
             .network-presence-container .social-icons-grid {
                 grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
@@ -1045,98 +982,43 @@
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 375px) {
             .hero-section {
-                min-height: 70vh;
-                padding: 0.8rem 0.4rem;
+                min-height: 65vh;
+                padding: 0.6rem 0.3rem;
             }
             .hero-content {
                 padding: 1rem !important;
                 margin: 0 0.4rem;
             }
-            .section-title {
-                font-size: clamp(1.8rem, 5vw, 2rem) !important;
-                margin-bottom: 1.5rem !important;
-            }
             .hero-section h1 {
                 font-size: clamp(1.8rem, 5vw, 2rem) !important;
-                margin-bottom: 0.4rem;
             }
             .hero-section h1 span:last-child {
-                font-size: clamp(1rem, 3vw, 1.2rem) !important;
-                margin-top: 0.2rem;
+                font-size: clamp(1rem, 2.5vw, 1.2rem) !important;
             }
             .hero-section p {
-                font-size: clamp(0.85rem, 2.2vw, 0.9rem) !important;
-                line-height: 1.4 !important;
-                padding: 0 0.4rem;
-                margin-bottom: 1rem;
+                font-size: clamp(0.85rem, 2vw, 0.9rem) !important;
             }
             .hero-section button {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.85rem;
             }
-            .flex-col-mobile {
-                flex-direction: column;
-                gap: 0.6rem;
-                margin-bottom: 1rem;
-            }
-            .hero-nav-buttons {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 0.4rem;
-                margin-bottom: 1rem;
-            }
             .hero-nav-buttons a {
                 padding: 0.4rem 0.7rem;
                 font-size: 0.75rem;
             }
-            .scroll-indicator {
-                margin-top: 1rem;
+            .section-title {
+                font-size: clamp(1.8rem, 5vw, 2rem) !important;
             }
-            .scroll-indicator .w-6 {
-                width: 1.4rem;
-                height: 2.5rem;
+            .track-item h4 {
+                font-size: clamp(0.9rem, 2.2vw, 1rem);
             }
-            .scroll-indicator .w-3 {
-                width: 0.5rem;
-                height: 0.5rem;
+            .track-item p {
+                font-size: clamp(0.75rem, 1.8vw, 0.85rem);
             }
             .album-card h3 {
-                font-size: clamp(1.2rem, 3.5vw, 1.8rem) !important;
-            }
-            .audio-visualizer {
-                height: 60px;
-            }
-            .visual-bar {
-                height: 12px;
-            }
-            .player-card,
-            .tracklist-card {
-                padding: 1.2rem !important;
-            }
-            .now-playing-info img {
-                width: 80px !important;
-                height: 80px !important;
-            }
-            #now-playing-title {
-                font-size: clamp(1.2rem, 3.5vw, 1.5rem) !important;
-            }
-            .player-controls button svg {
-                width: clamp(1.2rem, 5vw, 1.8rem);
-                height: clamp(1.2rem, 5vw, 1.8rem);
-            }
-            #play-pause svg {
-                width: clamp(2rem, 8vw, 3rem);
-                height: clamp(2rem, 8vw, 3rem);
-            }
-            .centered-heading {
-                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-                margin-bottom: 1rem;
-            }
-            .network-presence-container .social-icons-grid {
-                grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
-                gap: 0.6rem;
+                font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
             }
             .social-icon-btn {
                 width: 35px;
@@ -1148,94 +1030,44 @@
             }
         }
         
-        @media (max-width: 375px) {
-            .hero-section {
-                min-height: 65vh;
-                padding: 0.6rem 0.3rem;
-            }
-            .hero-content {
-                padding: 0.8rem !important;
-                margin: 0 0.3rem;
-            }
-            .hero-section h1 {
-                font-size: clamp(1.5rem, 5vw, 1.8rem) !important;
-            }
-            .hero-section h1 span:last-child {
-                font-size: clamp(0.9rem, 2.5vw, 1rem) !important;
-            }
-            .hero-section p {
-                font-size: clamp(0.8rem, 2vw, 0.85rem) !important;
-            }
-            .hero-section button {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            .hero-nav-buttons a {
-                padding: 0.3rem 0.6rem;
-                font-size: 0.7rem;
-            }
-            .section-title {
-                font-size: clamp(1.5rem, 5vw, 1.8rem) !important;
-            }
-            .track-item h4 {
-                font-size: clamp(0.8rem, 2.2vw, 0.9rem);
-            }
-            .track-item p {
-                font-size: clamp(0.65rem, 1.8vw, 0.75rem);
-            }
-            .album-card h3 {
-                font-size: clamp(1rem, 3vw, 1.5rem) !important;
-            }
-            .social-icon-btn {
-                width: 30px;
-                height: 30px;
-            }
-            .social-icon-btn svg {
-                width: 18px;
-                height: 18px;
-            }
-        }
-        /* تحسينات خاصة للهيرو على الجوال */
-        
         @media (max-width: 768px) {
             .hero-section .pulse-circle:nth-child(1) {
-                width: 120px;
-                height: 120px;
-                left: 5%;
-                top: 15%;
+                width: 150px;
+                height: 150px;
+                left: 8%;
+                top: 18%;
             }
             .hero-section .pulse-circle:nth-child(2) {
-                width: 180px;
-                height: 180px;
-                right: 3%;
-                bottom: 8%;
+                width: 220px;
+                height: 220px;
+                right: 5%;
+                bottom: 12%;
             }
             .hero-section .pulse-circle:nth-child(3) {
-                width: 100px;
-                height: 100px;
-                left: 20%;
-                bottom: 3%;
+                width: 130px;
+                height: 130px;
+                left: 25%;
+                bottom: 5%;
             }
             .hero-section .pulse-circle {
-                animation: pulse 5s infinite ease-out;
+                animation: pulse 4.5s infinite ease-out;
             }
             .hero-content {
-                box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+                box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
             }
         }
-        /* New styles for YouTube player and enhanced visualizer */
         
         .youtube-player-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
-            /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
             background-color: black;
-            border-radius: 10px;
-            border: 2px solid var(--secondary);
-            margin-bottom: 1.5rem;
+            border-radius: 15px; /* More rounded */
+            border: 3px solid var(--secondary); /* Secondary color border */
+            margin-bottom: 1.8rem; /* More space */
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6); /* Secondary glow */
         }
         
         .youtube-player-container iframe {
@@ -1249,27 +1081,25 @@
         .visualizer-container {
             position: relative;
             width: 100%;
-            height: 80px;
-            /* Adjust as needed */
-            margin-bottom: 1.5rem;
+            height: 100px; /* Taller */
+            margin-bottom: 1.8rem; /* More space */
             display: flex;
             align-items: flex-end;
-            padding: 10px 0;
-            border-radius: 8px;
+            padding: 15px 0; /* More padding */
+            border-radius: 10px;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
             overflow: hidden;
-            /* Ensure bars don't overflow */
         }
         
         .visual-bar {
             flex: 1;
-            height: 15px;
-            margin: 0 1.5px;
+            height: 20px; /* Taller bars */
+            margin: 0 2px; /* More space */
             background: linear-gradient(to top, var(--primary), var(--secondary));
             transform-origin: bottom;
             transform: scaleY(0.1);
             transition: transform 0.1s ease-out;
-            border-radius: 2px;
+            border-radius: 3px;
         }
         
         .player-controls button {
@@ -1277,7 +1107,7 @@
         }
         
         .player-controls button:hover {
-            transform: scale(1.1);
+            transform: scale(1.15); /* More pronounced */
             color: var(--accent);
         }
         
@@ -1288,17 +1118,16 @@
         .progress-bar-container {
             position: relative;
             width: 100%;
-            height: 6px;
+            height: 8px; /* Thicker */
             background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.8rem; /* More space */
         }
         
         .progress-bar {
             width: 100%;
             height: 100%;
             background: transparent;
-            /* Hide default input range background */
             -webkit-appearance: none;
             appearance: none;
             cursor: pointer;
@@ -1311,25 +1140,24 @@
         .progress-bar::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 20px; /* Larger thumb */
+            height: 20px;
             border-radius: 50%;
-            background: var(--secondary);
+            background: var(--accent); /* Accent color */
             cursor: pointer;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-            margin-top: -5px;
-            /* Center thumb vertically */
+            border: 3px solid var(--primary); /* Primary color border */
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Accent glow */
+            margin-top: -6px;
         }
         
         .progress-bar::-moz-range-thumb {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: var(--secondary);
+            background: var(--accent);
             cursor: pointer;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
         }
         
         .progress-fill {
@@ -1338,20 +1166,17 @@
             left: 0;
             height: 100%;
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 3px;
+            border-radius: 4px;
             z-index: 1;
         }
-        /* Hide visualizer when YouTube video is active */
         
         .youtube-active .visualizer-container {
             display: none;
         }
-        /* Hide cover image when YouTube video is active */
         
         .youtube-active #now-playing-cover {
             display: none;
         }
-        /* Adjust info layout when YouTube video is active */
         
         .youtube-active .now-playing-info {
             flex-direction: column;
@@ -1361,544 +1186,21 @@
         .youtube-active .now-playing-info>div {
             text-align: center;
         }
-        /* Responsive adjustments for player */
         
         @media (max-width: 768px) {
             .youtube-player-container {
-                margin-bottom: 1rem;
-            }
-            .visualizer-container {
-                height: 60px;
-                margin-bottom: 1rem;
-            }
-            .visual-bar {
-                height: 10px;
-            }
-            .progress-bar-container {
-                height: 4px;
-                margin-bottom: 1rem;
-            }
-            .progress-bar::-webkit-slider-thumb,
-            .progress-bar::-moz-range-thumb {
-                width: 12px;
-                height: 12px;
-                margin-top: -4px;
-            }
-        }
-        /* New styles for playlist player */
-        
-        .playlist-player-card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 255, 0.7);
-            /* Cyan border for distinction */
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-            /* Cyan shadow */
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 3rem;
-            /* Space from albums grid */
-            display: none;
-            /* Hidden by default */
-            flex-direction: column;
-            align-items: center;
-            max-width: 800px;
-            /* Match hero content width */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .playlist-player-card.active {
-            display: flex;
-            /* Show when active */
-        }
-        
-        .playlist-player-card .youtube-player-container {
-            margin-bottom: 1rem;
-        }
-        
-        .playlist-player-card .now-playing-info {
-            flex-direction: column;
-            text-align: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            width: 100%;
-            /* Ensure it takes full width for text alignment */
-        }
-        
-        .playlist-player-card .now-playing-info h3 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: 0.2rem;
-            white-space: nowrap;
-            /* Prevent text wrapping */
-            overflow: hidden;
-            /* Hide overflow text */
-            text-overflow: ellipsis;
-            /* Add ellipsis for overflow */
-            max-width: 100%;
-            /* Ensure it respects container width */
-        }
-        
-        .playlist-player-card .now-playing-info p {
-            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
-            opacity: 0.8;
-            white-space: nowrap;
-            /* Prevent text wrapping */
-            overflow: hidden;
-            /* Hide overflow text */
-            text-overflow: ellipsis;
-            /* Add ellipsis for overflow */
-            max-width: 100%;
-            /* Ensure it respects container width */
-        }
-        
-        .playlist-player-card .player-controls {
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        
-        .playlist-player-card .player-controls button {
-            color: var(--secondary);
-            /* Cyan controls */
-        }
-        
-        .playlist-player-card .player-controls button:hover {
-            color: var(--accent);
-            /* Magenta on hover */
-        }
-        
-        .playlist-player-card .progress-bar-container {
-            margin-bottom: 1rem;
-        }
-        
-        .playlist-player-card .progress-fill {
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            /* Cyan to Magenta fill */
-        }
-        
-        .playlist-player-card .progress-bar::-webkit-slider-thumb {
-            background: var(--accent);
-            /* Magenta thumb */
-            border-color: var(--secondary);
-            /* Cyan border */
-        }
-        
-        .playlist-player-card .progress-bar::-moz-range-thumb {
-            background: var(--accent);
-            /* Magenta thumb */
-            border-color: var(--secondary);
-            /* Cyan border */
-        }
-        /* Responsive adjustments for playlist player */
-        
-        @media (max-width: 768px) {
-            .playlist-player-card {
-                padding: 1.5rem;
-                margin-top: 2rem;
-            }
-            .playlist-player-card .now-playing-info h3 {
-                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-            }
-            .playlist-player-card .now-playing-info p {
-                font-size: clamp(0.75rem, 2vw, 0.85rem);
-            }
-            .playlist-player-card .player-controls {
-                gap: 1rem;
-            }
-            .playlist-player-card .player-controls button svg {
-                width: clamp(1.2rem, 5vw, 1.8rem);
-                height: clamp(1.2rem, 5vw, 1.8rem);
-            }
-            .playlist-player-card #play-pause svg {
-                width: clamp(2rem, 8vw, 3rem);
-                height: clamp(2rem, 8vw, 3rem);
-            }
-        }
-        /* Custom styles for track items */
-        
-        .track-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-            padding: 15px 20px;
-            /* Increased padding */
-            border-radius: 10px;
-            /* More rounded corners */
-            background: rgba(0, 0, 0, 0.3);
-            /* Slightly darker background */
-            border: 1px solid rgba(106, 13, 173, 0.2);
-            /* Subtle border */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            /* Soft shadow */
-            transition: all 0.3s ease;
-        }
-        
-        .track-item:hover {
-            background: rgba(106, 13, 173, 0.25);
-            /* More pronounced hover */
-            border-left: 4px solid var(--primary);
-            /* Thicker border on hover */
-            transform: translateY(-3px);
-            /* Slight lift effect */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .track-item.playing {
-            background: rgba(106, 13, 173, 0.4);
-            /* Even more pronounced for playing */
-            border-left: 4px solid var(--secondary);
-            /* Cyan border for playing */
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-            /* Stronger glow */
-            transform: scale(1.01);
-            /* Slightly larger when playing */
-        }
-        
-        .track-item .flex.justify-between.items-center {
-            width: 100%;
-            /* Ensure content spans full width */
-        }
-        
-        .track-item h4 {
-            font-size: 1.1rem;
-            /* Slightly larger track title */
-            color: var(--light);
-            margin-bottom: 4px;
-            /* Space between title and subtitle */
-        }
-        
-        .track-item p {
-            font-size: 0.85rem;
-            /* Slightly larger subtitle */
-            opacity: 0.8;
-            color: var(--light);
-        }
-        
-        .track-time {
-            font-size: 0.9rem;
-            /* Larger time display */
-            color: var(--secondary);
-            /* Cyan color for time */
-            font-weight: bold;
-        }
-        /* Discography Player Enhancements */
-        
-        #discography-player-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 2.5rem;
-            /* More padding */
-            border-radius: 20px;
-            /* More rounded */
-            background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(10, 10, 26, 0.8));
-            /* Gradient background */
-            border: 2px solid rgba(106, 13, 173, 0.8);
-            /* Stronger border */
-            box-shadow: 0 0 35px rgba(106, 13, 173, 0.4);
-            /* Enhanced shadow */
-        }
-        
-        #discography-now-playing-cover {
-            width: 180px;
-            /* Larger cover */
-            height: 180px;
-            border-radius: 15px;
-            /* More rounded cover */
-            border: 3px solid var(--secondary);
-            /* Thicker cyan border */
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-            /* Glow effect */
-            margin-bottom: 1.5rem;
-        }
-        
-        #discography-now-playing-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            /* Responsive title size */
-            color: var(--secondary);
-            /* Cyan title */
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            margin-bottom: 0.5rem;
-        }
-        
-        #discography-now-playing-artist {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            /* Responsive artist size */
-            color: var(--light);
-            opacity: 0.9;
-        }
-        
-        .player-controls {
-            margin-top: 2rem;
-            /* More space for controls */
-            gap: 2.5rem;
-            /* Increased gap between buttons */
-        }
-        
-        .player-controls button {
-            color: var(--secondary);
-            /* Cyan controls */
-            transition: all 0.3s ease;
-        }
-        
-        .player-controls button:hover {
-            color: var(--accent);
-            /* Magenta on hover */
-            transform: scale(1.15);
-            /* More pronounced hover effect */
-        }
-        
-        #discography-play-pause svg {
-            width: clamp(3rem, 8vw, 4rem);
-            /* Larger play/pause button */
-            height: clamp(3rem, 8vw, 4rem);
-        }
-        
-        .visualizer-container {
-            height: 100px;
-            /* Taller visualizer */
-            background: rgba(0, 0, 0, 0.6);
-            /* Darker background for visualizer */
-            border-radius: 10px;
-            padding: 15px 0;
-            margin-top: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .visual-bar {
-            height: 20px;
-            /* Taller bars */
-            margin: 0 2px;
-            /* Slightly more space between bars */
-            border-radius: 3px;
-        }
-        
-        .progress-bar-container {
-            height: 8px;
-            /* Thicker progress bar */
-            border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.15);
-            /* Lighter background */
-            margin-top: 1.5rem;
-        }
-        
-        .progress-fill {
-            border-radius: 4px;
-        }
-        
-        .progress-bar::-webkit-slider-thumb {
-            width: 20px;
-            /* Larger thumb */
-            height: 20px;
-            border: 3px solid var(--primary);
-            /* Thicker border */
-            box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
-            /* Stronger glow */
-            margin-top: -6px;
-            /* Adjust to center */
-        }
-        
-        .progress-bar::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
-        }
-        /* Album Card (Playlist Item) Enhancements */
-        
-        .album-card {
-            border-radius: 20px;
-            /* More rounded corners */
-            background: linear-gradient(145deg, rgba(0, 0, 0, 0.6), rgba(10, 10, 26, 0.7));
-            /* Gradient background */
-            border: 2px solid rgba(106, 13, 173, 0.5);
-            /* Stronger border */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            /* Deeper shadow */
-            padding: 2rem;
-            /* More padding */
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            /* Smoother transition */
-        }
-        
-        .album-card:hover {
-            transform: translateY(-10px) scale(1.04) rotateY(4deg);
-            /* More pronounced lift and rotation */
-            box-shadow: 0 20px 45px rgba(106, 13, 173, 0.8);
-            /* Intense glow */
-            border-color: var(--secondary);
-            /* Cyan border on hover */
-        }
-        
-        .album-card .album-cover {
-            border-radius: 18px;
-            /* More rounded cover */
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            /* Subtle cyan border */
-            filter: grayscale(90%) contrast(120%);
-            /* Stronger initial filter */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .album-card:hover .album-cover {
-            filter: none;
-            /* Full color on hover */
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
-            /* Stronger glow on hover */
-        }
-        
-        .album-card h3 {
-            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
-            /* Larger title */
-            color: var(--secondary);
-            /* Cyan title */
-            text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
-            margin-bottom: 0.8rem;
-        }
-        
-        .album-card p {
-            font-size: clamp(0.85rem, 2.2vw, 1rem);
-            /* Larger description */
-            opacity: 0.85;
-        }
-        
-        .album-card button {
-            padding: 0.9rem 2rem;
-            /* Larger button */
-            font-size: 1rem;
-            border-radius: 8px;
-            background-color: var(--primary);
-            /* Primary color button */
-            border: 2px solid var(--primary);
-            color: var(--light);
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .album-card button:hover {
-            background-color: var(--accent);
-            /* Magenta on hover */
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
-            /* Magenta glow */
-            transform: translateY(-2px);
-        }
-        /* Playlist Player Enhancements */
-        
-        .playlist-player-card {
-            border: 2px solid var(--secondary);
-            /* Cyan border */
-            box-shadow: 0 0 35px rgba(0, 255, 255, 0.4);
-            /* Cyan glow */
-            padding: 2.5rem;
-            /* More padding */
-            border-radius: 20px;
-            /* More rounded */
-            background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(10, 10, 26, 0.8));
-            /* Gradient background */
-        }
-        
-        .playlist-player-card .youtube-player-container {
-            border: 3px solid var(--accent);
-            /* Magenta border for YouTube player */
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
-            /* Magenta glow */
-        }
-        
-        .playlist-player-card .now-playing-info h3 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            /* Larger title */
-            color: var(--accent);
-            /* Magenta title */
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-        }
-        
-        .playlist-player-card .now-playing-info p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            /* Larger artist */
-            color: var(--light);
-            opacity: 0.9;
-        }
-        
-        .playlist-player-card .player-controls button {
-            color: var(--accent);
-            /* Magenta controls */
-        }
-        
-        .playlist-player-card .player-controls button:hover {
-            color: var(--secondary);
-            /* Cyan on hover */
-        }
-        
-        .playlist-player-card .progress-fill {
-            background: linear-gradient(to right, var(--accent), var(--secondary));
-            /* Magenta to Cyan fill */
-        }
-        
-        .playlist-player-card .progress-bar::-webkit-slider-thumb {
-            background: var(--secondary);
-            /* Cyan thumb */
-            border-color: var(--accent);
-            /* Magenta border */
-            box-shadow: 0 0 8px rgba(255, 0, 255, 0.7);
-            /* Magenta glow */
-        }
-        
-        .playlist-player-card .progress-bar::-moz-range-thumb {
-            background: var(--secondary);
-            border-color: var(--accent);
-            box-shadow: 0 0 8px rgba(255, 0, 255, 0.7);
-        }
-        /* Responsive adjustments for enhanced styles */
-        
-        @media (max-width: 768px) {
-            .track-item {
-                padding: 12px 15px;
-            }
-            .track-item h4 {
-                font-size: 1rem;
-            }
-            .track-item p {
-                font-size: 0.8rem;
-            }
-            .track-time {
-                font-size: 0.8rem;
-            }
-            #discography-player-card,
-            .playlist-player-card {
-                padding: 1.5rem;
-            }
-            #discography-now-playing-cover {
-                width: 120px;
-                height: 120px;
-            }
-            #discography-now-playing-title,
-            .playlist-player-card .now-playing-info h3 {
-                font-size: clamp(1.5rem, 4vw, 1.8rem);
-            }
-            #discography-now-playing-artist,
-            .playlist-player-card .now-playing-info p {
-                font-size: clamp(0.9rem, 2.5vw, 1rem);
-            }
-            .player-controls {
-                gap: 1.5rem;
-            }
-            #discography-play-pause svg {
-                width: clamp(2.5rem, 8vw, 3rem);
-                height: clamp(2.5rem, 8vw, 3rem);
+                margin-bottom: 1.2rem;
             }
             .visualizer-container {
                 height: 80px;
+                margin-bottom: 1.2rem;
             }
             .visual-bar {
                 height: 15px;
             }
             .progress-bar-container {
                 height: 6px;
+                margin-bottom: 1.2rem;
             }
             .progress-bar::-webkit-slider-thumb,
             .progress-bar::-moz-range-thumb {
@@ -1906,84 +1208,116 @@
                 height: 16px;
                 margin-top: -5px;
             }
-            .album-card {
-                padding: 1.5rem;
-            }
-            .album-card h3 {
-                font-size: clamp(1.4rem, 4vw, 1.8rem);
-            }
-            .album-card p {
-                font-size: clamp(0.75rem, 2vw, 0.9rem);
-            }
-            .album-card button {
-                padding: 0.7rem 1.5rem;
-                font-size: 0.9rem;
-            }
         }
         
-        @media (max-width: 480px) {
-            .track-item {
-                padding: 10px 12px;
-            }
-            .track-item h4 {
-                font-size: 0.9rem;
-            }
-            .track-item p {
-                font-size: 0.75rem;
-            }
-            .track-time {
-                font-size: 0.75rem;
-            }
-            #discography-player-card,
+        .playlist-player-card {
+            background: rgba(0, 0, 0, 0.7); /* Darker background */
+            backdrop-filter: blur(15px); /* More blur */
+            border: 2px solid var(--secondary); /* Secondary color border */
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.4); /* Secondary glow */
+            border-radius: 20px; /* More rounded */
+            padding: 2.5rem; /* More padding */
+            margin-top: 3.5rem; /* More space */
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px; /* Wider */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .playlist-player-card.active {
+            display: flex;
+        }
+        
+        .playlist-player-card .youtube-player-container {
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--accent); /* Accent color border */
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); /* Accent glow */
+        }
+        
+        .playlist-player-card .now-playing-info {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.8rem; /* More space */
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+        
+        .playlist-player-card .now-playing-info h3 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Larger title */
+            margin-bottom: 0.3rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            color: var(--accent); /* Accent color title */
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+        }
+        
+        .playlist-player-card .now-playing-info p {
+            font-size: clamp(1rem, 2.2vw, 1.2rem); /* Larger text */
+            opacity: 0.8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        
+        .playlist-player-card .player-controls {
+            gap: 2rem; /* More space */
+            margin-top: 1.5rem;
+        }
+        
+        .playlist-player-card .player-controls button {
+            color: var(--accent); /* Accent color controls */
+        }
+        
+        .playlist-player-card .player-controls button:hover {
+            color: var(--secondary); /* Secondary color on hover */
+        }
+        
+        .playlist-player-card .progress-bar-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .playlist-player-card .progress-fill {
+            background: linear-gradient(to right, var(--accent), var(--secondary)); /* Accent to Secondary fill */
+        }
+        
+        .playlist-player-card .progress-bar::-webkit-slider-thumb {
+            background: var(--secondary); /* Secondary color thumb */
+            border-color: var(--accent); /* Accent color border */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7); /* Secondary glow */
+        }
+        
+        .playlist-player-card .progress-bar::-moz-range-thumb {
+            background: var(--secondary);
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
             .playlist-player-card {
-                padding: 1rem;
+                padding: 2rem;
+                margin-top: 2.5rem;
             }
-            #discography-now-playing-cover {
-                width: 100px;
-                height: 100px;
-            }
-            #discography-now-playing-title,
             .playlist-player-card .now-playing-info h3 {
-                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+                font-size: clamp(1.5rem, 3.5vw, 1.8rem);
             }
-            #discography-now-playing-artist,
             .playlist-player-card .now-playing-info p {
-                font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+                font-size: clamp(0.85rem, 2vw, 1rem);
             }
-            .player-controls {
-                gap: 1rem;
+            .playlist-player-card .player-controls {
+                gap: 1.5rem;
             }
-            #discography-play-pause svg {
-                width: clamp(2rem, 6vw, 2.5rem);
-                height: clamp(2rem, 6vw, 2.5rem);
+            .playlist-player-card .player-controls button svg {
+                width: clamp(1.5rem, 5vw, 2rem);
+                height: clamp(1.5rem, 5vw, 2rem);
             }
-            .visualizer-container {
-                height: 60px;
-            }
-            .visual-bar {
-                height: 12px;
-            }
-            .progress-bar-container {
-                height: 4px;
-            }
-            .progress-bar::-webkit-slider-thumb,
-            .progress-bar::-moz-range-thumb {
-                width: 12px;
-                height: 12px;
-                margin-top: -4px;
-            }
-            .album-card {
-                padding: 1.2rem;
-            }
-            .album-card h3 {
-                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-            }
-            .album-card p {
-                font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-            }
-            .album-card button {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
+            .playlist-player-card #play-pause svg {
+                width: clamp(2.5rem, 8vw, 3.5rem);
+                height: clamp(2.5rem, 8vw, 3.5rem);
             }
         }
     </style>
@@ -2000,18 +1334,18 @@
             <div class="pulse-circle"></div>
         </div>
 
-        <div class="hero-content container mx-auto px-4"> <!-- Added px-4 for mobile padding -->
+        <div class="hero-content container mx-auto px-4">
             <h1 class="font-black hero-title">
                 <span class="block text-glow">Jamal Belal</span> <br>
                 <span class="block opacity-80 hero-subtitle">Hard Techno Producer</span>
             </h1>
 
-            <p class="max-w-2xl mx-auto leading-relaxed hero-text px-4"> <!-- Added px-4 for mobile padding -->
+            <p class="max-w-2xl mx-auto leading-relaxed hero-text px-4">
                 Pushing sonic boundaries with industrial techno since 2015. Brutal basslines. Relentless rhythms. Cybernetic sound design.
             </p>
 
             <!-- Navigation Buttons -->
-            <div class="flex justify-center gap-2 flex-wrap hero-nav-buttons mb-4 px-4"> <!-- Added px-4 for mobile padding -->
+            <div class="flex justify-center gap-2 flex-wrap hero-nav-buttons mb-4 px-4">
                 <a href="#music" class="px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all text-sm">
                     Music
                 </a>
@@ -2278,7 +1612,7 @@
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center about-grid">
                 <div class="about-image-container">
-                    <img src="https://yt3.ggpht.com/ytc/AAUvwnh7Mpdys2hefs99798STQGVjvFgJZiHxK9VWq0vMA=s900-c-k-c0x00ffffff-no-rj" alt="Jamal Belal" class="w-full h-auto rounded-lg border-4 border-purple-900">
+                    <img src="https://i.ibb.co/XkdHxrkC/e374fdd1a32a4f0d9f88241bd35436a7-900x900.jpg" alt="Jamal Belal" class="w-full h-auto rounded-lg border-4 border-purple-900">
                 </div>
 
                 <div class="about-content-container">
@@ -3119,7 +2453,7 @@
                     y: -5,
                     scale: 1.02,
                     rotateY: 5,
-                    boxShadow: "0 10px 25px rgba(106, 13, 173, 0.6)",
+                    boxShadow: "0 10px 25px rgba(255, 0, 85, 0.6)", /* Primary color shadow */
                     borderColor: "var(--primary)",
                     duration: 0.3,
                     ease: "power2.out"
@@ -3137,7 +2471,7 @@
                     scale: 1,
                     rotateY: 0,
                     boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
-                    borderColor: "rgba(106, 13, 173, 0.3)",
+                    borderColor: "rgba(255, 0, 85, 0.3)", /* Primary color border */
                     duration: 0.3,
                     ease: "power2.out"
                 });
